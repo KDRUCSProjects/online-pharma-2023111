@@ -1,0 +1,29 @@
+
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+
+# pyenv
+.python-version
+
+
+
+# Environments
+.env
+.ven
+.venv
+env/
+venv/
+ven/
+ENV/
+env.bak/
+venv.bak/
+
+
+
+
+
+# vscode
+.vscode/
