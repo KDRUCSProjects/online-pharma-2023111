@@ -11,11 +11,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <App />
     },
-    {
-        path: '/nav/',
-        element: <NavBar/>
-
-    },
 ]);
 const queryClient = new QueryClient({
     defaultOptions: {},
