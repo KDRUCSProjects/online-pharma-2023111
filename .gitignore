@@ -26,8 +26,7 @@ venv.bak/
 node_modules/
 
 
-# vscode
-.vscode/
+
 
 # Distribution / packaging
 .Python
@@ -49,3 +48,38 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+
+# migrations files
+frontend/static/css
+frontend/static/js
+frontend/static/images/
+__pycache__/
+# react
+frontend/node_modules/
+node_modules/
+package-lock.json
+**/js/main.js
+**/js/main.js.LICENSE.txt
+
+
+# vscode
+.vscode/
