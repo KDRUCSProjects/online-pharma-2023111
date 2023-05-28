@@ -9,6 +9,7 @@ import {InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import RequestPageIcon from '@mui/icons-material/RequestPage';
 const NavBar = () => {
   return (
     <AppBar sx={{backgroundColor: 'white'}}>
@@ -32,9 +33,9 @@ const NavBar = () => {
                 }}
                 />
                 <Button variant='outlined' size='medium' startIcon={<LocationOnIcon sx={{color: '#76bc21'}} />}
-                 endIcon={<ChevronRightIcon sx={{color: '#76bc21'}} />} sx={{borderRadius: '10px',fontSize: '10px', 
+                 endIcon={<ChevronRightIcon sx={{color: '#76bc21'}} />} sx={{textTransform:'capitalize',borderRadius: '10px',fontSize: '10px', 
                  color: 'black', backgroundColor:  'white',":hover": {backgroundColor: 'white'}}} >No Address Selected</Button>
-                <Button variant='outlined' size='medium' sx={{borderRadius: '10px',color: 'white', backgroundColor:  '#76bc21',":hover": {backgroundColor: '#76bc21'}}} >Instance Order</Button>
+                <Button variant='outlined' size='medium' startIcon={<RequestPageIcon sx={{color: 'white'}} />} sx={{textTransform: 'capitalize',borderRadius: '10px',color: 'white', backgroundColor:  '#76bc21',":hover": {backgroundColor: '#76bc21'}}} >Instant Order</Button>
                 <Button  sx={{borderRadius: '10px',":hover": {cursor: 'default'
                 ,backgroundColor: '#76bc21'},backgroundColor: '#76bc21'
                 ,width: '90px',}}size='large'
