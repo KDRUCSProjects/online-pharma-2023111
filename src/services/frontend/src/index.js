@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './components/App';
 import NavBar from './components/NavBar'
 import Footer from './components/footer/Footer';
+import SignUp from './components/user/SignUp';
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: "/footer",
         element: <Footer /> 
+    },
+    {
+        path: '/signup/',
+        element: <SignUp/>
     }
 ]);
 const queryClient = new QueryClient({
