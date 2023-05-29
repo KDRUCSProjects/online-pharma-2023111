@@ -12,6 +12,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 const NavBar = () => {
   return (
+    <Box sx={{ flexGrow: 1 }}>
     <AppBar sx={{backgroundColor: 'white'}}>
         <Toolbar bgcolor={'white'}>
             <Box sx={{padding: 2 ,flex:'3',flexGrow: '1',display: {md: 'none',lg: 'block',sm: 'none',sx: 'none'}}}><Typography variant='h3' color={'#76bc21'} >Habib Pharma</Typography></Box>
@@ -45,6 +46,7 @@ const NavBar = () => {
               
         </Toolbar>
     </AppBar>
+    </Box>
   )
 }
 
