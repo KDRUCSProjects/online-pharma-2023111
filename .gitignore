@@ -146,3 +146,5 @@ package-lock.json
 
 # vscode
 .vscode/
+main.js
+main.js.LICENSE.txt
