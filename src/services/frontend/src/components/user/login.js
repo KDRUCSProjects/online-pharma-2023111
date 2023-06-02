@@ -73,6 +73,7 @@ const Login = () => {
                                     margin: '0px auto',
                                     mt: 3,
                                     width: '30%',
+                                    borderRadius: '15px'
                                 }}
                             >
                                 Login
