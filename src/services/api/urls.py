@@ -10,6 +10,7 @@ from .views.data.category import CategoryViewSit
 from .views.data.drug import DrugViewSit
 from .views.data.order import OrderViewSit
 from .views.data.user import UserLoginView
+from .views.data.user import UserViewSet
 
 
 route = routers.DefaultRouter()
@@ -20,6 +21,7 @@ route.register(r"type_names",TypeNameViewSit)
 route.register(r"categories",CategoryViewSit)
 route.register(r"drugs",DrugViewSit)
 route.register(r"orders",OrderViewSit)
+route.register(r"users", UserViewSet)
 
 urlpatterns = [
     path("", include(route.urls)),
