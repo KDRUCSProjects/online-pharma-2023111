@@ -8,7 +8,7 @@ import {
     MenuList,
     Modal,
     Paper,
-} from '@mui/material';
+}from '@mui/material';
 import MenuItems from './menuItems/MenuItems';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -41,9 +41,10 @@ const MenuBar = () => {
                     >
                         Medicine
                     </Button>
-             {/* First Menu items */}
-                  
+             {/* First Menu items */}      
                    <Menu
+                    onMouseLeave={()=>{setOpenMedicine(false)}}
+
                         aria-labelledby="demo-positioned-button"
                         sx={{
                             width: '18%',
@@ -65,7 +66,7 @@ const MenuBar = () => {
                             horizontal: 'left',
                         }}
                     >
-                        <MenuItems/>
+                        <MenuItems />
                     </Menu>
                            
 
@@ -83,6 +84,7 @@ const MenuBar = () => {
                 >
                     BayBy & Mother Care
                 </Button>
+
 {/* Seccond menu items */}
 
                 <Menu
@@ -188,7 +190,7 @@ const MenuBar = () => {
                             margin: 0,
                             padding: 0,
                             mt: 16,
-                            ml: '590px'
+                            ml: '650px'
                         }}
                         open={openFoods}
                         onClose={() => {
@@ -237,7 +239,7 @@ const MenuBar = () => {
                             margin: 0,
                             padding: 0,
                             mt: 16,
-                            ml: '748px'
+                            ml: '800px'
                         }}
                         open={openDevice}
                         onClose={() => {
@@ -291,7 +293,8 @@ const MenuBar = () => {
                             margin: 0,
                             padding: 0,
                             mt: 16,
-                            ml: '890px',
+                           ml:'1055px',
+                            mr:'1px'
                             
 
                         }}
@@ -311,89 +314,7 @@ const MenuBar = () => {
                         <MenuItems/>
                     </Menu>  
 
-
-                <Button
-
-
-            onMouseOver={()=>setOpenOTC(true)}
-
-                    sx={{
-                        textTransform: 'capitalize',
-                        color: 'black',
-                        fontWeight: 'normal',
-                        fontSize: '13px',
-                    }}
-                    endIcon={<ExpandMore />}
-                >
-                    OTC And Health Need
-                </Button>
-
-
-{/* Menu bar */}
-
-
-                        <Menu
-
-                        aria-labelledby="demo-positioned-button"
-                        sx={{
-                            width: '18%',
-                            height: '60%',
-                            margin: 0,
-                            padding: 0,
-                            mt: 16,
-                            ml: '890px',
-                            
-
-                        }}
-                        open={openPersonal}
-                        onClose={() => {
-                            setOpenPersonal(false);
-                        }}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                    >
-                        <MenuItems/>
-                    </Menu>  
-
-
-
-
-                    <Menu
-
-        aria-labelledby="demo-positioned-button"
-        sx={{
-    width: '18%',
-    height: '60%',
-    margin: 0,
-    padding: 0,
-    mt: 16,
-    ml: '1080px',
-    
-
-}}
-open={openOTC}
-onClose={() => {
-    setOpenOTC(false);
-}}
-anchorOrigin={{
-    vertical: 'top',
-    horizontal: 'left',
-}}
-transformOrigin={{
-    vertical: 'top',
-    horizontal: 'left',
-}}
->
-<MenuItems/>
-</Menu>  
-
-
+   
 
             </Paper>
         </Grid>
