@@ -12,12 +12,16 @@ const App = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <QueryClientProvider client={queryClient}>
-                <NavBar />
-                <Container>
-                    <Box>
-                        <Outlet />
-                    </Box>
-                </Container>
+                <Grid container>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                        <NavBar />
+                    </Grid>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                        <Box>
+                            <Outlet />
+                        </Box>
+                    </Grid>
+                </Grid>
                 <ReactQueryDevtools initialIsOpen />
             </QueryClientProvider>
         </Box>

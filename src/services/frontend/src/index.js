@@ -6,12 +6,18 @@ import SignUp from './components/user/SignUp';
 import Login from './components/user/login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
+import Profile from './components/user/Profile';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        children: [],
+        children: [
+            {
+                path: 'account/',
+                element: <Profile />
+            }
+        ],
     },
     {
         path: '/signup/',
@@ -24,7 +30,7 @@ const router = createBrowserRouter([
     {
         path: 'details/',
         element: <ProductDetails />
-    }
+    },
 ]);
 
 const queryClient = new QueryClient({
