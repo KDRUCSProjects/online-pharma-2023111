@@ -1,15 +1,15 @@
 const images = [
     {
-        Image: 'https://www.shutterstock.com/image-photo/drug-prescription-treatment-medication-pharmaceutical-260nw-544348294.jpg',
+        Image: 'http://127.0.0.1:8000/frontend/static/images/d1.avif',
     },
     {
-        Image: 'https://www.shutterstock.com/image-photo/drug-prescription-treatment-medication-pharmaceutical-260nw-544348294.jpg',
+        Image: 'http://127.0.0.1:8000/frontend/static/images/d2.avif',
     },
     {
-        Image: 'https://www.shutterstock.com/image-photo/drug-prescription-treatment-medication-pharmaceutical-260nw-544348294.jpg',
+        Image: 'http://127.0.0.1:8000/frontend/static/images/table-of-contents-cover.png',
     },
     {
-        Image: '',
+        Image: 'http://127.0.0.1:8000/frontend/static/images/download.png',
     },
 ];
 

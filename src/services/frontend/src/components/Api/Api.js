@@ -1,0 +1,53 @@
+import axios from 'axios';
+
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+axios.defaults.xsrfCookieName = 'XCSRF-TOKEN';
+
+const Api = axios.create({
+    baseURL: 'http://localhost:8000/api/',
+});
+
+export const getObjects = async (endPoint) => {
+    const response = await Api.get(`/${endPoint}/`);
+    return response.data;
+};
+export const getObject = async (endPoint, id) => {
+    const response = await Api.get(`/${endPoint}/${id}/`);
+    return response.data;
+};
+export const addObject = async (endPoint, modelObject) => {
+    return await Api.post(`/${endPoint}/`, modelObject);
+};
+
+export const updateObject = async (endPoint, modelObject) => {
+    return await Api.patch(`/${endPoint}/${modelObject.id}/`, modelObject);
+};
+
+export const deleteObject = async (endPoint, { id }) => {
+    return await Api.delete(`/${endPoint}/${id}/`, id);
+};
+export const searchObject = async (endPoint, params) => {
+    return await Api.get(
+        `/${endPoint}/?product__category=${params.category}&address=${params.address}&search=${params.searchField}`,
+        params
+    );
+};
+export const loginUser = async (modelObject) => {
+    return await Api.post(`/login/`, modelObject);
+};
+
+export const getLoggedInUser = async (token) => {
+    return await Api.get(`/login/`, {
+        headers: {
+            Authorization: `Token ${token}`,
+        },
+    });
+};
+
+export const logoutUser = async (token) => {
+    return await Api.post(`/logout/`, null, {
+        headers: { Authorization: `Token ${token}` },
+    });
+};
+
+export default Api;

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './components/App';
 import SignUp from './components/user/SignUp';
 import Login from './components/user/login';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
     {
@@ -17,12 +18,18 @@ const router = createBrowserRouter([
     },
     {
         path: '/login/',
-        element: <Login />
-    }
+        element: <Login />,
+    },
 ]);
+
+const queryClient = new QueryClient({
+    defaultOptions: {},
+});
 
 ReactDOM.createRoot(document.getElementById('app')).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
     </React.StrictMode>
 );
