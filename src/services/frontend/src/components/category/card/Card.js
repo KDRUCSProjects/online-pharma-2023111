@@ -9,6 +9,7 @@ const Card = (props) => {
     const [openIcon, setOpenIcon] = useState(null);
     return (
         <Grid
+
             onMouseOver={() => {
                 setOpen(true);
                 setOpenIcon(true);
@@ -18,31 +19,41 @@ const Card = (props) => {
                 setOpenIcon(false);
             }}
             sx={{
-                width: {lg: '180px',xs: '100px'},
-                height: {lg: '160px',xs: '100px'},
+                width: {lg: '180px',xs: '70px',sm:'130px'},
+                height: {lg: '160px',xs: '100px',sm:'140px',},
                 margin: '0px auto',
                 backgroundColor: 'white',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 borderRadius: '10px',
+                mr:{sm:3}
+
                 
             }}
         >
             <Box
                 sx={{
-                    width: '100%',
-                    height: '100%',
+                    width: {lg:'100%',md:'100%',sm:'90%',xs:'70%'},
+                    height: {lg:'100%',md:'100%',sm:'100%',xs:'200%'},
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
+                    border:{xs:'1px solid lightgray',lg:'none',md:'none',sm:'none'},
+                    borderRadius:2
                 }}
             >
                 {props.icon}
             </Box>
             {open ? (
                 <Typography sx={{ 
+                    display:{
+                        lg:'block',
+                        md:'block',
+                        sm:'none',
+                        xs:'none'
+                    },
                     
                     color: {lg:'lightgray',xs:'white'} 
                     

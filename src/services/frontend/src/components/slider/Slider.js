@@ -26,6 +26,9 @@ const Slider = (props) => {
                 margin: '0 auto',
                 height: {lg: '100vh',xs: '15vw'},
                 width: {lg: '90vw',xs: '220px'},
+                mt:{sm:15,},
+                ml:{sm:16},
+                mr:{lg:1,xs:8},
             }}
         >
             <ArrowCircleLeftIcon
@@ -46,7 +49,7 @@ const Slider = (props) => {
                     display: {xs: 'block',lg:'block',md:'block',sm:'block'},
                     color:'#76bc21',
                     marginTop:{lg:'0px',xs:'65px'},
-                    marginLeft:{lg:'0px',xs:'100px'},
+                    marginLeft:{lg:'0px',xs:-23,sm:-35},
 
                     
                 }}
@@ -71,8 +74,8 @@ const Slider = (props) => {
                                 src={slide.Image}
                                 alt={''}
                                 sx={{
-                                    width: {lg: '1000px',xs: '360px'},
-                                    height: {lg:'350px',xs:'120px'},
+                                    width: {lg: '1000px',xs: '360px',md:'900px',sm:'600px'},
+                                    height: {lg:'350px',xs:'120px',md:'300px',sm:'200px'},
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
@@ -102,7 +105,7 @@ const Slider = (props) => {
                     display: {xs: 'block',lg:'block',md:'block',sm:'block'},
                     color:'#76bc21',
                     marginTop:{lg:'0px',xs:'65px'},
-                    marginRight:{lg:'0px',xs:'100px'},
+                    marginRight:{lg:'0px',xs:-23,sm:-35},
                 }}
             />
         </Grid>

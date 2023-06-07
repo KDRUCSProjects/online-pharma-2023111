@@ -19,13 +19,6 @@ const Footer = () => {
                 backgroundColor: '#76bc21',
                 width: '98.8vw',
                 mt: 2,
-                display:{
-                    lg:'block',
-                    md:'block',
-                    sm:'none',
-                    xs:'none'
-                }
-                
             }}
         >
             <Grid color={'white'}>
@@ -260,14 +253,16 @@ const Footer = () => {
                     >
                         Habib Pharma
                     </Link>
-                    <Typography sx={{mt: 1,height: '4px',fontSize: '16px'}}>Email Me</Typography>
+                    <Typography sx={{ mt: 1, height: '4px', fontSize: '16px' }}>
+                        Email Me
+                    </Typography>
                     <Link
                         style={{
                             marginTop: 18,
                             color: 'white',
                         }}
                     >
-                       samiullah.arian@icloud.com
+                        samiullah.arian@icloud.com
                     </Link>
                     <Link
                         style={{

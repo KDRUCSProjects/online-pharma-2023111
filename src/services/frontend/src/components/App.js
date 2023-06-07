@@ -31,8 +31,7 @@ const App = () => {
                         </Box>
                     </Grid>
                 </Grid>
-                {matches ? <ButtomNav/> : <Footer
-                />}
+                {matches ? <ButtomNav/> : <Footer/>}
                 <ReactQueryDevtools initialIsOpen />
             </QueryClientProvider>
         </Box>
