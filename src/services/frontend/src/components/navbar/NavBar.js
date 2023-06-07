@@ -2,7 +2,14 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import { Button, Container, Grid, TextField, Typography, rgbToHex } from '@mui/material';
+import {
+    Button,
+    Container,
+    Grid,
+    TextField,
+    Typography,
+    rgbToHex,
+} from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { InputAdornment } from '@mui/material';
@@ -10,22 +17,35 @@ import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
+import MenuIcon from '@mui/icons-material/Menu';
 const NavBar = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar sx={{ backgroundColor: 'white' }} position="static">
+        <Box position="static" sx={{ flexGrow: 1, width: '100%' }}>
+            <AppBar sx={{ backgroundColor: 'white' }}>
                 <Container>
                     <Toolbar bgcolor={'white'}>
+                        <MenuIcon
+                            sx={{
+                                color: '#76bc21',
+                                display: {
+                                    lg: 'none',
+                                    md: 'none',
+                                    xs: 'block',
+                                    sm: 'block',
+                                },
+                                fontSize: '35px',
+                            }}
+                        />
                         <Box
                             sx={{
                                 padding: 2,
                                 flex: '3',
                                 flexGrow: '1',
                                 display: {
-                                    md: 'none',
                                     lg: 'block',
-                                    sm: 'none',
-                                    sx: 'none',
+                                    sm: 'block',
+                                    md: 'block',
+                                    xs: 'none',
                                 },
                             }}
                         >
@@ -47,9 +67,12 @@ const NavBar = () => {
                                 size="small"
                                 type="search"
                                 placeholder="Search"
-                                sx={{ width: '40%', borderRadius: '20px' }}
+                                sx={{ width: { lg: '40%', xs: '70%' } }}
                                 InputProps={{
-                                    endAdornment: (
+                                        style: {
+                                          borderRadius: "10px",
+                                        },
+                                    startAdornment: (
                                         <InputAdornment position="end">
                                             <SearchIcon
                                                 sx={{ color: '#76bc21' }}
@@ -58,72 +81,92 @@ const NavBar = () => {
                                     ),
                                 }}
                             />
-                            <Button
-                                variant="outlined"
-                                size="medium"
-                                startIcon={
-                                    <LocationOnIcon sx={{ color: '#76bc21' }} />
-                                }
-                                endIcon={
-                                    <ChevronRightIcon
-                                        sx={{ color: '#76bc21' }}
-                                    />
-                                }
+                            <Grid
                                 sx={{
-                                    textTransform: 'capitalize',
-                                    borderRadius: '10px',
-                                    fontSize: '10px',
-                                    color: 'black',
-                                    backgroundColor: 'white',
-                                    ':hover': { backgroundColor: 'white' },
-                                }}
-                            >
-                                No Address Selected
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                size="medium"
-                                startIcon={
-                                    <RequestPageIcon sx={{ color: 'white' }} />
-                                }
-                                sx={{
-                                    textTransform: 'capitalize',
-                                    borderRadius: '10px',
-                                    color: 'white',
-                                    backgroundColor: '#76bc21',
-                                    ':hover': { backgroundColor: '#76bc21' },
-                                }}
-                            >
-                                Instant Order
-                            </Button>
-                            <Button
-                                sx={{
-                                    borderRadius: '10px',
-                                    ':hover': {
-                                        cursor: 'default',
-                                        backgroundColor: '#76bc21',
+                                    display: {
+                                        lg: 'block',
+                                        sm: 'none',
+                                        md: 'none',
+                                        xs: 'none',
                                     },
-                                    backgroundColor: '#76bc21',
-                                    width: '90px',
+                                    ml: '5px',
                                 }}
-                                size="large"
-                                startIcon={
-                                    <PersonIcon
-                                        sx={{
-                                            ':hover': { cursor: 'pointer' },
-                                            color: 'white',
-                                        }}
-                                    />
-                                }
-                                endIcon={
-                                    <ShoppingCartIcon
-                                        sx={{
-                                            ':hover': { cursor: 'pointer' },
-                                            color: 'white',
-                                        }}
-                                    />
-                                }
-                            ></Button>
+                            >
+                                <Button
+                                    variant="outlined"
+                                    size="medium"
+                                    startIcon={
+                                        <LocationOnIcon
+                                            sx={{ color: '#76bc21' }}
+                                        />
+                                    }
+                                    endIcon={
+                                        <ChevronRightIcon
+                                            sx={{ color: '#76bc21' }}
+                                        />
+                                    }
+                                    sx={{
+                                        textTransform: 'capitalize',
+                                        borderRadius: '10px',
+                                        fontSize: '10px',
+                                        color: 'black',
+                                        backgroundColor: 'white',
+                                        ':hover': { backgroundColor: 'white' },
+                                    }}
+                                >
+                                    No Address Selected
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    size="medium"
+                                    startIcon={
+                                        <RequestPageIcon
+                                            sx={{ color: 'white' }}
+                                        />
+                                    }
+                                    sx={{
+                                        textTransform: 'capitalize',
+                                        borderRadius: '10px',
+                                        color: 'white',
+                                        backgroundColor: '#76bc21',
+                                        ':hover': {
+                                            backgroundColor: '#76bc21',
+                                        },
+                                        ml: '5px',
+                                    }}
+                                >
+                                    Instant Order
+                                </Button>
+                                <Button
+                                    sx={{
+                                        borderRadius: '10px',
+                                        ':hover': {
+                                            cursor: 'default',
+                                            backgroundColor: '#76bc21',
+                                        },
+                                        backgroundColor: '#76bc21',
+                                        width: '90px',
+                                        ml: '5px',
+                                    }}
+                                    size="large"
+                                    startIcon={
+                                        <PersonIcon
+                                            sx={{
+                                                ':hover': { cursor: 'pointer' },
+                                                color: 'white',
+                                            }}
+                                        />
+                                    }
+                                    endIcon={
+                                        <ShoppingCartIcon
+                                            sx={{
+                                                ':hover': { cursor: 'pointer' },
+                                                color: 'white',
+                                            }}
+                                        />
+                                    }
+                                ></Button>
+                            </Grid>
                         </Box>
                     </Toolbar>
                 </Container>

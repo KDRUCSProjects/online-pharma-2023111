@@ -18,15 +18,16 @@ const Card = (props) => {
                 setOpenIcon(false);
             }}
             sx={{
-                width: '180px',
-                height: '160px',
+                width: {lg: '180px',xs: '100px'},
+                height: {lg: '160px',xs: '100px'},
+                margin: '0px auto',
                 backgroundColor: 'white',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-around',
                 alignItems: 'center',
                 borderRadius: '10px',
-                ':hover': { height: '170px' },
+                
             }}
         >
             <Box
@@ -41,7 +42,11 @@ const Card = (props) => {
                 {props.icon}
             </Box>
             {open ? (
-                <Typography sx={{ color: 'lightgray' }}>
+                <Typography sx={{ 
+                    
+                    color: {lg:'lightgray',xs:'white'} 
+                    
+                    }}>
                     ________________________
                 </Typography>
             ) : null}
@@ -60,7 +65,7 @@ const Card = (props) => {
             {openIcon ? (
                 <ChevronRightIcon
                     sx={{
-                        backgroundColor: '#76bc21',
+                        backgroundColor: {lg:'#76bc21',sx:'white'},
                         borderRadius: '50%',
                         fontSize: '30px',
                         color: 'white',
