@@ -7,6 +7,12 @@ import Login from './components/user/login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/user/Profile';
+import Layout from './components/home/Layout';
+import ButtomNav from './components/mobileview/ButtomNav';
+import Cat from './components/category/Cat';
+import Slider from './components/slider/Slider';
+import MobileAddres from './components/mobileviewaddres/MobileAddres';
+import Mobilenav from './components/navbar/Mobilenav';
 
 const router = createBrowserRouter([
     {
@@ -14,9 +20,13 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
+                path: '/',
+                element: <Layout/>
+            },
+            {
                 path: 'account/',
                 element: <Profile />
-            }
+            },
         ],
     },
     {

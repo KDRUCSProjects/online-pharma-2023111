@@ -17,6 +17,15 @@ const Footer = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 backgroundColor: '#76bc21',
+                width: '98.8vw',
+                mt: 2,
+                display:{
+                    lg:'block',
+                    md:'block',
+                    sm:'none',
+                    xs:'none'
+                }
+                
             }}
         >
             <Grid color={'white'}>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Box } from '@mui/material';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { Grid } from '@mui/material';
 import images from './Images';
 
@@ -25,10 +24,11 @@ const Slider = (props) => {
                 justifyContent: 'center',
                 alignItem: 'center',
                 margin: '0 auto',
-                height: '100vh',
+                height: {lg: '100vh',xs: '15vw'},
+                width: {lg: '90vw',xs: '220px'},
             }}
         >
-            <ArrowBackIosIcon
+            <ArrowCircleLeftIcon
                 onClick={prevSlide}
                 className="left-arrow"
                 sx={{
@@ -43,6 +43,12 @@ const Slider = (props) => {
                     borderRadius: '50px',
                     display: 'flex',
                     justifyContent: 'center',
+                    display: {xs: 'block',lg:'block',md:'block',sm:'block'},
+                    color:'#76bc21',
+                    marginTop:{lg:'0px',xs:'65px'},
+                    marginLeft:{lg:'0px',xs:'100px'},
+
+                    
                 }}
             />
             {images.map((slide, index) => {
@@ -65,12 +71,12 @@ const Slider = (props) => {
                                 src={slide.Image}
                                 alt={''}
                                 sx={{
-                                    width: '1000px',
-                                    height: '350px',
+                                    width: {lg: '1000px',xs: '360px'},
+                                    height: {lg:'350px',xs:'120px'},
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    marginTop: '14px',
+                                    marginTop: {lg:'14px',xs:'150px'},
                                     borderRadius: '15px',
                                 }}
                             ></Grid>
@@ -78,7 +84,7 @@ const Slider = (props) => {
                     </Grid>
                 );
             })}
-            <ArrowForwardIosIcon
+            <ArrowCircleRightIcon
                 onClick={nextSlide}
                 className="right-arrow"
                 sx={{
@@ -93,6 +99,10 @@ const Slider = (props) => {
                     borderRadius: '50px',
                     display: 'flex',
                     justifyContent: 'center',
+                    display: {xs: 'block',lg:'block',md:'block',sm:'block'},
+                    color:'#76bc21',
+                    marginTop:{lg:'0px',xs:'65px'},
+                    marginRight:{lg:'0px',xs:'100px'},
                 }}
             />
         </Grid>
