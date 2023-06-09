@@ -4,4 +4,4 @@ from .base import DataRootSerializer
 class DrugSerializer (DataRootSerializer):
     class Meta:
         model = Drug
-        fields = "__all__"
+        fields = "__all__" 

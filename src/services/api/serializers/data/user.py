@@ -43,4 +43,4 @@ class UserSerializer(DataRootSerializer):
                 email=email,
             )
 
-            return user
+            return user 
