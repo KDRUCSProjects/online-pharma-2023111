@@ -8,11 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/user/Profile';
 import Layout from './components/home/Layout';
-import ButtomNav from './components/mobileview/ButtomNav';
-import Cat from './components/category/Cat';
-import Slider from './components/slider/Slider';
-import MobileAddres from './components/mobileviewaddres/MobileAddres';
-import Mobilenav from './components/navbar/Mobilenav';
+import Dashboard from './components/admin/components/Dashboard';
 
 const router = createBrowserRouter([
     {
@@ -41,6 +37,10 @@ const router = createBrowserRouter([
         path: 'details/',
         element: <ProductDetails />
     },
+    {
+        path: 'dashboard/',
+        element: <Dashboard />
+    }
 ]);
 
 const queryClient = new QueryClient({
