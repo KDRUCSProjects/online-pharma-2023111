@@ -4,4 +4,5 @@ from .base import DataRootSerializer
 class CompanySerializer (DataRootSerializer):
     class Meta:
         model = Company
-        fields = "__all__"
+        
+        fields = "__all__" 
