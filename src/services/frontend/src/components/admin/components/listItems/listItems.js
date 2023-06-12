@@ -5,15 +5,27 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import CategoryIcon from '@mui/icons-material/Category';
+import { Link } from 'react-router-dom';
 
 export const mainListItems = (
     <React.Fragment>
-        <ListItemButton>
-            <ListItemIcon>
-                <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-        </ListItemButton>
+        <Link to={'dashboard/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <DashboardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dashboard" />
+            </ListItemButton>
+        </Link>
+        <Link to={'category/list/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <CategoryIcon />
+                </ListItemIcon>
+                <ListItemText primary="Category" />
+            </ListItemButton>
+        </Link>
     </React.Fragment>
 );
 
