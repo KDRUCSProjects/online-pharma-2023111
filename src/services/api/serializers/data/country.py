@@ -4,4 +4,5 @@ from .base import DataRootSerializer
 class CountrySerializer (DataRootSerializer):
     class Meta:
         model = Country
-        fields = "__all__"
+        
+        fields = "__all__" 

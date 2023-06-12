@@ -3,7 +3,6 @@ from django.urls import path, include
 from rest_framework import routers
 from knox import views as knox_views
 from .views.data.country import CountryViewSit
-from .views.data.address import AddressViewSit
 from .views.data.company import CompanyViewSit
 from .views.data.type_name import TypeNameViewSit
 from .views.data.category import CategoryViewSit
@@ -15,7 +14,6 @@ from .views.data.user import UserViewSet
 
 route = routers.DefaultRouter()
 route.register(r"countries",CountryViewSit)
-route.register(r"addresses",AddressViewSit)
 route.register(r"companies",CompanyViewSit)
 route.register(r"type_names",TypeNameViewSit)
 route.register(r"categories",CategoryViewSit)
