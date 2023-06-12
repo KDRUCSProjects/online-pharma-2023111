@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
 import CategoryIcon from '@mui/icons-material/Category';
+import Title from '../title/Title';
 
 const categories = [
     {
@@ -23,7 +24,7 @@ const categories = [
     },
 ];
 
-const AddCategory = () => {
+const AddCountry = () => {
     return (
         <Grid container spacing={5}>
             <Grid item xs={12} lg={12}>
@@ -36,41 +37,28 @@ const AddCategory = () => {
                         Dashboard
                     </Link>
                     <Link
-                        to={'category/list/'}
+                        to={'country/list/'}
                         style={{ textDecoration: 'none', color: 'black' }}
                     >
                         <CategoryIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        Categories
+                        countries
                     </Link>
                     <Typography
                         sx={{ display: 'flex', alignItems: 'center' }}
                         color="text.primary"
                     >
                         <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        AddCategory
+                        AddCountry
                     </Typography>
                 </Breadcrumbs>
             </Grid>
             <Grid item xs={12} lg={12}>
                 <Paper sx={{ minHeight: '400px' }} elevation={1}>
+                    <Title>Add new Country</Title>
                     <form action="#">
                         <FormGroup>
                             <Stack direction={'column'} spacing={3}>
-                                <TextField placeholder="Category" />
-                                <TextField
-                                    id="outlined-select-currency-native"
-                                    select
-                                    label="Parent"
-                                >
-                                    {categories.map((option) => (
-                                        <option
-                                            key={option.value}
-                                            value={option.value}
-                                        >
-                                            {option.label}
-                                        </option>
-                                    ))}
-                                </TextField>
+                                <TextField placeholder="Country" sx={{mt: 2}}/>
                                 <Stack spacing={2} direction={'row'}>
                                     <Button
                                         type="submit"
@@ -96,4 +84,4 @@ const AddCategory = () => {
     );
 };
 
-export default AddCategory;
+export default AddCountry;

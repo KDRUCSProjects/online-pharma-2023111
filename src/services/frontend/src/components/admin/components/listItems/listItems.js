@@ -26,6 +26,14 @@ export const mainListItems = (
                 <ListItemText primary="Category" />
             </ListItemButton>
         </Link>
+        <Link to={'country/list/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <CategoryIcon />
+                </ListItemIcon>
+                <ListItemText primary="Country" />
+            </ListItemButton> 
+        </Link>
     </React.Fragment>
 );
 
