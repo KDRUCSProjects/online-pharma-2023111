@@ -8,7 +8,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/user/Profile';
 import Layout from './components/home/Layout';
-import Dashboard from './components/admin/components/Dashboard';
+import MainLayout from './components/admin/components/MainLayout';
+import Dashboard from './components/admin/components/dashboard/Dashboard';
+import CategoryList from './components/admin/components/category/CategoryList';
+import AddCategory from './components/admin/components/category/AddCategory';
 
 const router = createBrowserRouter([
     {
@@ -17,11 +20,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Layout/>
+                element: <Layout />,
             },
             {
                 path: 'account/',
-                element: <Profile />
+                element: <Profile />,
             },
         ],
     },
@@ -35,12 +38,26 @@ const router = createBrowserRouter([
     },
     {
         path: 'details/',
-        element: <ProductDetails />
+        element: <ProductDetails />,
     },
     {
-        path: 'dashboard/',
-        element: <Dashboard />
-    }
+        path: 'manage/',
+        element: <MainLayout />,
+        children: [
+            {
+                path: 'dashboard/',
+                element: <Dashboard />,
+            },
+            {
+                path: 'category/list/',
+                element: <CategoryList />,
+            },
+            {
+                path: 'category/add/',
+                element: <AddCategory />,
+            },
+        ],
+    },
 ]);
 
 const queryClient = new QueryClient({
