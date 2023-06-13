@@ -12,6 +12,8 @@ import MainLayout from './components/admin/components/MainLayout';
 import Dashboard from './components/admin/components/dashboard/Dashboard';
 import CategoryList from './components/admin/components/category/CategoryList';
 import AddCategory from './components/admin/components/category/AddCategory';
+import CountryList from './components/admin/components/country/CountryList';
+import AddCountry from './components/admin/components/country/AddCountry';
 
 const router = createBrowserRouter([
     {
@@ -55,6 +57,15 @@ const router = createBrowserRouter([
             {
                 path: 'category/add/',
                 element: <AddCategory />,
+            },
+            {
+                path: 'country/list/',
+                element: <CountryList />,
+            },
+
+            {
+                path: 'country/add/',
+                element: <AddCountry />,
             },
         ],
     },
