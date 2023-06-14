@@ -17,13 +17,6 @@ import GrainIcon from '@mui/icons-material/Grain';
 import CategoryIcon from '@mui/icons-material/Category';
 import Title from '../title/Title';
 
-const categories = [
-    {
-        value: 'medicine',
-        label: 'medicine',
-    },
-];
-
 const AddCountry = () => {
     return (
         <Grid container spacing={5}>
@@ -58,7 +51,10 @@ const AddCountry = () => {
                     <form action="#">
                         <FormGroup>
                             <Stack direction={'column'} spacing={3}>
-                                <TextField placeholder="Country" sx={{mt: 2}}/>
+                                <TextField
+                                    placeholder="Country"
+                                    sx={{ mt: 2 }}
+                                />
                                 <Stack spacing={2} direction={'row'}>
                                     <Button
                                         type="submit"
