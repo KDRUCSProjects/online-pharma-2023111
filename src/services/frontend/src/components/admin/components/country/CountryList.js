@@ -11,7 +11,7 @@ import Title from '../title/Title';
 
 const columns = [
     {
-        field: 'number', 
+        field: 'number',
         headerName: 'Number',
         width: 200,
     },
@@ -60,7 +60,7 @@ const CountryList = () => {
                 <Breadcrumbs>
                     <Link
                         color="secondary"
-                        to={'dashboard/'}
+                        to={'/dashboard/'}
                         style={{ textDecoration: 'none', color: 'black' }}
                     >
                         <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
@@ -77,10 +77,10 @@ const CountryList = () => {
             </Grid>
             <Grid item xs={12} lg={12}>
                 <Paper sx={{ display: 'flex', justifyContent: 'end' }}>
-                    <Link to={'category/add/'}>
+                    <Link to={'/dashboard/category/add/'}>
                         <Button
                             variant="contained"
-                            color="success"
+                            color="primary"
                             startIcon={<AddIcon />}
                             borderRadius="20px"
                         >

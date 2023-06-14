@@ -6,11 +6,13 @@ import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CategoryIcon from '@mui/icons-material/Category';
+import FlagIcon from '@mui/icons-material/Flag';
+import VaccinesIcon from '@mui/icons-material/Vaccines';
 import { Link } from 'react-router-dom';
 
 export const mainListItems = (
     <React.Fragment>
-        <Link to={'dashboard/'} style={{ textDecoration: 'none' }}>
+        <Link to={'/dashboard/'} style={{ textDecoration: 'none' }}>
             <ListItemButton>
                 <ListItemIcon>
                     <DashboardIcon />
@@ -29,10 +31,18 @@ export const mainListItems = (
         <Link to={'country/list/'} style={{ textDecoration: 'none' }}>
             <ListItemButton>
                 <ListItemIcon>
-                    <CategoryIcon />
+                    <FlagIcon />
                 </ListItemIcon>
                 <ListItemText primary="Country" />
-            </ListItemButton> 
+            </ListItemButton>
+        </Link>
+        <Link to={'drug/list/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <VaccinesIcon />
+                </ListItemIcon>
+                <ListItemText primary="Drug" />
+            </ListItemButton>
         </Link>
     </React.Fragment>
 );

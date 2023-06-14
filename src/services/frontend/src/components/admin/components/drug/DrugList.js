@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Button, Grid, Paper } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
@@ -13,32 +14,44 @@ const columns = [
     {
         field: 'number',
         headerName: 'Number',
-        width: 200,
+        width: 150,
+    },
+    {
+        field: 'drugName',
+        headerName: 'Drug',
+        width: 150,
     },
     {
         field: 'category',
         headerName: 'Category',
-        width: 200,
+        width: 150,
     },
     {
-        field: 'parentCategory',
-        headerName: 'Parent Category',
-        width: 200,
+        field: 'country',
+        headerName: 'Country',
+        width: 150,
+    },
+    {
+        field: 'GenericName',
+        headerName: 'Generic Name',
+        width: 150,
+    },
+    {
+        field: 'quantity',
+        headerName: 'Quantity',
+        width: 150,
     },
 ];
 
 const rows = [
     {
         number: 1,
-        category: 'Ear',
-        parentCategory: 'Medicine',
+        drugName: 'Trimadol',
+        category: 'medicine',
+        country: 'PK',
+        GenericName: 'Anti Biotic',
+        quantity: '10',
         id: 1,
-    },
-    {
-        number: 2,
-        category: 'Ear',
-        parentCategory: 'Medicine',
-        id: 2,
     },
 ];
 
@@ -49,8 +62,7 @@ function CustomToolbar() {
         </GridToolbarContainer>
     );
 }
-
-const CategoryList = () => {
+const DrugList = () => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
@@ -68,13 +80,13 @@ const CategoryList = () => {
                         color="text.primary"
                     >
                         <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        Categories
+                        Drug List
                     </Typography>
                 </Breadcrumbs>
             </Grid>
             <Grid item xs={12} lg={12}>
                 <Paper sx={{ display: 'flex', justifyContent: 'end' }}>
-                    <Link to={'/dashboard/category/add/'}>
+                    <Link to={'/dashboard/drug/add/'}>
                         <Button
                             variant="contained"
                             color="primary"
@@ -88,7 +100,7 @@ const CategoryList = () => {
             </Grid>
             <Grid item xs={12} lg={12}>
                 <Paper>
-                    <Title>Categories</Title>
+                    <Title>Drugs</Title>
                     <DataGrid
                         rows={rows}
                         columns={columns}
@@ -100,4 +112,4 @@ const CategoryList = () => {
     );
 };
 
-export default CategoryList;
+export default DrugList;

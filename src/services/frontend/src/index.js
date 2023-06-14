@@ -14,6 +14,8 @@ import CategoryList from './components/admin/components/category/CategoryList';
 import AddCategory from './components/admin/components/category/AddCategory';
 import CountryList from './components/admin/components/country/CountryList';
 import AddCountry from './components/admin/components/country/AddCountry';
+import DrugList from './components/admin/components/drug/DrugList';
+import AddDrug from './components/admin/components/drug/AddDrug';
 
 const router = createBrowserRouter([
     {
@@ -43,11 +45,11 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
     },
     {
-        path: 'manage/',
+        path: 'dashboard',
         element: <MainLayout />,
         children: [
             {
-                path: 'dashboard/',
+                path: '',
                 element: <Dashboard />,
             },
             {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
             {
                 path: 'country/add/',
                 element: <AddCountry />,
+            },
+            {
+                path: 'drug/list/',
+                element: <DrugList />,
+            },
+            {
+                path: 'drug/add/',
+                element: <AddDrug />,
             },
         ],
     },
