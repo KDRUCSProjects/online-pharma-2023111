@@ -8,6 +8,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import CategoryIcon from '@mui/icons-material/Category';
 import FlagIcon from '@mui/icons-material/Flag';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { Link } from 'react-router-dom';
 
 export const mainListItems = (
@@ -42,6 +43,14 @@ export const mainListItems = (
                     <VaccinesIcon />
                 </ListItemIcon>
                 <ListItemText primary="Drug" />
+            </ListItemButton>
+        </Link>
+        <Link to={'order/list/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <ShoppingCartCheckoutIcon />
+                </ListItemIcon>
+                <ListItemText primary="Order" />
             </ListItemButton>
         </Link>
     </React.Fragment>
