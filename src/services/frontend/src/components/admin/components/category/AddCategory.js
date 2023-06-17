@@ -24,6 +24,9 @@ const categories = [
 ];
 
 const AddCategory = () => {
+    const handleSubmit = {
+
+    };
     return (
         <Grid container spacing={5}>
             <Grid item xs={12} lg={12}>
@@ -76,6 +79,7 @@ const AddCategory = () => {
                                         type="submit"
                                         variant="contained"
                                         color="success"
+                                        onClick={handleSubmit}
                                     >
                                         Save
                                     </Button>
