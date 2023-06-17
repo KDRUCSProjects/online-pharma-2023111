@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Breadcrumbs,
@@ -16,8 +16,23 @@ import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
 import CategoryIcon from '@mui/icons-material/Category';
 import Title from '../title/Title';
+import { useMutation } from '@tanstack/react-query';
+import { addObject } from '../../../Api/Api';
+import { create } from '@mui/material/styles/createTransitions';
 
 const AddCountry = () => {
+    const [name, setName] = useState('');
+    const mutation = useMutation((DATA) => {
+        return addObject('countries', DATA);
+    });
+    const onChange = (e) => {
+        setName(e.target.value);
+    };
+
+    const Create = () => {
+        mutation.mutate({ name });
+    };
+
     return (
         <Grid container spacing={5}>
             <Grid item xs={12} lg={12}>
@@ -48,32 +63,31 @@ const AddCountry = () => {
             <Grid item xs={12} lg={12}>
                 <Paper sx={{ minHeight: '400px' }} elevation={1}>
                     <Title>Add new Country</Title>
-                    <form action="#">
-                        <FormGroup>
-                            <Stack direction={'column'} spacing={3}>
-                                <TextField
-                                    placeholder="Country"
-                                    sx={{ mt: 2 }}
-                                />
-                                <Stack spacing={2} direction={'row'}>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        color="success"
-                                    >
-                                        Save
-                                    </Button>
-                                    <Button
-                                        type="reset"
-                                        variant="contained"
-                                        color="error"
-                                    >
-                                        Reset
-                                    </Button>
-                                </Stack>
-                            </Stack>
-                        </FormGroup>
-                    </form>
+                    <Stack direction={'column'} spacing={3}>
+                        <TextField
+                            placeholder="Country"
+                            sx={{ mt: 2 }}
+                            type="text"
+                            value={name}
+                            onChange={onChange}
+                        />
+                        <Stack spacing={2} direction={'row'}>
+                            <Button
+                                variant="contained"
+                                color="success"
+                                onClick={Create}
+                            >
+                                Save
+                            </Button>
+                            <Button
+                                type="reset"
+                                variant="contained"
+                                color="error"
+                            >
+                                Reset
+                            </Button>
+                        </Stack>
+                    </Stack>
                 </Paper>
             </Grid>
         </Grid>
