@@ -9,6 +9,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import FlagIcon from '@mui/icons-material/Flag';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 
 export const mainListItems = (
@@ -51,6 +52,14 @@ export const mainListItems = (
                     <ShoppingCartCheckoutIcon />
                 </ListItemIcon>
                 <ListItemText primary="Order" />
+            </ListItemButton>
+        </Link>
+        <Link to={'user/list/'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="User" />
             </ListItemButton>
         </Link>
     </React.Fragment>

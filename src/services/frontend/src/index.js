@@ -17,6 +17,7 @@ import AddCountry from './components/admin/components/country/AddCountry';
 import DrugList from './components/admin/components/drug/DrugList';
 import AddDrug from './components/admin/components/drug/AddDrug';
 import OrderList from './components/admin/components/order/OrderList';
+import User from './components/admin/components/user/User'
 
 const router = createBrowserRouter([
     {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
             {
                 path: 'order/list/',
                 element: <OrderList />,
+            },
+            {
+                path: 'user/list/',
+                element: <User />,
             },
         ],
     },
