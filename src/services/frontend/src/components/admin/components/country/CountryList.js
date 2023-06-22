@@ -77,7 +77,7 @@ const CountryList = () => {
             </Grid>
             <Grid item xs={12} lg={12}>
                 <Paper sx={{ display: 'flex', justifyContent: 'end' }}>
-                    <Link to={'/dashboard/category/add/'}>
+                    <Link to={'/dashboard/country/add/'}>
                         <Button
                             variant="contained"
                             color="primary"
