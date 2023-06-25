@@ -32,22 +32,5 @@ export const searchObject = async (endPoint, params) => {
         params
     );
 };
-export const loginUser = async (modelObject) => {
-    return await Api.post(`/login/`, modelObject);
-};
-
-export const getLoggedInUser = async (token) => {
-    return await Api.get(`/login/`, {
-        headers: {
-            Authorization: `Token ${token}`,
-        },
-    });
-};
-
-export const logoutUser = async (token) => {
-    return await Api.post(`/logout/`, null, {
-        headers: { Authorization: `Token ${token}` },
-    });
-};
 
 export default Api;
