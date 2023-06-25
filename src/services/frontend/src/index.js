@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './components/App';
-import SignUp from './components/user/SignUp';
-import Login from './components/user/login';
+import Login from './components/user/Login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/user/Profile';
@@ -17,7 +16,13 @@ import AddCountry from './components/admin/components/country/AddCountry';
 import DrugList from './components/admin/components/drug/DrugList';
 import AddDrug from './components/admin/components/drug/AddDrug';
 import OrderList from './components/admin/components/order/OrderList';
-import User from './components/admin/components/user/User'
+import User from './components/admin/components/user/User';
+import Registration from './components/user/Registration';
+import { Provider } from 'react-redux';
+import { store } from './components/app/store';
+import SendPasswordResetEmail from './components/user/SendPasswordResetEmail';
+import ResetPassword from './components/user/ResetPassword';
+import ChangePassword from './components/user/ChangePassword';
 
 const router = createBrowserRouter([
     {
@@ -36,11 +41,23 @@ const router = createBrowserRouter([
     },
     {
         path: '/signup/',
-        element: <SignUp />,
+        element: <Registration />,
     },
     {
         path: '/login/',
         element: <Login />,
+    },
+    {
+        path: '/send/password/reset/email/',
+        element: <SendPasswordResetEmail />,
+    },
+    {
+        path: '/api/user/reset/:id/:token/',
+        element: <ResetPassword />,
+    },
+    {
+        path: '/change/password',
+        element: <ChangePassword />
     },
     {
         path: 'details/',
@@ -97,8 +114,10 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('app')).render(
     <React.StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router} />
-        </QueryClientProvider>
+        <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+                <RouterProvider router={router} />
+            </QueryClientProvider>
+        </Provider>
     </React.StrictMode>
 );
