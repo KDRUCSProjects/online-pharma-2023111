@@ -1,12 +1,28 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from .base import DataRoot
-from .drug import Drug
+from .shoppingCart import ShoppingCart
+from .orderStatus import OrderStatus
+from .ad import Ad
+from .shoppingCart import ShoppingCart
+
 
 class Order(DataRoot):
-    drug_id = models.ForeignKey(Drug, on_delete=models.CASCADE, related_name="Drug")
-    user_id = models.ForeignKey(
-        get_user_model(), on_delete=models.CASCADE, related_name="ad_user"
+    address = models.CharField(max_length=200, null=False, blank=False)
+    shopping_id = models.ForeignKey(
+        ShoppingCart, on_delete=models.CASCADE, related_name="shopping_cart"
     )
+    status_id = models.ForeignKey(
+        OrderStatus, on_delete=models.CASCADE, related_name="order_status"
+    )
+    total_amount = models.PositiveBigIntegerField(editable=False)
     
-    
+    def __str__(self):
+        return self.address
+        
+
+    def save(self, *args, **kwargs):
+        shopping = self.shopping_id
+        ad = shopping.ad_id
+        quantity = shopping.quantity
+        self.total_amount = ad.price * quantity
+        super().save(*args, **kwargs)
