@@ -26,6 +26,7 @@ import AdDetail from './components/Ad/AdDetail';
 import Location from './components/location/Location';
 import Profile from './components/user/Profile';
 import Home from './components/layout/Home';
+import ShoppingCart from './components/order/ShoppingCart';
 
 const router = createBrowserRouter([
     {
@@ -34,11 +35,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Home />,
             },
             {
                 path: 'ad/list/',
-                element: <AdList />
+                element: <AdList />,
             },
             {
                 path: '/ad/detail/:id/',
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile/',
                 element: <Profile />,
+            },
+            {
+                path: '/shopping/cart/',
+                element: <ShoppingCart />,
             },
         ],
     },
