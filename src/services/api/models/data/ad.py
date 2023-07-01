@@ -16,10 +16,13 @@ class Ad(DataRoot):
     country = models.ForeignKey(
         Country, on_delete=models.CASCADE, related_name="drug_country"
     )
+    
+    def __str__(self):
+        return self.ad_title
 
 
 class AdImage(DataRoot):
-    drug = models.ForeignKey(Ad, on_delete=models.CASCADE, related_name="images")
+    ad = models.ForeignKey(Ad, on_delete=models.CASCADE, related_name="images")
     image = models.ImageField(
         upload_to="frontend/static/images/drugs/drug/%Y/%m/%d/",
         blank=True,

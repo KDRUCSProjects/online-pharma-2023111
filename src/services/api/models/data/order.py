@@ -14,11 +14,11 @@ class Order(DataRoot):
     status_id = models.ForeignKey(
         OrderStatus, on_delete=models.CASCADE, related_name="order_status"
     )
+    delivery_instruction = models.TextField(max_length=200, default="")
     total_amount = models.PositiveBigIntegerField(editable=False)
-    
+
     def __str__(self):
         return self.address
-        
 
     def save(self, *args, **kwargs):
         shopping = self.shopping_id
