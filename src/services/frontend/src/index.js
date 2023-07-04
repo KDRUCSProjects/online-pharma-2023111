@@ -23,6 +23,7 @@ import { store } from './components/app/store';
 import SendPasswordResetEmail from './components/user/SendPasswordResetEmail';
 import ResetPassword from './components/user/ResetPassword';
 import ChangePassword from './components/user/ChangePassword';
+import Prescription from './components/order/Prescription';
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
                 element: <Profile />,
             },
         ],
+    },
+    {
+        path: '/prescription/',
+        element: <Prescription />
     },
     {
         path: '/signup/',
@@ -57,7 +62,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/change/password',
-        element: <ChangePassword />
+        element: <ChangePassword />,
     },
     {
         path: 'details/',
