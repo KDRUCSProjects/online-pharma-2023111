@@ -6,7 +6,6 @@ import Login from './components/user/Login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/user/Profile';
-import Layout from './components/home/Layout';
 import MainLayout from './components/admin/components/MainLayout';
 import Dashboard from './components/admin/components/dashboard/Dashboard';
 import CategoryList from './components/admin/components/category/CategoryList';
@@ -30,10 +29,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <App />,
         children: [
-            {
-                path: '/',
-                element: <Layout />,
-            },
             {
                 path: 'account/',
                 element: <Profile />,
