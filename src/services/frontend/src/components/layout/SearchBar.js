@@ -18,12 +18,12 @@ import { Container } from '@mui/system';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.common.white, 1),
     },
     marginLeft: 0,
     width: '100%',
+    color: 'black',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
         width: 'auto',
@@ -38,6 +38,7 @@ const SearchInputIcon = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: '#bb5a77',
 }));
 
 const StyledSearchInput = styled(InputBase)(({ theme }) => ({
@@ -55,10 +56,6 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = () => {
-    const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-    const ismedium = useMediaQuery(theme.breakpoints.down('md'));
-
     return (
         <AppBar position="static" sx={{ backgroundColor: '#76bc21', ml: 0 }}>
             <Container sx={{ paddingRight: 0 }}>

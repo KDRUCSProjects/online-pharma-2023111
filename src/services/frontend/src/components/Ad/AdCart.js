@@ -14,7 +14,7 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const Carts = () => {
+const AdCart = () => {
     const [open, setOpen] = React.useState(false);
     return (
         <Container>
@@ -134,4 +134,4 @@ const Carts = () => {
     );
 };
 
-export default Carts;
+export default AdCart;

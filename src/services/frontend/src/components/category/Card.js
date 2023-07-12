@@ -4,7 +4,7 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Card = (props) => {
-    console.log(props);
+    console.log(props)
     const [open, setOpen] = useState(null);
     const [openIcon, setOpenIcon] = useState(null);
     return (
@@ -44,7 +44,7 @@ const Card = (props) => {
                     borderRadius:2
                 }}
             >
-                {props.icon}
+                {props.ad.icon}
             </Box>
             {open ? (
                 <Typography sx={{ 
@@ -71,7 +71,7 @@ const Card = (props) => {
                     alignItems: 'center',
                 }}
             >
-                {props.data}
+                {props.ad.name}
             </Box>
             {openIcon ? (
                 <ChevronRightIcon

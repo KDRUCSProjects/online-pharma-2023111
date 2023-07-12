@@ -1,22 +1,90 @@
 import React from 'react';
 import { Box, Container, Grid, Typography } from '@mui/material';
-import Card from './card/Card';
-import MedicationIcon from '@mui/icons-material/Medication';
+import Card from './Card';
+import VaccinesIcon from '@mui/icons-material/Vaccines';
+import HealingIcon from '@mui/icons-material/Healing';
+import BabyChangingStationIcon from '@mui/icons-material/BabyChangingStation';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
+import LunchDiningIcon from '@mui/icons-material/LunchDining';
+import EarbudsIcon from '@mui/icons-material/Earbuds';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 
 const Category = () => {
-    let name = 'Medicine';
-    let icon = <MedicationIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />;
+    const data = [
+        {
+            name: 'medicine',
+            icon: <VaccinesIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
+        },
+        {
+            name: 'A to Z Medicine',
+            icon: <HealingIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
+        },
+        {
+            name: 'Baby & Mother Care',
+            icon: (
+                <BabyChangingStationIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+        {
+            name: 'Nutrition & Supplements',
+            icon: (
+                <LocalDiningIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+        {
+            name: 'Food & Beverage',
+            icon: (
+                <LunchDiningIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+        {
+            name: 'Devices & Appliances',
+            icon: (
+                <EarbudsIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+        {
+            name: 'Personal Care',
+            icon: (
+                <VolunteerActivismIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+        {
+            name: 'OTC And Health Need',
+            icon: (
+                <HealthAndSafetyIcon
+                    sx={{ fontSize: '50px', color: '#bb5a77' }}
+                />
+            ),
+        },
+    ];
     return (
         <Box
             sx={{
-                backgroundColor: '#76bc21',
+                backgroundColor: {
+                    lg: '#76bc21',
+                    xs: 'white',
+                    sm: '#76bc21',
+                    md: '#76bc21',
+                },
                 width: '100%',
                 height: {
                     xl: '480px',
                     lg: '480px',
-                    md: '520px',
-                    sm: '520px',
-                    xs: '520px',
+                    md: '400px',
+                    sm: '400px',
+                    xs: '400px',
                 },
                 mt: 2,
             }}
@@ -49,9 +117,9 @@ const Category = () => {
                             height: {
                                 xl: '430px',
                                 lg: '430px',
-                                md: '400px',
-                                sm: '400px',
-                                xs: '400px',
+                                md: '350px',
+                                sm: '350px',
+                                xs: '350px',
                             },
                             display: 'flex',
                             alignItems: 'center',
@@ -63,18 +131,25 @@ const Category = () => {
                                 display: 'grid',
                                 gridTemplateColumns: 'repeat(4,1fr)',
                                 fontWeight: 'bold',
-                                height: '380px',
-                                width: '80%',
+                                height: {
+                                    xl: '380px',
+                                    lg: '380px',
+                                    md: '300px',
+                                    sm: '300px',
+                                    xs: '300px',
+                                },
+                                width: {
+                                    xl: '80%',
+                                    lg: '80%',
+                                    md: '100%',
+                                    sm: '100%',
+                                    xs: '100%',
+                                },
                             }}
                         >
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
-                            <Card data={name} icon={icon} />
+                            {data.map((ad) => (
+                                <Card ad={ad} />
+                            ))}
                         </Box>
                     </Grid>
                 </Grid>
