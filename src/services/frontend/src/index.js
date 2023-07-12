@@ -4,8 +4,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './components/App';
 import Login from './components/user/Login';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import ProductDetails from './components/ProductDetails';
-import Profile from './components/user/Profile';
 import MainLayout from './components/admin/components/MainLayout';
 import Dashboard from './components/admin/components/dashboard/Dashboard';
 import CategoryList from './components/admin/components/category/CategoryList';
@@ -23,6 +21,8 @@ import SendPasswordResetEmail from './components/user/SendPasswordResetEmail';
 import ResetPassword from './components/user/ResetPassword';
 import ChangePassword from './components/user/ChangePassword';
 import Prescription from './components/order/Prescription';
+import AdList from './components/Ad/AdList';
+import AdDetail from './components/Ad/AdDetail';
 
 const router = createBrowserRouter([
     {
@@ -30,10 +30,14 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: 'account/',
-                element: <Profile />,
+                path: 'ad/list/',
+                element: <AdList />
             },
-        ],
+            {
+                path: '/ad/detail/:id',
+                element: <AdDetail />
+            },
+        ]
     },
     {
         path: '/prescription/',
@@ -58,10 +62,6 @@ const router = createBrowserRouter([
     {
         path: '/change/password',
         element: <ChangePassword />,
-    },
-    {
-        path: 'details/',
-        element: <ProductDetails />,
     },
     {
         path: 'dashboard',

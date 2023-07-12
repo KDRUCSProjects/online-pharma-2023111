@@ -1,10 +1,11 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import NavBar from './layout/NavBar';
 import SearchBar from './layout/SearchBar';
 import { Global, css } from '@emotion/react';
 import Category from './category/Category';
 import Footer from './footer/Footer';
+import { Outlet } from 'react-router-dom';
 
 const App = () => {
     const theme = useTheme();
@@ -20,7 +21,9 @@ const App = () => {
             />
             <NavBar />
             <SearchBar />
-            <Category />
+            <Container>
+                <Outlet />
+            </Container>
             {!isSmall ? <Footer /> : ''}
         </Box>
     );

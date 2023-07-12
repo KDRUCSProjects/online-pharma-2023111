@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductDetails = () => {
+const AdDetail = () => {
     return (
         <Grid
             container
@@ -34,9 +34,9 @@ const ProductDetails = () => {
             >
                 <Box
                     sx={{
-                        border: '1px solid lightgray',
+                        border: '1px solid lightGray',
                         width: '280px',
-                        heihgt: '280px',
+                        height: '280px',
 
                         display: 'flex',
                         justifyContent: 'center',
@@ -90,7 +90,7 @@ const ProductDetails = () => {
                             sx={{
                                 width: '600px',
 
-                                disply: 'flex',
+                                display: 'flex',
                                 flexDirection: 'column',
                                 mt: '40px',
                             }}
@@ -104,10 +104,6 @@ const ProductDetails = () => {
                             >
                                 Delivery Time: 10:00AM -11May
                             </Paper>
-
-                            {/* <box variant="outlined" sx={{bgcolor: '#76bc21',colro:'#FFFFFF'}}>
-                                Submit
-                            </Button> */}
                             <Box
                                 sx={{
                                     width: '155px',
@@ -119,12 +115,12 @@ const ProductDetails = () => {
                                 <Button
                                     variant="outlined"
                                     sx={{
-                                        bgcolor: '#76bc21',
+                                        backgroundColor: '#76bc21',
                                         color: 'white',
                                         pl: '10px',
                                         pr: '10px',
                                         ':hover': {
-                                            bgcolor: '#76bc21',
+                                            backgroundColor: '#76bc21',
                                             borderColor: '#76bc21',
                                             borderRadius: '3px',
                                         },
@@ -156,7 +152,7 @@ const ProductDetails = () => {
                                     borderRadius: '4px',
                                     border: '1px solid #76bc21',
                                     ':hover': {
-                                        bgcolor: '#76bc21',
+                                        backgroundColor: '#76bc21',
                                         borderColor: '#76bc21',
                                         borderRadius: '3px',
                                     },
@@ -172,7 +168,7 @@ const ProductDetails = () => {
                                 padding: 2,
                                 fontFamily: 'Courier',
                                 mt: '20px',
-                                bordre: '1px solid gray',
+                                backgroundColor: '1px solid gray',
                                 padding: '25px',
                             }}
                         >
@@ -197,4 +193,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default AdDetail;
