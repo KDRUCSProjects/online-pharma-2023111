@@ -25,6 +25,7 @@ import AdList from './components/Ad/AdList';
 import AdDetail from './components/Ad/AdDetail';
 import Location from './components/location/Location';
 import Profile from './components/user/Profile';
+import Home from './components/layout/Home';
 
 const router = createBrowserRouter([
     {
@@ -32,8 +33,12 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: '/ad/list/',
-                element: <AdList />,
+                path: '/',
+                element: <Home />
+            },
+            {
+                path: 'ad/list/',
+                element: <AdList />
             },
             {
                 path: '/ad/detail/:id/',

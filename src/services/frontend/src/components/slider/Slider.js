@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import { Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CircleIcon from '@mui/icons-material/Circle';
 import images from './Images';
+import { Box, Grid } from '@mui/material';
 
-const Slider = (props) => {
+const Slider = () => {
+    let color = 'white';
     const [current, setCurrent] = useState(0);
     const length = images.length;
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrent((prevSlide) =>
+                prevSlide === images.length - 1 ? 0 : prevSlide + 1
+            );
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const nextSlide = () => {
         setCurrent(current === length - 1 ? 0 : current + 1);
@@ -18,98 +29,156 @@ const Slider = (props) => {
 
     return (
         <Grid
+            lg={12}
+            sm={12}
+            md={12}
+            xs={12}
+            container
+            mt={2}
             sx={{
-                position: 'relative',
                 display: 'flex',
+                flexDirection: 'column',
                 justifyContent: 'center',
-                alignItem: 'center',
-                margin: '0 auto',
-                height: {lg: '100vh',xs: '15vw'},
-                width: {lg: '90vw',xs: '220px'},
-                mt:{sm:15,},
-                ml:{sm:16},
-                mr:{lg:1,xs:8},
+                alignItems: 'center',
             }}
         >
-            <ArrowCircleLeftIcon
-                onClick={prevSlide}
-                className="left-arrow"
+            <Box
                 sx={{
                     position: 'absolute',
-                    top: '50%',
-                    left: '130px',
-                    fontSize: '3rem',
-                    color: '#000',
-                    zIndex: '10',
-                    cursor: 'pointer',
-                    userSelect: 'none',
-                    borderRadius: '50px',
+                    left: '10%',
+                    backgroundColor: 'gray',
+                    borderRadius: '50%',
+                    opacity: '0.7',
+                    width: { lg: '30px', md: '25px', sm: '22px', xs: '18px' },
+                    height: { lg: '30px', md: '25px', sm: '22px', xs: '18px' },
+                    display: {
+                        lg: 'block',
+                        md: 'block',
+                        sm: 'block',
+                        xs: 'none',
+                    },
                     display: 'flex',
                     justifyContent: 'center',
-                    display: {xs: 'block',lg:'block',md:'block',sm:'block'},
-                    color:'#76bc21',
-                    marginTop:{lg:'0px',xs:'65px'},
-                    marginLeft:{lg:'0px',xs:-23,sm:-35},
-
-                    
+                    alignItems: 'center',
                 }}
-            />
-            {images.map((slide, index) => {
+            >
+                <ArrowBackIosIcon
+                    className="right-arrow"
+                    onClick={nextSlide}
+                    sx={{
+                        fontSize: {
+                            lg: '15px',
+                            md: '13px',
+                            sm: '11px',
+                            xs: '9px',
+                        },
+                        color: 'white',
+                        ':hover': { cursor: 'pointer' },
+                    }}
+                />
+            </Box>
+            {images.map((image, index) => {
                 return (
-                    <Grid
-                        className={index === current ? 'slide active' : 'slide'}
-                        key={index}
-                        sx={{
-                            opacity: '1',
-                            transitionDuration: '5s',
-                            transform: 'Scale(1.08)',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                    >
+                    <>
                         {index === current && (
-                            <Grid
-                                component="img"
-                                src={slide.Image}
-                                alt={''}
-                                sx={{
-                                    width: {lg: '1000px',xs: '360px',md:'900px',sm:'600px'},
-                                    height: {lg:'350px',xs:'120px',md:'300px',sm:'200px'},
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                    marginTop: {lg:'14px',xs:'150px'},
-                                    borderRadius: '15px',
-                                }}
-                            ></Grid>
+                            <>
+                                <Grid
+                                    key={index}
+                                    component="img"
+                                    sx={{
+                                        width: {
+                                            lg: '95%',
+                                            sm: '95%',
+                                            xs: '90%',
+                                            md: '95%',
+                                        },
+                                        height: {
+                                            lg: '55vh',
+                                            xs: '20vh',
+                                            md: '40vh',
+                                            sm: '40vh',
+                                        },
+                                        borderRadius: '10px',
+                                    }}
+                                    src={image.Image}
+                                />
+                                <Grid
+                                    sx={{
+                                        display: 'flex',
+                                        position: 'relative',
+                                        bottom: {
+                                            lg: '30px',
+                                            md: '25px',
+                                            sm: '20px',
+                                            xs: '18px',
+                                        },
+                                    }}
+                                    key={index}
+                                >
+                                    {images.map((name, index) => {
+                                        return (
+                                            <Grid display={'flex'} key={index}>
+                                                <Box
+                                                    sx={{ display: 'none' }}
+                                                    key={index}
+                                                >
+                                                    {image.name == name.name
+                                                        ? (color = '#5d6669')
+                                                        : (color = 'white')}
+                                                </Box>
+                                                <CircleIcon
+                                                    sx={{
+                                                        color: `${color}`,
+                                                        fontSize: '10px',
+                                                        ml: 0.4,
+                                                    }}
+                                                    key={index}
+                                                />
+                                            </Grid>
+                                        );
+                                    })}
+                                </Grid>
+                            </>
                         )}
-                    </Grid>
+                    </>
                 );
             })}
-            <ArrowCircleRightIcon
-                onClick={nextSlide}
-                className="right-arrow"
+            <Box
                 sx={{
                     position: 'absolute',
-                    top: '50%',
-                    right: '130px',
-                    fontSize: '3rem',
-                    color: '#000',
-                    zIndex: '10',
-                    cursor: 'pointer',
-                    userSelect: 'none',
-                    borderRadius: '50px',
+                    right: '10%',
+                    backgroundColor: 'gray',
+                    borderRadius: '50%',
+                    opacity: '0.7',
+                    width: { lg: '30px', md: '25px', sm: '22px', xs: '18px' },
+                    height: { lg: '30px', md: '25px', sm: '22px', xs: '18px' },
+                    display: {
+                        lg: 'block',
+                        md: 'block',
+                        sm: 'block',
+                        xs: 'none',
+                    },
                     display: 'flex',
                     justifyContent: 'center',
-                    display: {xs: 'block',lg:'block',md:'block',sm:'block'},
-                    color:'#76bc21',
-                    marginTop:{lg:'0px',xs:'65px'},
-                    marginRight:{lg:'0px',xs:-23,sm:-35},
+                    alignItems: 'center',
                 }}
-            />
+            >
+                <ArrowForwardIosIcon
+                    className="right-arrow"
+                    onClick={nextSlide}
+                    sx={{
+                        fontSize: {
+                            lg: '15px',
+                            md: '13px',
+                            sm: '11px',
+                            xs: '9px',
+                        },
+                        color: 'white',
+                        ':hover': { cursor: 'pointer' },
+                    }}
+                />
+            </Box>
         </Grid>
     );
 };
-
 export default Slider;

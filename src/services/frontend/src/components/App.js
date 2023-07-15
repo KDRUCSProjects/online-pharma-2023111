@@ -6,6 +6,7 @@ import { Global, css } from '@emotion/react';
 import Category from './category/Category';
 import Footer from './footer/Footer';
 import { Outlet } from 'react-router-dom';
+import Slider from './slider/Slider';
 
 const App = () => {
     const theme = useTheme();
@@ -21,9 +22,7 @@ const App = () => {
             />
             <NavBar />
             <SearchBar />
-            <Container>
-                <Outlet />
-            </Container>
+            <Outlet />
             {!isSmall ? <Footer /> : ''}
         </Box>
     );
