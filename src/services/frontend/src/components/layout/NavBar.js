@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
     useMediaQuery,
@@ -16,9 +16,55 @@ import {
 } from '@mui/material';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import SideBarDrawer from './SideBarDrawer';
+import { getToken, removeToken } from '../services/LocalStorageService';
+import { useDispatch } from 'react-redux';
+import { setUserInfo, unsetUserInfo } from '../features/userSlice';
+import { unSetUserToken } from '../features/authSlice';
+import { useGetLoggedUserQuery } from '../services/userAuthApi';
 
 const NavBar = () => {
-    const user = '';
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch(unsetUserInfo({ id: '', email: '', name: '' }));
+        dispatch(unSetUserToken({ access_token: null }));
+        removeToken();
+        navigate('/login/');
+    };
+    const { access_token } = getToken();
+    const [userData, setUserData] = useState({
+        id: '',
+        email: '',
+        name: '',
+    });
+    if (access_token) {
+        const { data, isSuccess } = useGetLoggedUserQuery(access_token);
+
+        // Store User Data in Local State
+        useEffect(() => {
+            if (data && isSuccess) {
+                setUserData({
+                    id: data.id,
+                    email: data.email,
+                    name: data.name,
+                });
+            }
+        }, [data, isSuccess]);
+
+        // Store User Data in Redux Store
+        useEffect(() => {
+            if (data && isSuccess) {
+                dispatch(
+                    setUserInfo({
+                        id: data.id,
+                        email: data.email,
+                        name: data.name,
+                    })
+                );
+            }
+        }, [data, isSuccess, dispatch]);
+    }
+    const user = userData.name;
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     const [menuOpen, setmenuOpen] = useState(false);
@@ -65,6 +111,7 @@ const NavBar = () => {
                     </Typography>
                     {user ? (
                         <>
+                            <Typography>{userData.name}</Typography>
                             <IconButton
                                 variant="contained"
                                 color="primary"
@@ -78,10 +125,20 @@ const NavBar = () => {
                                 onClose={handleUserMenuClose}
                             >
                                 <MenuItem onClick={handleUserMenuClose}>
-                                    My Ads
+                                    <Link
+                                        to={'/profile/'}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'black',
+                                        }}
+                                    >
+                                        Profile
+                                    </Link>
                                 </MenuItem>
                                 <MenuItem onClick={handleMenuClose}>
-                                    <Button>logout</Button>
+                                    <Button onClick={handleLogout}>
+                                        logout
+                                    </Button>
                                 </MenuItem>
                             </Menu>
                         </>
@@ -102,21 +159,53 @@ const NavBar = () => {
                                         onClose={handleMenuClose}
                                     >
                                         <MenuItem onClick={handleMenuClose}>
-                                            Login
+                                            <Link
+                                                to={'/login/'}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'black',
+                                                }}
+                                            >
+                                                Login
+                                            </Link>
                                         </MenuItem>
                                         <MenuItem onClick={handleMenuClose}>
-                                            Register
+                                            <Link
+                                                to={'/signup/'}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'black',
+                                                }}
+                                            >
+                                                Register
+                                            </Link>
                                         </MenuItem>
                                     </Menu>
                                 </>
                             ) : (
                                 <>
                                     <Button variant="contained" color="primary">
-                                        Login
+                                        <Link
+                                            to={'/login/'}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            Login
+                                        </Link>
                                     </Button>
                                     <pre> OR </pre>
                                     <Button variant="contained" color="success">
-                                        Register
+                                        <Link
+                                            to={'/signup/'}
+                                            style={{
+                                                textDecoration: 'none',
+                                                color: 'white',
+                                            }}
+                                        >
+                                            Register
+                                        </Link>
                                     </Button>
                                 </>
                             )}
