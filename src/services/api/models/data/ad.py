@@ -6,17 +6,21 @@ from .country import Country
 
 class Ad(DataRoot):
     brand = models.CharField(max_length=100)
-    ad_title = models.CharField(max_length=100)
-    max_order = models.CharField(max_length=20)
-    description = models.TextField(blank=True)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
     price = models.IntegerField()
+    quantity = models.PositiveIntegerField(default=1)
+    how_work = models.TextField()
+    used_for = models.TextField()
+    when_not_used = models.TextField()
+    dosage = models.TextField()
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="drug_category"
     )
     country = models.ForeignKey(
         Country, on_delete=models.CASCADE, related_name="drug_country"
     )
-    
+
     def __str__(self):
         return self.ad_title
 

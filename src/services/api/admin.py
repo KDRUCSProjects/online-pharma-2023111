@@ -6,9 +6,7 @@ from .models.data.complaint import Complaint
 from .models.data.country import Country
 from .models.data.feedback import Feedback
 from .models.data.order import Order
-from .models.data.orderStatus import OrderStatus
 from .models.data.prescription import Prescription
-from .models.data.shoppingCart import ShoppingCart
 
 # Register your models here.
 
@@ -25,13 +23,11 @@ class AdAdmin(admin.ModelAdmin):
         model = Ad
 
 
-admin.site.register(Ad,AdAdmin)
+admin.site.register(Ad, AdAdmin)
 admin.site.register(AdImage)
 admin.site.register(Category)
 admin.site.register(Complaint)
 admin.site.register(Country)
 admin.site.register(Feedback)
 admin.site.register(Order)
-admin.site.register(OrderStatus)
 admin.site.register(Prescription)
-admin.site.register(ShoppingCart)
