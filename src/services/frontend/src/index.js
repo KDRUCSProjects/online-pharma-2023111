@@ -23,6 +23,8 @@ import ChangePassword from './components/user/ChangePassword';
 import Prescription from './components/order/Prescription';
 import AdList from './components/Ad/AdList';
 import AdDetail from './components/Ad/AdDetail';
+import Location from './components/location/Location';
+import Profile from './components/user/Profile';
 
 const router = createBrowserRouter([
     {
@@ -30,18 +32,26 @@ const router = createBrowserRouter([
         element: <App />,
         children: [
             {
-                path: 'ad/list/',
-                element: <AdList />
+                path: '/ad/list/',
+                element: <AdList />,
             },
             {
-                path: '/ad/detail/:id',
-                element: <AdDetail />
+                path: '/ad/detail/:id/',
+                element: <AdDetail />,
             },
-        ]
+            {
+                path: '/location/',
+                element: <Location />,
+            },
+            {
+                path: '/profile/',
+                element: <Profile />,
+            },
+        ],
     },
     {
         path: '/prescription/',
-        element: <Prescription />
+        element: <Prescription />,
     },
     {
         path: '/signup/',
