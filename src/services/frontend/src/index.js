@@ -30,6 +30,7 @@ import ShoppingCart from './components/order/ShoppingCart';
 import FeedBack from './components/feedback/FeedBack';
 import FeedbackForm from './components/feedback/FeedbackForm';
 import ComplaintForm from './components/feedback/ComplaintForm';
+import Faqs from './components/FAQS/Faqs';
 
 const router = createBrowserRouter([
     {
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
                         element: <ComplaintForm />,
                     },
                 ],
+            },
+            {
+                path: '/faq/',
+                element: <Faqs />,
             },
         ],
     },
