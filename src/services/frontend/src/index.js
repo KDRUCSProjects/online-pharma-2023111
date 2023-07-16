@@ -27,6 +27,9 @@ import Location from './components/location/Location';
 import Profile from './components/user/Profile';
 import Home from './components/layout/Home';
 import ShoppingCart from './components/order/ShoppingCart';
+import FeedBack from './components/feedback/FeedBack';
+import FeedbackForm from './components/feedback/FeedbackForm';
+import ComplaintForm from './components/feedback/ComplaintForm';
 
 const router = createBrowserRouter([
     {
@@ -57,6 +60,20 @@ const router = createBrowserRouter([
                 path: '/shopping/cart/',
                 element: <ShoppingCart />,
             },
+            {
+                path: 'feedback',
+                element: <FeedBack />,
+                children: [
+                    {
+                        path: '',
+                        element: <FeedbackForm />,
+                    },
+                    {
+                        path: 'complaint/',
+                        element: <ComplaintForm />,
+                    },
+                ],
+            },
         ],
     },
     {
@@ -82,6 +99,10 @@ const router = createBrowserRouter([
     {
         path: '/change/password',
         element: <ChangePassword />,
+    },
+    {
+        path: 'complaint/',
+        element: <ComplaintForm />,
     },
     {
         path: 'dashboard',
