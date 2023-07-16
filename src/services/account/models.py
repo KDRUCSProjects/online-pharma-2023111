@@ -47,7 +47,7 @@ class User(AbstractBaseUser):
     )
     name = models.CharField(max_length=200)
     tc = models.BooleanField()
-    phone_number = models.CharField(max_length=20, default=False)
+    phone_number = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

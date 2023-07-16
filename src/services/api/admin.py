@@ -7,6 +7,8 @@ from .models.data.country import Country
 from .models.data.feedback import Feedback
 from .models.data.order import Order
 from .models.data.prescription import Prescription
+from .models.data.brand import Brand
+from .models.data.generics import Generics
 
 # Register your models here.
 
@@ -23,11 +25,13 @@ class AdAdmin(admin.ModelAdmin):
         model = Ad
 
 
+admin.site.register(Brand)
+admin.site.register(Generics)
+admin.site.register(Category)
+admin.site.register(Country)
 admin.site.register(Ad, AdAdmin)
 admin.site.register(AdImage)
-admin.site.register(Category)
-admin.site.register(Complaint)
-admin.site.register(Country)
-admin.site.register(Feedback)
 admin.site.register(Order)
 admin.site.register(Prescription)
+admin.site.register(Complaint)
+admin.site.register(Feedback)

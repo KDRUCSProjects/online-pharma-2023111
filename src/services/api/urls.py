@@ -9,6 +9,8 @@ from .views.data.complaint import ComplaintViewSet
 from .views.data.feedback import FeedbackViewSet
 from .views.data.prescription import PrescriptionViewSet
 from .views.data.topSelling import TopAdsView
+from .views.data.brand import BrandViewSit
+from .views.data.generics import GenericsViewSit
 
 route = routers.DefaultRouter()
 route.register(r"countries", CountryViewSit)
@@ -18,6 +20,8 @@ route.register(r"orders", OrderViewSit)
 route.register(r"complaints", ComplaintViewSet)
 route.register(r"feedbacks", FeedbackViewSet)
 route.register(r"prescriptions", PrescriptionViewSet)
+route.register(r"brands", BrandViewSit)
+route.register(r"generics", GenericsViewSit)
 
 urlpatterns = [
     path("", include(route.urls)),

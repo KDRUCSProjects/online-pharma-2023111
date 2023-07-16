@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
+from .models import User
+from django.http import JsonResponse
+
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -68,3 +71,6 @@ class UserPasswordResetView(APIView):
     return Response({'msg':'Password Reset Successfully'}, status=status.HTTP_200_OK)
 
 
+def user_count(request):
+    count = User.objects.count()
+    return JsonResponse({"count": count})
