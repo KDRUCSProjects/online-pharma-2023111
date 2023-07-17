@@ -3,17 +3,15 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import {
     Button,
-    useTheme,
-    useMediaQuery,
     AppBar,
     Box,
     Toolbar,
     InputBase,
     IconButton,
-    Typography,
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Container } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -77,7 +75,12 @@ const SearchBar = () => {
                     </Box>
 
                     <IconButton sx={{ ml: 'auto' }}>
-                        <ShoppingCartIcon sx={{ color: 'white' }} />
+                        <Link
+                            to={'/shopping/cart/'}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <ShoppingCartIcon sx={{ color: 'white', mt: 1 }} />
+                        </Link>
                     </IconButton>
                 </Toolbar>
             </Container>
