@@ -31,26 +31,18 @@ const Category = () => {
         {
             name: 'Nutrition & Supplements',
             icon: (
-                <LocalDiningIcon
-                    sx={{ fontSize: '50px', color: '#bb5a77' }}
-                />
+                <LocalDiningIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />
             ),
         },
         {
             name: 'Food & Beverage',
             icon: (
-                <LunchDiningIcon
-                    sx={{ fontSize: '50px', color: '#bb5a77' }}
-                />
+                <LunchDiningIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />
             ),
         },
         {
             name: 'Devices & Appliances',
-            icon: (
-                <EarbudsIcon
-                    sx={{ fontSize: '50px', color: '#bb5a77' }}
-                />
-            ),
+            icon: <EarbudsIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
         },
         {
             name: 'Personal Care',
@@ -83,8 +75,8 @@ const Category = () => {
                     xl: '480px',
                     lg: '480px',
                     md: '400px',
-                    sm: '400px',
-                    xs: '400px',
+                    sm: '380px',
+                    xs: '340px',
                 },
                 mt: 2,
             }}
