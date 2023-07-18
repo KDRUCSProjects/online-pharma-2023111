@@ -3,11 +3,7 @@ import {
     Breadcrumbs,
     Button,
     Container,
-    FormControl,
     Grid,
-    MenuItem,
-    Select,
-    TextField,
     Typography,
 } from '@mui/material';
 import HistoryIcon from '@mui/icons-material/History';
@@ -15,10 +11,24 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { unsetUserInfo } from '../features/userSlice';
+import { unSetUserToken } from '../features/authSlice';
+import { removeToken } from '../services/LocalStorageService';
 
 const Profile = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch(
+            unsetUserInfo({ id: '', email: '', name: '', phone_number: '' })
+        );
+        dispatch(unSetUserToken({ access_token: null }));
+        removeToken();
+        navigate('/login/');
+    };
+
     // Getting User Data from Redux Store
     const myData = useSelector((state) => state.user);
     return (
@@ -62,7 +72,7 @@ const Profile = () => {
                         fontWeight="bold"
                         fontSize="30px"
                     >
-                        +93708102047
+                        {myData.phone}
                     </Typography>
                     <Typography
                         color="#76BC21"
@@ -119,6 +129,7 @@ const Profile = () => {
                             height: '50px',
                             borderRadius: '10px',
                         }}
+                        onClick={handleLogout}
                     >
                         Logout
                     </Button>

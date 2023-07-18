@@ -17,7 +17,7 @@ import {
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import SideBarDrawer from './SideBarDrawer';
 import { getToken, removeToken } from '../services/LocalStorageService';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserInfo, unsetUserInfo } from '../features/userSlice';
 import { unSetUserToken } from '../features/authSlice';
 import { useGetLoggedUserQuery } from '../services/userAuthApi';
@@ -26,31 +26,16 @@ const NavBar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
-        dispatch(unsetUserInfo({ id: '', email: '', name: '' }));
+        dispatch(
+            unsetUserInfo({ id: '', email: '', name: '', phone_number: '' })
+        );
         dispatch(unSetUserToken({ access_token: null }));
         removeToken();
         navigate('/login/');
     };
     const { access_token } = getToken();
-    const [userData, setUserData] = useState({
-        id: '',
-        email: '',
-        name: '',
-    });
     if (access_token) {
         const { data, isSuccess } = useGetLoggedUserQuery(access_token);
-
-        // Store User Data in Local State
-        useEffect(() => {
-            if (data && isSuccess) {
-                setUserData({
-                    id: data.id,
-                    email: data.email,
-                    name: data.name,
-                });
-            }
-        }, [data, isSuccess]);
-
         // Store User Data in Redux Store
         useEffect(() => {
             if (data && isSuccess) {
@@ -59,12 +44,14 @@ const NavBar = () => {
                         id: data.id,
                         email: data.email,
                         name: data.name,
+                        phone: data.phone_number,
                     })
                 );
             }
         }, [data, isSuccess, dispatch]);
     }
-    const user = userData.name;
+    const myData = useSelector((state) => state.user);
+    const user = myData.name;
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     const [menuOpen, setmenuOpen] = useState(false);
@@ -111,7 +98,7 @@ const NavBar = () => {
                     </Typography>
                     {user ? (
                         <>
-                            <Typography>{userData.name}</Typography>
+                            <Typography>{myData.name}</Typography>
                             <IconButton
                                 variant="contained"
                                 color="primary"
