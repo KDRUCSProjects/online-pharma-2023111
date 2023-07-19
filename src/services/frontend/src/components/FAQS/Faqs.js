@@ -87,7 +87,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     What is Habib Pharma?
                                 </Typography>
                                 {open ? (
@@ -142,7 +151,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     Do you only sell medicine?
                                 </Typography>
                                 {open1 ? (
@@ -199,7 +217,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     I want to return my purchase,what do i do?
                                 </Typography>
                                 {open2 ? (
@@ -254,7 +281,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     can i exchange my order instead of returning
                                     it?
                                 </Typography>
@@ -312,7 +348,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     Do you have free home Delivery?
                                 </Typography>
                                 {open4 ? (
@@ -367,7 +412,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How long does it take to Deliver?
                                 </Typography>
                                 {open5 ? (
@@ -422,8 +476,17 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
-                                    Do you hame any minimum order limit for home
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
+                                    Do you have any minimum order limit for home
                                     delivery?
                                 </Typography>
                                 {open6 ? (
@@ -478,7 +541,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     Are there any specific hours for delivery?
                                 </Typography>
                                 {open7 ? (
@@ -547,7 +619,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How can i place my order?
                                 </Typography>
                                 {open8 ? (
@@ -602,7 +683,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How do i cancel my order?
                                 </Typography>
                                 {open9 ? (
@@ -657,7 +747,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How i can track my order?
                                 </Typography>
                                 {open10 ? (
@@ -712,7 +811,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How i can change my order
                                     details?(address/item)
                                 </Typography>
@@ -768,7 +876,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     There's one item missing in my order/i
                                     Received a wrong order?
                                 </Typography>
@@ -824,7 +941,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     My required product/medicine is unavialable
                                     what i do?
                                 </Typography>
@@ -880,7 +1006,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     What can cause my order to be deleved?
                                 </Typography>
                                 {open14 ? (
@@ -935,7 +1070,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     Is there any specific timing to place the
                                     order?
                                 </Typography>
@@ -994,7 +1138,16 @@ const Faqs = () => {
                                     height: '35px',
                                 }}
                             >
-                                <Typography ml={1}>
+                                <Typography
+                                    ml={1}
+                                    fontSize={{
+                                        lg: '15px',
+                                        xl: '15px',
+                                        md: '15px',
+                                        sm: '15px',
+                                        xs: '12px',
+                                    }}
+                                >
                                     How do i upload a prescription?
                                 </Typography>
                                 {open16 ? (
