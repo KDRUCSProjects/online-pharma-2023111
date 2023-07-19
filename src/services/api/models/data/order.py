@@ -27,6 +27,6 @@ class Order(DataRoot):
         return self.address
 
     def save(self, *args, **kwargs):
-        price = self.ad.price
+        price = self.ad.sell_price
         self.total_amount = (price * self.quantity) + self.delivery_fee
         super().save(*args, **kwargs)

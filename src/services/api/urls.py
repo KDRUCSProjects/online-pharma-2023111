@@ -26,5 +26,5 @@ route.register(r"generics", GenericsViewSit)
 urlpatterns = [
     path("", include(route.urls)),
     path("admin/", admin.site.urls),
-    path("top-products/", TopAdsView.as_view(), name="top-products"),
+    path("top-selling/", TopAdsView.as_view(), name="top-products"),
 ]
