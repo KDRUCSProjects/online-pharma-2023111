@@ -32,6 +32,7 @@ import FeedbackForm from './components/feedback/FeedbackForm';
 import ComplaintForm from './components/feedback/ComplaintForm';
 import Faqs from './components/FAQS/Faqs';
 import OrderReport from './components/admin/components/report/OrderReport';
+import Contact from './components/contact us/Contact';
 
 const router = createBrowserRouter([
     {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
             {
                 path: '/prescription/',
                 element: <Prescription />,
+            },
+            {
+                path: '/contact/',
+                element: <Contact />,
             },
         ],
     },

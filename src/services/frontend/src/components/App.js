@@ -3,10 +3,9 @@ import React from 'react';
 import NavBar from './layout/NavBar';
 import SearchBar from './layout/SearchBar';
 import { Global, css } from '@emotion/react';
-import Category from './category/Category';
 import Footer from './footer/Footer';
 import { Outlet } from 'react-router-dom';
-import Slider from './slider/Slider';
+import CopyRight from './footer/CopyRight';
 
 const App = () => {
     const theme = useTheme();
@@ -23,7 +22,14 @@ const App = () => {
             <NavBar />
             <SearchBar />
             <Outlet />
-            {!isSmall ? <Footer /> : ''}
+            {!isSmall ? (
+                <Box>
+                    <Footer />
+                    <CopyRight />
+                </Box>
+            ) : (
+                ''
+            )}
         </Box>
     );
 };
