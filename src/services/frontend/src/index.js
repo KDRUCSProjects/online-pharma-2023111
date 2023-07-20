@@ -31,6 +31,7 @@ import FeedBack from './components/feedback/FeedBack';
 import FeedbackForm from './components/feedback/FeedbackForm';
 import ComplaintForm from './components/feedback/ComplaintForm';
 import Faqs from './components/FAQS/Faqs';
+import OrderReport from './components/admin/components/report/OrderReport';
 
 const router = createBrowserRouter([
     {
@@ -149,6 +150,10 @@ const router = createBrowserRouter([
             {
                 path: 'user/list/',
                 element: <User />,
+            },
+            {
+                path: 'report/',
+                element: <OrderReport />,
             },
         ],
     },

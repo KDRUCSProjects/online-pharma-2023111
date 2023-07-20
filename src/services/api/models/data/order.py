@@ -22,6 +22,7 @@ class Order(DataRoot):
     delivery_fee = 100
     total_amount = models.PositiveBigIntegerField(editable=False)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    order_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.address
