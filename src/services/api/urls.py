@@ -11,6 +11,7 @@ from .views.data.prescription import PrescriptionViewSet
 from .views.data.topSelling import TopAdsView
 from .views.data.brand import BrandViewSit
 from .views.data.generics import GenericsViewSit
+from .views.data.totalSellingDatePrice import total_selling_price
 
 route = routers.DefaultRouter()
 route.register(r"countries", CountryViewSit)
@@ -27,4 +28,5 @@ urlpatterns = [
     path("", include(route.urls)),
     path("admin/", admin.site.urls),
     path("top-selling/", TopAdsView.as_view(), name="top-products"),
+     path('total-selling-price/', total_selling_price, name='total_selling_price'),
 ]
