@@ -10,12 +10,17 @@ const Footer = () => {
         <Grid
             color={'white'}
             container
-            spacing={1}
             sx={{
                 padding: '30px',
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'space-between',
+                justifyContent: {
+                    lg: 'space-between',
+                    xl: 'space-between',
+                    md: 'space-between',
+                    sm: 'flex-start',
+                    xs: 'none',
+                },
                 backgroundColor: '#76bc21',
                 width: '100%',
                 mt: 2,
@@ -32,7 +37,7 @@ const Footer = () => {
                     <InstagramIcon sx={{ color: 'white', mr: 2 }} />
                 </Box>
             </Grid>
-            <Grid>
+            <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 6 }}>
                 <Typography variant="h4">Categories</Typography>
                 <Box
                     sx={{
@@ -108,7 +113,7 @@ const Footer = () => {
                     </Link>
                 </Box>
             </Grid>
-            <Grid>
+            <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
                 <Typography variant="h4">Navigate</Typography>
                 <Box
                     sx={{
@@ -125,6 +130,7 @@ const Footer = () => {
                             color: 'white',
                             textDecoration: 'none',
                         }}
+                        to={'/feedback/'}
                     >
                         Feedback
                     </Link>
@@ -134,17 +140,9 @@ const Footer = () => {
                             color: 'white',
                             textDecoration: 'none',
                         }}
+                        to={'/prescription/'}
                     >
-                        Insstant Order{' '}
-                    </Link>
-                    <Link
-                        style={{
-                            marginTop: 18,
-                            color: 'white',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Stores
+                        Prescription
                     </Link>
                     <Link
                         style={{
@@ -161,12 +159,13 @@ const Footer = () => {
                             color: 'white',
                             textDecoration: 'none',
                         }}
+                        to={'/profile/'}
                     >
                         User Profile
                     </Link>
                 </Box>
             </Grid>
-            <Grid>
+            <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
                 <Typography variant="h4">Support</Typography>
                 <Box
                     sx={{
@@ -183,6 +182,7 @@ const Footer = () => {
                             color: 'white',
                             textDecoration: 'none',
                         }}
+                        to={'/faq/'}
                     >
                         FAQs
                     </Link>
@@ -233,7 +233,7 @@ const Footer = () => {
                     </Link>
                 </Box>
             </Grid>
-            <Grid>
+            <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
                 <Typography variant="h4">Contact Us</Typography>
                 <Box
                     sx={{

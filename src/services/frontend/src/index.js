@@ -80,12 +80,13 @@ const router = createBrowserRouter([
                 path: '/faq/',
                 element: <Faqs />,
             },
+            {
+                path: '/prescription/',
+                element: <Prescription />,
+            },
         ],
     },
-    {
-        path: '/prescription/',
-        element: <Prescription />,
-    },
+
     {
         path: '/signup/',
         element: <Registration />,
