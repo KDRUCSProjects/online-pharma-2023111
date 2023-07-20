@@ -32,7 +32,9 @@ const Dashboard = () => {
                         <Typography fontWeight="bold" variant="h6">
                             Total Users
                         </Typography>
-                        <PersonIcon sx={{ color: '#3791B7', fontSize: '40px' }} />
+                        <PersonIcon
+                            sx={{ color: '#3791B7', fontSize: '40px' }}
+                        />
                     </Box>
                     <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
                         {userCount}

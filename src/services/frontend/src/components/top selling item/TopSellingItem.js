@@ -21,9 +21,12 @@ const styles = {
 };
 
 const TopSellingItem = () => {
-    const { data, isLoading, isError, isSuccess } = useQuery(['top_selling'], () => {
-        return getObjects('top-selling');
-    });
+    const { data, isLoading, isError, isSuccess } = useQuery(
+        ['top_selling'],
+        () => {
+            return getObjects('top-selling');
+        }
+    );
 
     if (isError) {
         return <Typography variant="h5">Error </Typography>;

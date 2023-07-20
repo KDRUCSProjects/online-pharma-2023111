@@ -5,8 +5,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const MobileAddres = () => {
     return (
-        <Grid container
-        >
+        <Grid container>
             <Grid item sm={12} xs={12}>
                 <Box
                     sx={{
@@ -27,12 +26,14 @@ const MobileAddres = () => {
                                 width: '40px',
                             }}
                         >
-                            <LocationOnIcon sx={{ mt: '5px' ,color:'#76bc21'}} />
+                            <LocationOnIcon
+                                sx={{ mt: '5px', color: '#76bc21' }}
+                            />
                         </Box>
-                        <Typography
-                            sx={{color:'black'}}
-                        >No Address Selected</Typography>
-                        <ChevronRightIcon sx={{color:'#76bc21'}} />
+                        <Typography sx={{ color: 'black' }}>
+                            No Address Selected
+                        </Typography>
+                        <ChevronRightIcon sx={{ color: '#76bc21' }} />
                     </Button>
                 </Box>
             </Grid>
