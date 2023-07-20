@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Paper } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import HomeIcon from '@mui/icons-material/Home';

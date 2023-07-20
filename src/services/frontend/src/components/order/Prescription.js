@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
     Alert,
     Box,
+    Breadcrumbs,
     Button,
     Container,
     CssBaseline,
@@ -19,6 +20,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import { useMutation } from '@tanstack/react-query';
 import { addObject } from '../Api/Api';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from 'react-router-dom';
 const Prescription = () => {
     const [open, setOpen] = useState(true);
     const [image, setImage] = useState('');
@@ -45,7 +48,36 @@ const Prescription = () => {
     return (
         <CssBaseline>
             <Container>
-                <Grid container>
+                <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 3 }}>
+                    <Link
+                        to={'/'}
+                        style={{ textDecoration: 'none', color: '#76bc21' }}
+                    >
+                        <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                        Home
+                    </Link>
+                    <Typography
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="text.primary"
+                    >
+                        Prescription
+                    </Typography>
+                </Breadcrumbs>
+                <Typography
+                    variant="h6"
+                    color={'#76bc21'}
+                    mt={3}
+                    pl={1}
+                    sx={{ borderLeft: '3px solid #76bc21' }}
+                >
+                    Prescription
+                </Typography>
+                <Grid
+                    container
+                    mt={4}
+                    display={'flex'}
+                    justifyContent={'space-between'}
+                >
                     {message ? (
                         <Grid
                             item
@@ -67,7 +99,7 @@ const Prescription = () => {
                     ) : (
                         ''
                     )}
-                    <Grid item>
+                    <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
                         <Typography
                             sx={{
                                 color: '#67bc21',
@@ -209,13 +241,29 @@ const Prescription = () => {
                             ) : null}
                         </Box>
                     </Grid>
-                    <Grid item lg={3}></Grid>
-                    <Grid item lg={5}>
+                    <Grid item xl={7} lg={7} md={7} sm={7} xs={12}>
                         <Paper
+                            elevation={0}
                             sx={{
-                                height: '500px',
+                                width: {
+                                    xl: '60%',
+                                    lg: '60%',
+                                    md: '60%',
+                                    sm: '60%',
+                                    xs: '90%',
+                                },
+                                height: {
+                                    xl: '400px',
+                                    lg: '400px',
+                                    md: '400px',
+                                    sm: '300px',
+                                    xs: '350px',
+                                },
                                 display: 'flex',
                                 alignItems: 'center',
+                                border: '1px solid lightGray',
+                                ml: { xl: 26, lg: 26, md: 26, sm: 11, xs: 2 },
+                                mt: { xl: 0, lg: 0, md: 0, sm: 0, xs: 2 },
                             }}
                         >
                             <Stack
@@ -228,6 +276,10 @@ const Prescription = () => {
                                     <img
                                         src={URL.createObjectURL(image)}
                                         alt="Preview"
+                                        style={{
+                                            width: '100%',
+                                            maxHeight: '100vh',
+                                        }}
                                     />
                                 ) : (
                                     <Box>
@@ -270,6 +322,13 @@ const Prescription = () => {
                                     flexDirection: 'column',
                                     justifyContent: 'space-between',
                                     mt: 2,
+                                    ml: {
+                                        xl: 10,
+                                        lg: 10,
+                                        md: 10,
+                                        sm: 0,
+                                        xs: 0,
+                                    },
                                 }}
                                 component="form"
                             >
@@ -285,6 +344,9 @@ const Prescription = () => {
                                             color: 'white',
                                             borderRadius: '10px',
                                             width: '100px',
+                                            ':hover': {
+                                                backgroundColor: '#76bc23',
+                                            },
                                         }}
                                     >
                                         Change
@@ -295,6 +357,9 @@ const Prescription = () => {
                                             color: 'white',
                                             borderRadius: '10px',
                                             width: '100px',
+                                            ':hover': {
+                                                backgroundColor: '#76bc23',
+                                            },
                                         }}
                                     >
                                         Remove
@@ -313,6 +378,9 @@ const Prescription = () => {
                                             backgroundColor: '#67bc21',
                                             color: 'white',
                                             height: '60px',
+                                            ':hover': {
+                                                backgroundColor: '#76bc23',
+                                            },
                                         }}
                                         onClick={handleApi}
                                     >

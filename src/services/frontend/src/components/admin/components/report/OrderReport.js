@@ -116,7 +116,12 @@ const OrderReport = () => {
                     required
                     sx={{ mb: 4 }}
                 />
-                <Button variant="outlined" color="secondary" type="submit" mb={2}>
+                <Button
+                    variant="outlined"
+                    color="secondary"
+                    type="submit"
+                    mb={2}
+                >
                     Send
                 </Button>
             </form>

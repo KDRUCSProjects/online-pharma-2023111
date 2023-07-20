@@ -6,7 +6,7 @@ from account.views import (
     UserProfileView,
     UserRegistrationView,
     UserPasswordResetView,
-    user_count
+    user_count,
 )
 
 urlpatterns = [
