@@ -9,6 +9,9 @@ import {
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Contact = () => {
     return (
@@ -135,8 +138,25 @@ const Contact = () => {
                             >
                                 Shop #4
                             </Link>
+                            <Grid mt={2}>
+                                <Typography align="center" variant="h6">
+                                    Follow Us
+                                </Typography>
+                                <Box
+                                    ml={16}
+                                    align="center"
+                                    color={'#76bc21'}
+                                    width={'30%'}
+                                    display={'flex'}
+                                    justifyContent={'space-between'}
+                                >
+                                    <FacebookIcon />
+                                    <TwitterIcon />
+                                    <InstagramIcon />
+                                </Box>
+                            </Grid>
                             <Box
-                                mt={12}
+                                mt={3}
                                 sx={{
                                     display: 'flex',
                                     justifyContent: 'center',

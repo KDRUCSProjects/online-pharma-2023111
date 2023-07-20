@@ -33,6 +33,12 @@ import ComplaintForm from './components/feedback/ComplaintForm';
 import Faqs from './components/FAQS/Faqs';
 import OrderReport from './components/admin/components/report/OrderReport';
 import Contact from './components/contact us/Contact';
+import DrugDetails from './components/drug details/DrugDetails';
+import WorkDetails from './components/drug details/WorkDetails';
+import Generic from './components/drug details/Generic';
+import UsedForDetails from './components/drug details/UsedForDetails';
+import Dosage from './components/drug details/Dosage';
+import DescriptionDetails from './components/drug details/DescriptionDetails';
 
 const router = createBrowserRouter([
     {
@@ -88,6 +94,32 @@ const router = createBrowserRouter([
             {
                 path: '/contact/',
                 element: <Contact />,
+            },
+            {
+                path: 'details',
+                element: <DrugDetails />,
+                children: [
+                    {
+                        path: '',
+                        element: <WorkDetails />,
+                    },
+                    {
+                        path: 'description/',
+                        element: <DescriptionDetails />,
+                    },
+                    {
+                        path: 'generic/',
+                        element: <Generic />,
+                    },
+                    {
+                        path: 'usedfor/',
+                        element: <UsedForDetails />,
+                    },
+                    {
+                        path: 'dosage/',
+                        element: <Dosage />,
+                    },
+                ],
             },
         ],
     },

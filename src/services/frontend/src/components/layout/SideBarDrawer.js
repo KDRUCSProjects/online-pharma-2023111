@@ -184,7 +184,16 @@ const SideBarDrawer = () => {
                         fontSize="15px"
                         fontWeight="bold"
                     >
-                        About
+                        <Link
+                            style={{
+                                textDecoration: 'none',
+                                color: 'black',
+                            }}
+                            onClick={() => setSideOpen(false)}
+                            to={'/contact/'}
+                        >
+                            About us
+                        </Link>
                     </Typography>
                 </Box>
             </Modal>
