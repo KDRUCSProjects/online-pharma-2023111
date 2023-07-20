@@ -104,7 +104,7 @@ const NavBar = () => {
                                 color="primary"
                                 onClick={handleUserMenuClick}
                             >
-                                <Avatar>M</Avatar>
+                                <Avatar>{myData.name[0]}</Avatar>
                             </IconButton>
                             <Menu
                                 anchorEl={userMenuPosition}

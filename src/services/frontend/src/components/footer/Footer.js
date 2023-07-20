@@ -31,7 +31,7 @@ const Footer = () => {
                 <Typography variant="h4" align="center" mt={5}>
                     Follow Us
                 </Typography>
-                <Box align="center">
+                <Box align="center">Foll
                     <FacebookIcon sx={{ color: 'white', mr: 2 }} />
                     <TwitterIcon sx={{ color: 'white', mr: 2 }} />
                     <InstagramIcon sx={{ color: 'white', mr: 2 }} />
