@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import {
-    Alert,
     Box,
     Breadcrumbs,
     Button,
     Container,
     CssBaseline,
     Grid,
+    IconButton,
     Paper,
+    Snackbar,
     Stack,
     Typography,
 } from '@mui/material';
@@ -17,15 +18,21 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CloseIcon from '@mui/icons-material/Close';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import { useMutation } from '@tanstack/react-query';
 import { addObject } from '../Api/Api';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Prescription = () => {
     const [open, setOpen] = useState(true);
+    const [close, setClose] = useState(false);
     const [image, setImage] = useState('');
     const [message, setMessage] = useState('');
+
+    // Getting User Data from Redux Store
+    const myData = useSelector((state) => state.user);
     const mutation = useMutation((data) => {
         return addObject('prescriptions', data);
     });
@@ -36,14 +43,26 @@ const Prescription = () => {
     function handleApi() {
         const formData = new FormData();
         formData.append('image', image);
-        formData.append('user_id', 1);
-        mutation.mutate(formData);
-        const success = 'Successfully Uploaded!';
-        if (mutation.isSuccess) {
-            setMessage(success);
+        formData.append('user_id', myData.id);
+        formData.append('location', 'Farah');
+        if (formData.image == '') {
+            setMessage('Image should not Empty');
             setImage('');
+            setClose(true);
+        } else if (formData.location == '') {
+            setMessage('Location required');
+            setImage('');
+            setClose(true);
+        } else {
+            mutation.mutate(formData);
+            setMessage('your prescription successfully send!');
+            setImage('');
+            setClose(true);
         }
     }
+    const handleClose = () => {
+        setClose(false);
+    };
 
     return (
         <CssBaseline>
@@ -78,27 +97,6 @@ const Prescription = () => {
                     display={'flex'}
                     justifyContent={'space-between'}
                 >
-                    {message ? (
-                        <Grid
-                            item
-                            xl={12}
-                            lg={12}
-                            sm={12}
-                            md={12}
-                            xs={12}
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                mb: 2,
-                            }}
-                        >
-                            <Alert severity="success" color="info">
-                                {message}
-                            </Alert>
-                        </Grid>
-                    ) : (
-                        ''
-                    )}
                     <Grid item xl={4} lg={4} md={4} sm={4} xs={12}>
                         <Typography
                             sx={{
@@ -392,6 +390,22 @@ const Prescription = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <Snackbar
+                open={close}
+                message={message}
+                action={
+                    <React.Fragment>
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            sx={{ p: 0.5 }}
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </CssBaseline>
     );
 };

@@ -1,17 +1,58 @@
-import { Box, Button, Container, Grid, TextField } from '@mui/material';
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    Snackbar,
+    TextField,
+    IconButton,
+} from '@mui/material';
+import { useMutation } from '@tanstack/react-query';
+import CloseIcon from '@mui/icons-material/Close';
+import { useSelector } from 'react-redux';
+import { addObject } from '../Api/Api';
 
 const FeedbackForm = () => {
+    const [message, setMessage] = useState('');
+    const [open, setOpen] = useState(false);
+    const [feedbackMessage, setFeedbackMessage] = useState('');
+
+    // Getting User Data from Redux Store
+    const myData = useSelector((state) => state.user);
+    const mutation = useMutation((data) => {
+        return addObject('feedbacks', data);
+    });
+    const onChange = (e) => {
+        setFeedbackMessage(e.target.value);
+    };
+    const handleSubmit = () => {
+        const actualData = {
+            message: feedbackMessage,
+            user: myData.id,
+        };
+        if (actualData.message == '') {
+            setMessage('Feedback Form should not be Empty');
+            setOpen(true);
+        } else {
+            mutation.mutate(actualData);
+            setMessage('Your FeedBack Successfully Send!');
+            setOpen(true);
+        }
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <Container>
             <Grid container>
                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} mt={4}>
-                    <Box>
+                    <Box component="form">
                         <TextField
                             placeholder="What's your feedback"
                             multiline
                             rows="6"
+                            onChange={onChange}
                             borderRadius={5}
                             sx={{
                                 width: {
@@ -33,6 +74,7 @@ const FeedbackForm = () => {
                         />
                     </Box>
                     <Button
+                        onClick={handleSubmit}
                         sx={{
                             width: '140px',
                             height: '40px',
@@ -47,6 +89,22 @@ const FeedbackForm = () => {
                     </Button>
                 </Grid>
             </Grid>
+            <Snackbar
+                open={open}
+                message={message}
+                action={
+                    <React.Fragment>
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            sx={{ p: 0.5 }}
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </Container>
     );
 };
