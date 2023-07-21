@@ -6,6 +6,8 @@ import { Global, css } from '@emotion/react';
 import Footer from './footer/Footer';
 import { Outlet } from 'react-router-dom';
 import CopyRight from './footer/CopyRight';
+import MenuBar from './layout/MenuBar';
+import MobileAddress from './mobil address/MobileAddress';
 
 const App = () => {
     const theme = useTheme();
@@ -21,6 +23,7 @@ const App = () => {
             />
             <NavBar />
             <SearchBar />
+            {isSmall ? <MobileAddress /> : <MenuBar />}
             <Outlet />
             {!isSmall ? (
                 <Box>
