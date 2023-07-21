@@ -9,19 +9,23 @@ import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import EarbudsIcon from '@mui/icons-material/Earbuds';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import { Link } from 'react-router-dom';
 
 const Category = () => {
     const data = [
         {
             name: 'medicine',
+            id: 1,
             icon: <VaccinesIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
         },
         {
             name: 'A to Z Medicine',
+            id: 2,
             icon: <HealingIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
         },
         {
             name: 'Baby & Mother Care',
+            id: 3,
             icon: (
                 <BabyChangingStationIcon
                     sx={{ fontSize: '50px', color: '#bb5a77' }}
@@ -30,22 +34,26 @@ const Category = () => {
         },
         {
             name: 'Nutrition & Supplements',
+            id: 4,
             icon: (
                 <LocalDiningIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />
             ),
         },
         {
             name: 'Food & Beverage',
+            id: 5,
             icon: (
                 <LunchDiningIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />
             ),
         },
         {
             name: 'Devices & Appliances',
+            id: 6,
             icon: <EarbudsIcon sx={{ fontSize: '50px', color: '#bb5a77' }} />,
         },
         {
             name: 'Personal Care',
+            id: 7,
             icon: (
                 <VolunteerActivismIcon
                     sx={{ fontSize: '50px', color: '#bb5a77' }}
@@ -54,6 +62,7 @@ const Category = () => {
         },
         {
             name: 'OTC And Health Need',
+            id: 8,
             icon: (
                 <HealthAndSafetyIcon
                     sx={{ fontSize: '50px', color: '#bb5a77' }}
@@ -140,7 +149,15 @@ const Category = () => {
                             }}
                         >
                             {data.map((ad) => (
-                                <Card ad={ad} />
+                                <Link
+                                    to={`ad/list/${ad.name}/${ad.id}/`}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'black',
+                                    }}
+                                >
+                                    <Card key={ad.id} ad={ad} />
+                                </Link>
                             ))}
                         </Box>
                     </Grid>
