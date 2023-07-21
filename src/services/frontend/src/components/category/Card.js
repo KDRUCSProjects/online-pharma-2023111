@@ -4,7 +4,6 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Card = (props) => {
-    console.log(props);
     const [open, setOpen] = useState(null);
     const [openIcon, setOpenIcon] = useState(null);
     return (

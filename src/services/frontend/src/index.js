@@ -22,7 +22,6 @@ import ResetPassword from './components/user/ResetPassword';
 import ChangePassword from './components/user/ChangePassword';
 import Prescription from './components/order/Prescription';
 import AdList from './components/Ad/AdList';
-import AdDetail from './components/Ad/AdDetail';
 import Location from './components/location/Location';
 import Profile from './components/user/Profile';
 import Home from './components/layout/Home';
@@ -33,12 +32,12 @@ import ComplaintForm from './components/feedback/ComplaintForm';
 import Faqs from './components/FAQS/Faqs';
 import OrderReport from './components/admin/components/report/OrderReport';
 import Contact from './components/contact us/Contact';
-import DrugDetails from './components/drug details/DrugDetails';
-import WorkDetails from './components/drug details/WorkDetails';
-import Generic from './components/drug details/Generic';
-import UsedForDetails from './components/drug details/UsedForDetails';
-import Dosage from './components/drug details/Dosage';
-import DescriptionDetails from './components/drug details/DescriptionDetails';
+import AdDetail from './components/Ad/ad detail/AdDetail';
+import WorkDetail from './components/Ad/ad detail/WorkDetail';
+import Generic from './components/Ad/ad detail/Generic';
+import UsedForDetail from './components/Ad/ad detail/UsedForDetail';
+import Dosage from './components/Ad/ad detail/Dosage';
+import DescriptionDetail from './components/Ad/ad detail/DescriptionDetail';
 
 const router = createBrowserRouter([
     {
@@ -50,12 +49,8 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'ad/list/',
+                path: 'ad/list/:name/:id/',
                 element: <AdList />,
-            },
-            {
-                path: '/ad/detail/:id/',
-                element: <AdDetail />,
             },
             {
                 path: '/location/',
@@ -96,27 +91,27 @@ const router = createBrowserRouter([
                 element: <Contact />,
             },
             {
-                path: 'details',
-                element: <DrugDetails />,
+                path: 'ad/detail/:category/:name/:id/',
+                element: <AdDetail />,
                 children: [
                     {
                         path: '',
-                        element: <WorkDetails />,
+                        element: <WorkDetail />,
                     },
                     {
-                        path: 'description/',
-                        element: <DescriptionDetails />,
+                        path: 'description/:id/',
+                        element: <DescriptionDetail />,
                     },
                     {
-                        path: 'generic/',
+                        path: 'generic/:id/',
                         element: <Generic />,
                     },
                     {
-                        path: 'usedfor/',
-                        element: <UsedForDetails />,
+                        path: 'used/for/:id/',
+                        element: <UsedForDetail />,
                     },
                     {
-                        path: 'dosage/',
+                        path: 'dosage/:id/',
                         element: <Dosage />,
                     },
                 ],

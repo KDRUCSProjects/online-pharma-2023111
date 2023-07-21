@@ -1,22 +1,15 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Container,
-    Stack,
-} from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Stack } from '@mui/material';
 
-const AdCard = () => {
-    const [open, setOpen] = React.useState(false);
+const AdCard = (props) => {
+    const data = props.ad;
     return (
         <Card sx={{ height: 270, marginTop: 2, marginLeft: 2 }}>
             <CardMedia
                 component="img"
                 height="160"
-                image="http://localhost:8000/frontend/static/images/d1.avif"
+                image={data.images[0].image}
                 alt="hello"
             />
             <CardContent>
@@ -38,7 +31,7 @@ const AdCard = () => {
                                 },
                             }}
                         >
-                            Terbiderm Cream 10g
+                            {data.title}
                         </Typography>
                     </Box>
                     <Stack
@@ -63,7 +56,7 @@ const AdCard = () => {
                         display={'inline'}
                         align="right"
                     >
-                        200$
+                        {data.sell_price}
                     </Typography>
                 </Box>
             </CardContent>
