@@ -15,6 +15,8 @@ import {
     Container,
 } from '@mui/material';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import LoginIcon from '@mui/icons-material/Login';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 import SideBarDrawer from './SideBarDrawer';
 import { getToken, removeToken } from '../services/LocalStorageService';
 import { useDispatch, useSelector } from 'react-redux';
@@ -89,8 +91,7 @@ const NavBar = () => {
                         <Link
                             to={'/'}
                             style={{
-                                textDecoration: 'none',
-                                color: 'black',
+                                color: '#76bc21',
                             }}
                         >
                             Habib Pharma
@@ -171,7 +172,17 @@ const NavBar = () => {
                                 </>
                             ) : (
                                 <>
-                                    <Button variant="contained" color="primary">
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<LoginIcon />}
+                                        sx={{
+                                            backgroundColor: '#76bc21',
+                                            borderRadius: '10px',
+                                            ':hover': {
+                                                backgroundColor: '#76bc21',
+                                            },
+                                        }}
+                                    >
                                         <Link
                                             to={'/login/'}
                                             style={{
@@ -183,12 +194,24 @@ const NavBar = () => {
                                         </Link>
                                     </Button>
                                     <pre> OR </pre>
-                                    <Button variant="contained" color="success">
+                                    <Button
+                                        variant="contained"
+                                        startIcon={<HowToRegIcon />}
+                                        sx={{
+                                            color: '#76bc21',
+                                            backgroundColor: 'white',
+                                            borderRadius: '10px',
+                                            ':hover': {
+                                                backgroundColor: 'white',
+                                            },
+                                        }}
+                                    >
                                         <Link
                                             to={'/signup/'}
                                             style={{
                                                 textDecoration: 'none',
-                                                color: 'white',
+                                                color: '#76bc21',
+                                                textTransform: 'capitalize',
                                             }}
                                         >
                                             Register

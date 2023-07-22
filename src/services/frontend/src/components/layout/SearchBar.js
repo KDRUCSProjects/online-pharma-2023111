@@ -8,10 +8,16 @@ import {
     Toolbar,
     InputBase,
     IconButton,
+    Typography,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Container } from '@mui/system';
 import { Link } from 'react-router-dom';
+import PlaceIcon from '@mui/icons-material/Place';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -21,9 +27,10 @@ const Search = styled('div')(({ theme }) => ({
     },
     marginLeft: 0,
     width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
     color: 'black',
     [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
         width: 'auto',
     },
 }));
@@ -36,7 +43,7 @@ const SearchInputIcon = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: '#bb5a77',
+    color: '#76bc21',
 }));
 
 const StyledSearchInput = styled(InputBase)(({ theme }) => ({
@@ -54,25 +61,163 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = () => {
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <AppBar position="static" sx={{ backgroundColor: '#76bc21', ml: 0 }}>
             <Container sx={{ paddingRight: 0 }}>
                 <Toolbar>
                     <Box display="flex">
-                        <Search sx={{ background: 'lightGrey' }}>
-                            <SearchInputIcon>
-                                <SearchIcon />
-                            </SearchInputIcon>
+                        <Search
+                            sx={{ background: 'white', borderRadius: '10px' }}
+                        >
                             <StyledSearchInput
                                 placeholder="Search Products"
                                 inputProps={{ 'aria-label': 'search' }}
                                 autoComplete="off"
                             />
+                            <Button
+                                type="submit"
+                                variant="none"
+                                sx={{
+                                    background: 'white',
+                                    borderRadius: '10px',
+                                    ml: '2px',
+                                    ':hover': { backgroundColor: 'white' },
+                                }}
+                            >
+                                <SearchIcon
+                                    sx={{
+                                        color: '#76bc21',
+                                    }}
+                                />
+                            </Button>
                         </Search>
-                        <Button type="submit" variant="contained">
-                            <SearchIcon />
-                        </Button>
                     </Box>
+                    {!isSmall ? (
+                        <Box
+                            ml={{ lg: 35, xl: 35, md: 2, sm: 0, xs: 0 }}
+                            mt={{ Lg: 0, xl: 3, md: 1.5, sm: 1, xs: 0 }}
+                            mr={{ Lg: 0, xl: 0, md: 0, sm: 13, xs: 0 }}
+                            mb={{ lg: 2, xl: 2, md: 0, sm: 0, xs: 0 }}
+                            sx={{
+                                width: {
+                                    xl: '40%',
+                                    lg: '40%',
+                                    md: '30%',
+                                    sm: '40%',
+                                    xs: '40%',
+                                },
+                                height: {
+                                    xl: '5vh',
+                                    lg: '8vh',
+                                    md: '5vh',
+                                    sm: '5vh',
+                                    xs: '5vh',
+                                },
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Link to={'/location/'}>
+                                <Button
+                                    startIcon={
+                                        <PlaceIcon sx={{ color: '#76bc21' }} />
+                                    }
+                                    endIcon={
+                                        <ChevronRightIcon
+                                            sx={{ color: '#76bc21' }}
+                                        />
+                                    }
+                                    sx={{
+                                        borderRadius: '10px',
+                                        width: {
+                                            xl: '200px',
+                                            lg: '200px',
+                                            md: '200px',
+                                            sm: '150px',
+                                            xs: '150px',
+                                        },
+                                        height: {
+                                            lg: '6vh',
+                                            xl: '3vh',
+                                            md: '3vh',
+                                            sm: '3vh',
+                                            xs: '0vh',
+                                        },
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        ':hover': { backgroundColor: 'white' },
+                                        mt: '8.5px',
+                                        ml: '70px',
+                                        justifyContent: 'space-between',
+                                        fontSize: {
+                                            xl: '11px',
+                                            lg: '11px',
+                                            md: '8px',
+                                            sm: '6px',
+                                            xl: '11px',
+                                        },
+                                        marginRight: {
+                                            xl: '15px',
+                                            lg: '15px',
+                                            md: '10px',
+                                            sm: '10px',
+                                            xl: '0px',
+                                        },
+                                    }}
+                                >
+                                    No Address selected
+                                </Button>
+                            </Link>
+                            <Link to={'/prescription/'}>
+                                <Button
+                                    startIcon={
+                                        <HistoryEduIcon
+                                            sx={{ color: '#76bc21', ml: 1 }}
+                                        />
+                                    }
+                                    sx={{
+                                        borderRadius: '10px',
+                                        width: {
+                                            xl: '160px',
+                                            lg: '160px',
+                                            md: '160px',
+                                            sm: '140px',
+                                            xs: '0px',
+                                        },
+                                        height: {
+                                            lg: '6vh',
+                                            xl: '3vh',
+                                            md: '3vh',
+                                            sm: '3vh',
+                                            xs: '0vh',
+                                        },
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        ':hover': { backgroundColor: 'white' },
+                                        mt: '8.5px',
+                                        justifyContent: 'space-between',
+                                        fontSize: {
+                                            xl: '14px',
+                                            lg: '14px',
+                                            md: '12px',
+                                            sm: '10px',
+                                            xl: '0px',
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        textTransform={'capitalize'}
+                                        fontSize={'14px'}
+                                        mr={2}
+                                    >
+                                        Prescription
+                                    </Typography>
+                                </Button>
+                            </Link>
+                        </Box>
+                    ) : null}
 
                     <IconButton sx={{ ml: 'auto' }}>
                         <Link

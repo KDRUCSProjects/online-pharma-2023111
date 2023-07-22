@@ -38,14 +38,14 @@ const Contact = () => {
                         color={'#76bc21'}
                         mt={3}
                         pl={1}
-                        sx={{ borderLeft: '3px solid gray' }}
+                        sx={{ borderLeft: '3px solid #76bc21' }}
                     >
                         Contact
                     </Typography>
                     <Paper
                         sx={{
                             width: '100%',
-                            height: '44vh',
+                            height: '60vh',
                             bgcolor: '#76bc21',
                             marginTop: '20px',
                             boxShadow: 'none',
@@ -53,9 +53,10 @@ const Contact = () => {
                     >
                         <Box
                             ml={0.45}
+                            mt={1}
                             sx={{
                                 width: '98%',
-                                height: '45vh',
+                                height: '61vh',
                                 bgcolor: 'white',
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -138,17 +139,22 @@ const Contact = () => {
                             >
                                 Shop #4
                             </Link>
-                            <Grid mt={2}>
-                                <Typography align="center" variant="h6">
+                            <Grid mt={3} ml={2.6}>
+                                <Typography
+                                    align="center"
+                                    variant="h6"
+                                    display={'inline'}
+                                >
                                     Follow Us
                                 </Typography>
                                 <Box
-                                    ml={16}
-                                    align="center"
-                                    color={'#76bc21'}
-                                    width={'30%'}
-                                    display={'flex'}
-                                    justifyContent={'space-between'}
+                                    sx={{
+                                        color: '#76bc21',
+                                        width: '30%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                    }}
                                 >
                                     <FacebookIcon />
                                     <TwitterIcon />
@@ -156,7 +162,7 @@ const Contact = () => {
                                 </Box>
                             </Grid>
                             <Box
-                                mt={3}
+                                mt={10}
                                 sx={{
                                     display: 'flex',
                                     justifyContent: 'center',
