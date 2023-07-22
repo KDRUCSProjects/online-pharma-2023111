@@ -15,6 +15,7 @@ import {
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Title from '../title/Title';
 const state = [
     { id: 1, state: 'pending' },
@@ -39,7 +40,7 @@ const OrderList = () => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
-                <Breadcrumbs>
+                <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
                     <Link
                         color="secondary"
                         to={'/dashboard/'}

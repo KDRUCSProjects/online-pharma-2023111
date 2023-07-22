@@ -1,90 +1,14 @@
-1;
-2;
-3;
-4;
-5;
-6;
-7;
-8;
-9;
-10;
-11;
-12;
-13;
-14;
-15;
-16;
-17;
-18;
-19;
-20;
-21;
-22;
-23;
-24;
-25;
-26;
-27;
-28;
-29;
-30;
-31;
-32;
-33;
-34;
-35;
-36;
-37;
-38;
-39;
-40;
-41;
-42;
-43;
-44;
-45;
-46;
-47;
-48;
-49;
-50;
-51;
-52;
-53;
-54;
-55;
-56;
-57;
-58;
-59;
-60;
-61;
-62;
-63;
-64;
-65;
-66;
-67;
-68;
-69;
-70;
-71;
-72;
-73;
-74;
-75;
-76;
-77;
-78;
-79;
-80;
-81;
-82;
-83;
-84;
-85;
 import React, { useState } from 'react';
-import { TextField, Button, Container, Stack, Typography } from '@mui/material';
+import {
+    TextField,
+    Button,
+    Typography,
+    Grid,
+    Breadcrumbs,
+} from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
+import GrainIcon from '@mui/icons-material/Grain';
 import { Link } from 'react-router-dom';
 import Title from '../title/Title';
 
@@ -104,6 +28,25 @@ const OrderReport = () => {
 
     return (
         <React.Fragment>
+            <Grid item xs={12} lg={12}>
+                <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
+                    <Link
+                        color="secondary"
+                        to={'/dashboard/'}
+                        style={{ textDecoration: 'none', color: 'black' }}
+                    >
+                        <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                        Dashboard
+                    </Link>
+                    <Typography
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="text.primary"
+                    >
+                        <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                        Daily Report
+                    </Typography>
+                </Breadcrumbs>
+            </Grid>
             <Title>Report</Title>
             <form onSubmit={handleSubmit}>
                 <TextField
