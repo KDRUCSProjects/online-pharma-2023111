@@ -38,6 +38,7 @@ import Generic from './components/Ad/ad detail/Generic';
 import UsedForDetail from './components/Ad/ad detail/UsedForDetail';
 import Dosage from './components/Ad/ad detail/Dosage';
 import DescriptionDetail from './components/Ad/ad detail/DescriptionDetail';
+import MobileCategory from './components/admin/components/category/MobileCategory';
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: '/profile/',
                 element: <Profile />,
+            },
+            {
+                path: '/mobile/category/',
+                element: <MobileCategory />,
             },
             {
                 path: '/shopping/cart/',

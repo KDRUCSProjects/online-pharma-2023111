@@ -77,7 +77,13 @@ const Profile = () => {
                     <Typography
                         color="#76BC21"
                         fontWeight="bold"
-                        fontSize="30px"
+                        fontSize={{
+                            xl: '30px',
+                            lg: '25px',
+                            md: '20px',
+                            sm: '20px',
+                            xs: '20px',
+                        }}
                     >
                         {myData.email}
                     </Typography>
@@ -92,32 +98,63 @@ const Profile = () => {
                     xs={12}
                     mt={4}
                 >
-                    <Box mr={2}>
-                        <Box border="1px solid lightGrey" borderRadius="20%">
-                            <HistoryIcon
-                                sx={{ fontSize: '80px', color: '#76BC21' }}
-                            />
+                    <Link
+                        style={{
+                            textAlign: 'center',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <Box mr={2}>
+                            <Box
+                                border="1px solid lightGrey"
+                                borderRadius="20%"
+                            >
+                                <HistoryIcon
+                                    sx={{ fontSize: '80px', color: '#76BC21' }}
+                                />
+                            </Box>
+                            <Typography>Order History</Typography>
                         </Box>
-                        <Typography>Order History</Typography>
-                    </Box>
-                    <Box mr={2} sx={{ alignItems: 'center' }}>
-                        <Box border="1px solid lightGrey" borderRadius="20%">
-                            <LocationOnIcon
-                                sx={{ fontSize: '80px', color: '#76BC21' }}
-                            />
+                    </Link>
+                    <Link
+                        style={{
+                            textAlign: 'center',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <Box mr={2} sx={{ alignItems: 'center' }}>
+                            <Box
+                                border="1px solid lightGrey"
+                                borderRadius="20%"
+                            >
+                                <LocationOnIcon
+                                    sx={{ fontSize: '80px', color: '#76BC21' }}
+                                />
+                            </Box>
+                            <Typography sx={{ width: '30px' }} mt={1}>
+                                Delivery Address
+                            </Typography>
                         </Box>
-                        <Typography sx={{ width: '30px' }} mt={1}>
-                            Delivery Address
-                        </Typography>
-                    </Box>
-                    <Box mr={2}>
-                        <Box border="1px solid lightGrey" borderRadius="20%">
-                            <AddShoppingCartIcon
-                                sx={{ fontSize: '80px', color: '#76BC21' }}
-                            />
+                    </Link>
+                    <Link
+                        to={'/shopping/cart/'}
+                        style={{
+                            textAlign: 'center',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <Box mr={2}>
+                            <Box
+                                border="1px solid lightGrey"
+                                borderRadius="20%"
+                            >
+                                <AddShoppingCartIcon
+                                    sx={{ fontSize: '80px', color: '#76BC21' }}
+                                />
+                            </Box>
+                            <Typography>Cart</Typography>
                         </Box>
-                        <Typography>Cart</Typography>
-                    </Box>
+                    </Link>
                 </Grid>
                 <Grid item xl={3} lg={3} md={12} sm={12} xs={12} mt={4}>
                     <Button
@@ -125,7 +162,13 @@ const Profile = () => {
                             xs: { marginLeft: '10px' },
                             color: 'white',
                             background: '#76BC21',
-                            width: '70%',
+                            width: {
+                                xl: '70%',
+                                lg: '70%',
+                                md: '60%',
+                                sm: '40%',
+                                xs: '70%',
+                            },
                             height: '50px',
                             borderRadius: '10px',
                         }}
