@@ -5,7 +5,7 @@ import { getObject } from '../../Api/Api';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@tanstack/react-query';
 
-const UsedForDetails = () => {
+const UsedForDetail = () => {
     const { id } = useParams();
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['used_for'],
@@ -57,4 +57,4 @@ const UsedForDetails = () => {
     }
 };
 
-export default UsedForDetails;
+export default UsedForDetail;

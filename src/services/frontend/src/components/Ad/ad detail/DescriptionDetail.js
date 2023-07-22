@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import { getObject } from '../../Api/Api';
 
-const DescriptionDetails = () => {
+const DescriptionDetail = () => {
     const { id } = useParams();
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['description'],
@@ -57,4 +57,4 @@ const DescriptionDetails = () => {
     }
 };
 
-export default DescriptionDetails;
+export default DescriptionDetail;

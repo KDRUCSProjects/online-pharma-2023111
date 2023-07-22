@@ -37,9 +37,7 @@ const App = () => {
                         xl: 'none',
                     },
                 }}
-            >
-                {' '}
-            </Grid>
+            ></Grid>
             {!isSmall ? (
                 <Box>
                     <Footer />

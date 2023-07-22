@@ -23,7 +23,7 @@ const state = [
     { id: 3, state: 'completed' },
 ];
 
-const OrderList = () => {
+const PrescriptionList = () => {
     const [prescription, setPrescription] = useState([]);
 
     useEffect(() => {
@@ -129,4 +129,4 @@ const OrderList = () => {
     );
 };
 
-export default OrderList;
+export default PrescriptionList;

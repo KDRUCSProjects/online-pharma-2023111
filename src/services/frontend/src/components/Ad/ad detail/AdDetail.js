@@ -15,7 +15,7 @@ import { useParams } from 'react-router-dom';
 import { getObject } from '../../Api/Api';
 import { useQuery } from '@tanstack/react-query';
 
-const DrugDetails = () => {
+const AdDetail = () => {
     const [onchange, setonchane] = useState(false);
     const [onchange1, setonchane1] = useState(false);
     const [onchange2, setonchane2] = useState(false);
@@ -529,4 +529,4 @@ const DrugDetails = () => {
     }
 };
 
-export default DrugDetails;
+export default AdDetail;
