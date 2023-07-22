@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Breadcrumbs, Container, Grid, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Link } from 'react-router-dom';
 import AdCard from './AdCard';
 import { useQuery } from '@tanstack/react-query';
-import { getObject, getObjects } from '../Api/Api';
 import { useParams } from 'react-router-dom';
 
 const AdList = () => {

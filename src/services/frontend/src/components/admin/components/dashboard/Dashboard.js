@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Orders from '../order/Orders';
 import { Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
@@ -135,11 +134,6 @@ const Dashboard = () => {
                     <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
                         {userCount}
                     </Typography>
-                </Paper>
-            </Grid>
-            <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Orders />
                 </Paper>
             </Grid>
         </Grid>
