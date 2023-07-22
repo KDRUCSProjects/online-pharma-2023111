@@ -10,9 +10,9 @@ const Footer = (props) => {
             {...props}
         >
             {'Copyright © '}
-            <Link color="inherit" href="localhost/dashboard">
+            <Link color="inherit" href="">
                 Habib Pharma
-            </Link>{' '}
+            </Link>
             {new Date().getFullYear()}
             {'.'}
         </Typography>

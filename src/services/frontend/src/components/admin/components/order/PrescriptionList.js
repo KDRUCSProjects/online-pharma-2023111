@@ -23,13 +23,13 @@ const state = [
 ];
 
 const OrderList = () => {
-    const [orders, setOrders] = useState([]);
+    const [prescription, setPrescription] = useState([]);
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/api/orders/')
+            .get('http://localhost:8000/api/prescriptions/')
             .then((response) => {
-                setOrders(response.data);
+                setPrescription(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -53,12 +53,12 @@ const OrderList = () => {
                         color="text.primary"
                     >
                         <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        Order List
+                        Prescription
                     </Typography>
                 </Breadcrumbs>
             </Grid>
             <Grid item xs={12} lg={12}>
-                <Title>Orders</Title>
+                <Title>Prescriptions</Title>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
@@ -73,25 +73,7 @@ const OrderList = () => {
                                     align="left"
                                     sx={{ fontSize: '13px' }}
                                 >
-                                    Product
-                                </TableCell>
-                                <TableCell
-                                    align="left"
-                                    sx={{ fontSize: '13px' }}
-                                >
                                     Location
-                                </TableCell>
-                                <TableCell
-                                    align="center"
-                                    sx={{ fontSize: '13px' }}
-                                >
-                                    Quantity
-                                </TableCell>
-                                <TableCell
-                                    align="center"
-                                    sx={{ fontSize: '13px' }}
-                                >
-                                    Total Amount
                                 </TableCell>
                                 <TableCell
                                     align="left"
@@ -108,7 +90,7 @@ const OrderList = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {orders.map((row) => (
+                            {prescription.map((row) => (
                                 <TableRow
                                     key={row.id}
                                     sx={{
@@ -121,19 +103,10 @@ const OrderList = () => {
                                         {row.id}
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        {row.user.name}
+                                        {row.user_id.name}
                                     </TableCell>
                                     <TableCell align="left">
-                                        {row.ad.title}
-                                    </TableCell>
-                                    <TableCell align="left">
-                                        {row.address}
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        {row.quantity}
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        {row.total_amount}
+                                        {row.location}
                                     </TableCell>
                                     <TableCell align="left">
                                         {row.created_at}

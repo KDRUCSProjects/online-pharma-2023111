@@ -5,10 +5,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import CategoryIcon from '@mui/icons-material/Category';
-import FlagIcon from '@mui/icons-material/Flag';
-import VaccinesIcon from '@mui/icons-material/Vaccines';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 
@@ -22,30 +20,6 @@ export const mainListItems = (
                 <ListItemText primary="Dashboard" />
             </ListItemButton>
         </Link>
-        <Link to={'category/list/'} style={{ textDecoration: 'none' }}>
-            <ListItemButton>
-                <ListItemIcon>
-                    <CategoryIcon />
-                </ListItemIcon>
-                <ListItemText primary="Category" />
-            </ListItemButton>
-        </Link>
-        <Link to={'country/list/'} style={{ textDecoration: 'none' }}>
-            <ListItemButton>
-                <ListItemIcon>
-                    <FlagIcon />
-                </ListItemIcon>
-                <ListItemText primary="Country" />
-            </ListItemButton>
-        </Link>
-        <Link to={'drug/list/'} style={{ textDecoration: 'none' }}>
-            <ListItemButton>
-                <ListItemIcon>
-                    <VaccinesIcon />
-                </ListItemIcon>
-                <ListItemText primary="Drug" />
-            </ListItemButton>
-        </Link>
         <Link to={'order/list/'} style={{ textDecoration: 'none' }}>
             <ListItemButton>
                 <ListItemIcon>
@@ -54,12 +28,12 @@ export const mainListItems = (
                 <ListItemText primary="Order" />
             </ListItemButton>
         </Link>
-        <Link to={'user/list/'} style={{ textDecoration: 'none' }}>
+        <Link to={'prescription/list/'} style={{ textDecoration: 'none' }}>
             <ListItemButton>
                 <ListItemIcon>
-                    <PersonIcon />
+                    <HistoryEduIcon />
                 </ListItemIcon>
-                <ListItemText primary="User" />
+                <ListItemText primary="Prescription" />
             </ListItemButton>
         </Link>
     </React.Fragment>
@@ -70,29 +44,13 @@ export const secondaryListItems = (
         <ListSubheader component="div" inset>
             Reports
         </ListSubheader>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="last year" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="last month" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="last weak" />
-        </ListItemButton>
-        <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="last day" />
-        </ListItemButton>
+        <Link to={'day/report'} style={{ textDecoration: 'none' }}>
+            <ListItemButton>
+                <ListItemIcon>
+                    <AssignmentIcon />
+                </ListItemIcon>
+                <ListItemText primary="day report" />
+            </ListItemButton>
+        </Link>
     </React.Fragment>
 );
