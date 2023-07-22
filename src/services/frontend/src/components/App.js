@@ -1,4 +1,4 @@
-import { Box, Container, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, Grid, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import NavBar from './layout/NavBar';
 import SearchBar from './layout/SearchBar';
@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import CopyRight from './footer/CopyRight';
 import MenuBar from './layout/MenuBar';
 import MobileAddress from './mobil address/MobileAddress';
+import BottomNavigate from './layout/BottomNavigate';
 
 const App = () => {
     const theme = useTheme();
@@ -25,13 +26,27 @@ const App = () => {
             <SearchBar />
             {isSmall ? <MobileAddress /> : <MenuBar />}
             <Outlet />
+            <Grid
+                sx={{
+                    height: '88px',
+                    display: {
+                        xs: 'block',
+                        lg: 'none',
+                        sm: 'none',
+                        md: 'none',
+                        xl: 'none',
+                    },
+                }}
+            >
+                {' '}
+            </Grid>
             {!isSmall ? (
                 <Box>
                     <Footer />
                     <CopyRight />
                 </Box>
             ) : (
-                ''
+                <BottomNavigate />
             )}
         </Box>
     );
