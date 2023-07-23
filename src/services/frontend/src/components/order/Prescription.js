@@ -25,6 +25,7 @@ import { addObject } from '../Api/Api';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { getLocation } from '../services/LocalStorageService';
 const Prescription = () => {
     const [open, setOpen] = useState(true);
     const [close, setClose] = useState(false);
@@ -33,6 +34,7 @@ const Prescription = () => {
 
     // Getting User Data from Redux Store
     const myData = useSelector((state) => state.user);
+    const myLocation = getLocation();
     const mutation = useMutation((data) => {
         return addObject('prescriptions', data);
     });
@@ -44,7 +46,7 @@ const Prescription = () => {
         const formData = new FormData();
         formData.append('image', image);
         formData.append('user_id', myData.id);
-        formData.append('location', 'Farah');
+        formData.append('location', myLocation.location);
         if (formData.image == '') {
             setMessage('Image should not Empty');
             setImage('');
@@ -82,18 +84,9 @@ const Prescription = () => {
                         Prescription
                     </Typography>
                 </Breadcrumbs>
-                <Typography
-                    variant="h6"
-                    color={'#76bc21'}
-                    mt={3}
-                    pl={1}
-                    sx={{ borderLeft: '3px solid #76bc21' }}
-                >
-                    Prescription
-                </Typography>
                 <Grid
                     container
-                    mt={4}
+                    mt={2}
                     display={'flex'}
                     justifyContent={'space-between'}
                 >
@@ -154,7 +147,7 @@ const Prescription = () => {
                         <Box
                             border={'1px solid lightGrey'}
                             borderRadius={'10px'}
-                            mt={10}
+                            mt={8}
                         >
                             <Box
                                 sx={{

@@ -38,7 +38,7 @@ const MobileAddress = () => {
                                 />
                             </Box>
                             <Typography sx={{ color: 'black' }}>
-                                No Address Selected
+                                Select Your address
                             </Typography>
                             <ChevronRightIcon sx={{ color: '#76bc21' }} />
                         </Button>

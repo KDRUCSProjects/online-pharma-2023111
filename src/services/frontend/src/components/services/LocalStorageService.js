@@ -1,6 +1,5 @@
 const storeToken = (value) => {
     if (value) {
-        // console.log("Store Token")
         const { access, refresh } = value;
         localStorage.setItem('access_token', access);
         localStorage.setItem('refresh_token', refresh);
@@ -18,4 +17,24 @@ const removeToken = () => {
     localStorage.removeItem('refresh_token');
 };
 
-export { storeToken, getToken, removeToken };
+const storeLocation = (value) => {
+    if (value) {
+        localStorage.setItem('location', value);
+    }
+};
+const getLocation = () => {
+    let location = localStorage.getItem('location');
+    return { location };
+};
+const removeLocation = () => {
+    localStorage.removeItem('location');
+};
+
+export {
+    storeToken,
+    getToken,
+    removeToken,
+    storeLocation,
+    getLocation,
+    removeLocation,
+};

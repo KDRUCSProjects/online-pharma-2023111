@@ -5,13 +5,45 @@ import {
     Grid,
     IconButton,
     InputAdornment,
+    Snackbar,
     TextField,
     Typography,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
-import React from 'react';
+import CloseIcon from '@mui/icons-material/Close';
+import React, { useState } from 'react';
+import { storeLocation } from '../services/LocalStorageService';
+import { useNavigate } from 'react-router-dom';
 const Location = () => {
+    const [locationData, setLocationData] = useState('');
+    const [message, setMessage] = useState('');
+    const [open, setOpen] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setLocationData(e.target.value);
+    };
+
+    const handleSubmit = () => {
+        if (locationData == '') {
+            setMessage('Please Enter your current Location!');
+            setOpen(true);
+        } else {
+            storeLocation(locationData);
+            setMessage('Successfully Saved Your address');
+            setOpen(true);
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
+        }
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const ButtonStyle = {
         background: '#76bc21',
         color: 'white',
@@ -97,6 +129,7 @@ const Location = () => {
                     >
                         <Typography variant="h5">Enter address</Typography>
                         <TextField
+                            onChange={handleChange}
                             sx={{ mt: 2 }}
                             size="small"
                             placeholder="Floor, House, Office No "
@@ -107,6 +140,7 @@ const Location = () => {
                             }}
                         />
                         <Button
+                            onClick={handleSubmit}
                             fullWidth
                             style={ButtonStyle}
                             size="large"
@@ -117,6 +151,22 @@ const Location = () => {
                     </Grid>
                 </Grid>
             </Box>
+            <Snackbar
+                open={open}
+                message={message}
+                action={
+                    <React.Fragment>
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            sx={{ p: 0.5 }}
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </Container>
     );
 };

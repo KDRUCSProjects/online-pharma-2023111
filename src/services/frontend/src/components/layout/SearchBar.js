@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import PlaceIcon from '@mui/icons-material/Place';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import { getLocation } from '../services/LocalStorageService';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -61,6 +62,7 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = () => {
+    const myLocation = getLocation();
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     return (
@@ -172,7 +174,7 @@ const SearchBar = () => {
                                         },
                                     }}
                                 >
-                                    No Address selected
+                                    Select Your address
                                 </Button>
                             </Link>
                             <Link to={'/prescription/'}>
