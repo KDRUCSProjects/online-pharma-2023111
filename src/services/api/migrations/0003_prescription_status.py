@@ -4,15 +4,16 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0002_order_order_date'),
+        ("api", "0002_order_order_date"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='prescription',
-            name='status',
-            field=models.PositiveIntegerField(choices=[(1, 'Pending'), (2, 'Canceled'), (3, 'Completed')], default=1),
+            model_name="prescription",
+            name="status",
+            field=models.PositiveIntegerField(
+                choices=[(1, "Pending"), (2, "Canceled"), (3, "Completed")], default=1
+            ),
         ),
     ]

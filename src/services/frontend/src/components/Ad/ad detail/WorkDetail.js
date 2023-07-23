@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { getObject } from '../../Api/Api';
-const WorkDetails = () => {
+const WorkDetail = () => {
     const { id } = useParams();
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['ad_detail'],
@@ -55,4 +55,4 @@ const WorkDetails = () => {
     }
 };
 
-export default WorkDetails;
+export default WorkDetail;

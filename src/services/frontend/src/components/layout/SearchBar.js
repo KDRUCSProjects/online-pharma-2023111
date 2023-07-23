@@ -69,7 +69,10 @@ const SearchBar = () => {
                 <Toolbar>
                     <Box display="flex">
                         <Search
-                            sx={{ background: 'white', borderRadius: '10px' }}
+                            sx={{
+                                background: 'white',
+                                borderRadius: '10px',
+                            }}
                         >
                             <StyledSearchInput
                                 placeholder="Search Products"
@@ -147,7 +150,9 @@ const SearchBar = () => {
                                         },
                                         backgroundColor: 'white',
                                         color: 'black',
-                                        ':hover': { backgroundColor: 'white' },
+                                        ':hover': {
+                                            backgroundColor: 'white',
+                                        },
                                         mt: '8.5px',
                                         ml: '70px',
                                         justifyContent: 'space-between',
@@ -195,7 +200,9 @@ const SearchBar = () => {
                                         },
                                         backgroundColor: 'white',
                                         color: 'black',
-                                        ':hover': { backgroundColor: 'white' },
+                                        ':hover': {
+                                            backgroundColor: 'white',
+                                        },
                                         mt: '8.5px',
                                         justifyContent: 'space-between',
                                         fontSize: {
