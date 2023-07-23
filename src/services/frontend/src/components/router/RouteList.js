@@ -33,6 +33,7 @@ import { Typography } from '@mui/material';
 import MobileCategory from '../category/MobileCategory';
 
 const RouteList = () => {
+    const myData = useSelector((state) => state.user);
     const { access_token } = useSelector((state) => state.auth);
     return (
         <BrowserRouter>
@@ -48,17 +49,13 @@ const RouteList = () => {
                     <Route
                         path="/profile/"
                         element={
-                            access_token ? (
-                                <Profile />
-                            ) : (
-                                <Navigate to="/login/" />
-                            )
+                            myData.id ? <Profile /> : <Navigate to="/login/" />
                         }
                     />
                     <Route
                         path="/shopping/cart/"
                         element={
-                            access_token ? (
+                            myData.id ? (
                                 <ShoppingCart />
                             ) : (
                                 <Navigate to="/login/" />
@@ -68,7 +65,7 @@ const RouteList = () => {
                     <Route
                         path="feedback"
                         element={
-                            access_token ? (
+                            myData.id ? (
                                 <FeedBack />
                             ) : (
                                 <Navigate to={'/login/'} />
@@ -78,7 +75,7 @@ const RouteList = () => {
                         <Route
                             path=""
                             element={
-                                access_token ? (
+                                myData.id ? (
                                     <FeedbackForm />
                                 ) : (
                                     <Navigate to={'/login/'} />
@@ -88,7 +85,7 @@ const RouteList = () => {
                         <Route
                             path="complaint/"
                             element={
-                                access_token ? (
+                                myData.id ? (
                                     <ComplaintForm />
                                 ) : (
                                     <Navigate to={'/login/'} />
@@ -100,7 +97,7 @@ const RouteList = () => {
                     <Route
                         path="/prescription/"
                         element={
-                            access_token ? (
+                            myData.id ? (
                                 <Prescription />
                             ) : (
                                 <Navigate to="/login/" />
@@ -128,50 +125,38 @@ const RouteList = () => {
                 <Route
                     path="dashboard"
                     element={
-                        access_token ? (
-                            <MainLayout />
-                        ) : (
-                            <Navigate to={'/login/'} />
-                        )
+                        myData.admin ? <MainLayout /> : <Navigate to={'/'} />
                     }
                 >
                     <Route
                         path=""
                         element={
-                            access_token ? (
-                                <Dashboard />
-                            ) : (
-                                <Navigate to={'/login/'} />
-                            )
+                            myData.admin ? <Dashboard /> : <Navigate to={'/'} />
                         }
                     />
                     <Route
                         path="order/list/"
                         element={
-                            access_token ? (
-                                <OrderList />
-                            ) : (
-                                <Navigate to={'/login/'} />
-                            )
+                            myData.admin ? <OrderList /> : <Navigate to={'/'} />
                         }
                     />
                     <Route
                         path="prescription/list/"
                         element={
-                            access_token ? (
+                            myData.admin ? (
                                 <PrescriptionList />
                             ) : (
-                                <Navigate to={'/login/'} />
+                                <Navigate to={'/'} />
                             )
                         }
                     />
                     <Route
                         path="day/report/"
                         element={
-                            access_token ? (
+                            myData.admin ? (
                                 <OrderReport />
                             ) : (
-                                <Navigate to={'/login/'} />
+                                <Navigate to={'/'} />
                             )
                         }
                     />
@@ -189,7 +174,7 @@ const RouteList = () => {
                 <Route
                     path="/change/password/"
                     element={
-                        access_token ? (
+                        myData.id ? (
                             <ChangePassword />
                         ) : (
                             <Navigate to={'/login/'} />

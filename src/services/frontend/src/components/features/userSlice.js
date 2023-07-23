@@ -5,6 +5,7 @@ const initialState = {
     email: '',
     name: '',
     phone: '',
+    admin: '',
 };
 
 export const userSlice = createSlice({
@@ -16,12 +17,13 @@ export const userSlice = createSlice({
             state.email = action.payload.email;
             state.name = action.payload.name;
             state.phone = action.payload.phone;
+            state.admin = action.payload.admin;
         },
         unsetUserInfo: (state, action) => {
             state.id = action.payload.id;
             state.email = action.payload.email;
             state.name = action.payload.name;
-            state.phone = action.payload.phone;
+            state.admin = action.payload.admin;
         },
     },
 });

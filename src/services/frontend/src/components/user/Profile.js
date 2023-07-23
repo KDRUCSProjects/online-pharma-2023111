@@ -15,22 +15,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { unsetUserInfo } from '../features/userSlice';
 import { unSetUserToken } from '../features/authSlice';
-import { removeToken } from '../services/LocalStorageService';
+import { removeLocation, removeToken } from '../services/LocalStorageService';
 
 const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(
-            unsetUserInfo({ id: '', email: '', name: '', phone_number: '' })
+            unsetUserInfo({
+                id: '',
+                email: '',
+                name: '',
+                phone_number: '',
+                admin: '',
+            })
         );
         dispatch(unSetUserToken({ access_token: null }));
         removeToken();
+        removeLocation();
         navigate('/login/');
     };
 
     // Getting User Data from Redux Store
     const myData = useSelector((state) => state.user);
+    console.log(myData);
     return (
         <Container>
             <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 3 }}>
@@ -39,7 +47,7 @@ const Profile = () => {
                     style={{ textDecoration: 'none', color: '#76bc21' }}
                 >
                     <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    Home
+                    {myData.admin}
                 </Link>
                 <Typography
                     sx={{ display: 'flex', alignItems: 'center' }}

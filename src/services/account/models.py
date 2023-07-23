@@ -6,7 +6,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 class UserManager(BaseUserManager):
     def create_user(self, email, name, phone_number, tc, password=None, password2=None):
         """
-        Creates and saves a User with the given email, name, tc and password.
+        Creates and saves a User with the given email, name, phone number, tc and password.
         """
         if not email:
             raise ValueError("User must have an email address")
@@ -67,8 +67,6 @@ class User(AbstractBaseUser):
         return self.is_admin
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
         return True
 
     @property

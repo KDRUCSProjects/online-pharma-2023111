@@ -195,6 +195,25 @@ const SideBarDrawer = () => {
                             About us
                         </Link>
                     </Typography>
+                    <Typography
+                        mt={4}
+                        ml={3}
+                        mb={2}
+                        variant="h6"
+                        fontSize="15px"
+                        fontWeight="bold"
+                    >
+                        <Link
+                            style={{
+                                textDecoration: 'none',
+                                color: 'black',
+                            }}
+                            onClick={() => setSideOpen(false)}
+                            to={'/dashboard/'}
+                        >
+                            dashboard
+                        </Link>
+                    </Typography>
                 </Box>
             </Modal>
         </Box>

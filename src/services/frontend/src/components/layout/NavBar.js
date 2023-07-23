@@ -18,7 +18,11 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import SideBarDrawer from './SideBarDrawer';
-import { getToken, removeToken } from '../services/LocalStorageService';
+import {
+    getToken,
+    removeLocation,
+    removeToken,
+} from '../services/LocalStorageService';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserInfo, unsetUserInfo } from '../features/userSlice';
 import { unSetUserToken } from '../features/authSlice';
@@ -29,10 +33,17 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const handleLogout = () => {
         dispatch(
-            unsetUserInfo({ id: '', email: '', name: '', phone_number: '' })
+            unsetUserInfo({
+                id: '',
+                email: '',
+                name: '',
+                phone: '',
+                admin: '',
+            })
         );
         dispatch(unSetUserToken({ access_token: null }));
         removeToken();
+        removeLocation();
         navigate('/login/');
     };
     const { access_token } = getToken();
@@ -47,6 +58,7 @@ const NavBar = () => {
                         email: data.email,
                         name: data.name,
                         phone: data.phone_number,
+                        admin: data.is_admin,
                     })
                 );
             }
