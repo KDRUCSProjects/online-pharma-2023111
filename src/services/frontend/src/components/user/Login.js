@@ -74,7 +74,13 @@ const Login = () => {
                         }}
                     >
                         <Box align="center" marginBottom={0} marginTop={5}>
-                            <LockOpenIcon />
+                            <LockOpenIcon 
+                                  sx={{
+                                    fontSize: '40px',
+                                    color: '#76bc21',
+                                    marginLeft: '12px',
+                                }}
+                            />
                         </Box>
                         <Typography align="center" variant="h5" pt={2}>
                             Login
@@ -105,7 +111,7 @@ const Login = () => {
                                     color: 'white',
                                     margin: '0px auto',
                                     mt: 3,
-                                    width: '30%',
+                                    width: '32%',
                                     borderRadius: '15px',
                                 }}
                             >
@@ -127,7 +133,7 @@ const Login = () => {
                             </Typography>
                             <Link
                                 to={'/signup/'}
-                                sx={{ ':hover': { cursor: 'pointer' } }}
+                                sx={{ ':hover': { cursor: 'pointer',}}}
                             >
                                 Sign Up
                             </Link>
