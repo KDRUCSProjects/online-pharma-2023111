@@ -102,6 +102,7 @@ const Profile = () => {
                         style={{
                             textAlign: 'center',
                             textDecoration: 'none',
+                            color: 'black',
                         }}
                     >
                         <Box mr={2}>
@@ -120,6 +121,7 @@ const Profile = () => {
                         style={{
                             textAlign: 'center',
                             textDecoration: 'none',
+                            color: 'black',
                         }}
                     >
                         <Box mr={2} sx={{ alignItems: 'center' }}>
@@ -141,6 +143,7 @@ const Profile = () => {
                         style={{
                             textAlign: 'center',
                             textDecoration: 'none',
+                            color: 'black',
                         }}
                     >
                         <Box mr={2}>
@@ -171,6 +174,7 @@ const Profile = () => {
                             },
                             height: '50px',
                             borderRadius: '10px',
+                            ':hover': { backgroundColor: '#76bc21' },
                         }}
                         onClick={handleLogout}
                     >

@@ -15,8 +15,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRegisterUserMutation } from '../services/userAuthApi';
 import { storeToken } from '../services/LocalStorageService';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 const Registration = () => {
     const [server_error, setServerError] = useState({});
+    const [success, setSuccess] = useState('');
     const navigate = useNavigate();
     const [registerUser, { isLoading }] = useRegisterUserMutation();
     const handleSubmit = async (e) => {
@@ -25,6 +27,7 @@ const Registration = () => {
         const actualData = {
             name: data.get('name'),
             email: data.get('email'),
+            phone_number: data.get('phone_number'),
             password: data.get('password'),
             password2: data.get('password2'),
             tc: data.get('tc'),
@@ -34,159 +37,239 @@ const Registration = () => {
             setServerError(res.error.data.errors);
         }
         if (res.data) {
-            console.log(typeof res.data);
-            console.log(res.data);
+            setSuccess(res.data.msg);
             storeToken(res.data.token);
-            navigate('/login/');
+            setTimeout(() => {
+                navigate('/login/');
+            }, 3000);
         }
     };
 
     return (
         <Container>
-            <Paper>
-                <Typography align="center" variant="h4" pt={2}>
-                    SignUp
-                </Typography>
-                <Box
-                    component="form"
-                    noValidate
-                    sx={{ mt: 1 }}
-                    id="registration-form"
-                    onSubmit={handleSubmit}
-                >
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        name="name"
-                        label="Name"
-                    />
-                    {server_error.name ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.name[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        name="email"
-                        label="Email Address"
-                    />
-                    {server_error.email ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.email[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="password"
-                        name="password"
-                        label="Password"
-                        type="password"
-                    />
-                    {server_error.password ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.password[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="password2"
-                        name="password2"
-                        label="Confirm Password"
-                        type="password"
-                    />
-                    {server_error.password2 ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.password2[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                value={true}
-                                color="primary"
-                                name="tc"
-                                id="tc"
-                            />
-                        }
-                        label="I agree to term and condition."
-                    />
-                    {server_error.tc ? (
-                        <span
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.tc[0]}
-                        </span>
-                    ) : (
-                        ''
-                    )}
-                    <Box textAlign="center">
-                        <Button
-                            type="submit"
-                            variant="contained"
+            <Grid
+                container
+                display={'flex'}
+                justifyContent={'center'}
+                alignItems={'center'}
+            >
+                <Grid item lg={12} xl={12} md={12} sm={12} xs={12}>
+                    <Box
+                        sx={{
+                            width: {
+                                lg: '50vw',
+                                xl: '50vw',
+                                md: '60vw',
+                                sm: '100vw',
+                                xs: '90vw',
+                            },
+                            height: '85vh',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            margin: '0px auto',
+                            paddingTop: '25px',
+                        }}
+                    >
+                        <Box
                             sx={{
-                                mt: 3,
-                                mb: 2,
-                                px: 5,
-                                backgroundColor: '#76bc21',
+                                display: 'inline',
+                                justifyContent: 'center',
+                                alignItems: 'center',
                             }}
                         >
-                            Register
-                        </Button>
+                            <HowToRegIcon
+                                sx={{
+                                    fontSize: '40px',
+                                    color: '#76bc21',
+                                    marginLeft: '12px',
+                                }}
+                            />
+                            <Typography
+                                variant="h6"
+                                fontFamily={'cursive'}
+                                fontStyle={'oblique'}
+                                fontWeight={'bold'}
+                            >
+                                SignUp
+                            </Typography>
+                        </Box>
+                        <Box
+                            component="form"
+                            noValidate
+                            sx={{
+                                mt: 1,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                width: {
+                                    lg: '25vw',
+                                    xs: '25vw',
+                                    md: '40vw',
+                                    sm: '70vw',
+                                    xs: '80vw',
+                                },
+                            }}
+                            id="registration-form"
+                            onSubmit={handleSubmit}
+                        >
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="name"
+                                name="name"
+                                label="Name"
+                                size="small"
+                            />
+                            {server_error.name ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 10,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.name[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                name="email"
+                                label="Email Address"
+                                size="small"
+                            />
+                            {server_error.email ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 10,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.email[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="name"
+                                name="phone_number"
+                                label="Phone Number"
+                                size="small"
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="password"
+                                name="password"
+                                label="Password"
+                                type="password"
+                                size="small"
+                            />
+                            {server_error.password ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 10,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.password[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="password2"
+                                name="password2"
+                                label="Confirm Password"
+                                type="password"
+                                size="small"
+                            />
+                            {server_error.password2 ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 10,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.password2[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        value={true}
+                                        color="primary"
+                                        name="tc"
+                                        id="tc"
+                                    />
+                                }
+                                label="I agree to term and condition."
+                            />
+                            {server_error.tc ? (
+                                <span
+                                    style={{
+                                        fontSize: 12,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.tc[0]}
+                                </span>
+                            ) : (
+                                ''
+                            )}
+                            <Box textAlign="center">
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{
+                                        mt: 3,
+                                        mb: 2,
+                                        px: 5,
+                                        backgroundColor: '#76bc21',
+                                        ':hover': {
+                                            backgroundColor: '#76bc21',
+                                        },
+                                    }}
+                                >
+                                    Register
+                                </Button>
+                            </Box>
+                            {server_error.non_field_errors ? (
+                                <Alert severity="error">
+                                    {server_error.non_field_errors[0]}
+                                </Alert>
+                            ) : (
+                                ''
+                            )}
+                            {success ? (
+                                <Alert severity="success">{success}</Alert>
+                            ) : (
+                                ''
+                            )}
+                        </Box>
                     </Box>
-                    {server_error.non_field_errors ? (
-                        <Alert severity="error">
-                            {server_error.non_field_errors[0]}
-                        </Alert>
-                    ) : (
-                        ''
-                    )}
-                </Box>
-            </Paper>
+                </Grid>
+            </Grid>
         </Container>
     );
 };

@@ -30,6 +30,7 @@ import MainLayout from '../admin/components/MainLayout';
 import ResetPassword from '../user/ResetPassword';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
+import MobileCategory from '../category/MobileCategory';
 
 const RouteList = () => {
     const { access_token } = useSelector((state) => state.auth);
@@ -40,6 +41,10 @@ const RouteList = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="ad/list/:name/:id/" element={<AdList />} />
                     <Route path="/location/" element={<Location />} />
+                    <Route
+                        path="/mobile/category/"
+                        element={<MobileCategory />}
+                    />
                     <Route
                         path="/profile/"
                         element={
