@@ -7,7 +7,7 @@ import Footer from './footer/Footer';
 import { Outlet } from 'react-router-dom';
 import CopyRight from './footer/CopyRight';
 import MenuBar from './layout/MenuBar';
-import MobileAddress from './mobil address/MobileAddress';
+import MobileAddress from './location/MobileAddress';
 import BottomNavigate from './layout/BottomNavigate';
 
 const App = () => {

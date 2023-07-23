@@ -104,7 +104,7 @@ const PrescriptionList = () => {
                                         {row.id}
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        {row.user_id.name}
+                                        {row.user_id}
                                     </TableCell>
                                     <TableCell align="left">
                                         {row.location}
