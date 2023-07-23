@@ -3,6 +3,7 @@ import { Grid, TextField, Button, Box, Alert, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetPasswordMutation } from '../services/userAuthApi';
+import LockResetIcon from '@mui/icons-material/LockReset';
 
 const ResetPassword = () => {
     const [server_error, setServerError] = useState({});
@@ -33,80 +34,152 @@ const ResetPassword = () => {
     };
     return (
         <Grid container justifyContent="center">
-            <Grid item sm={6} xs={12}>
-                <h1>Reset Password</h1>
+            <Grid item sm={12} xs={12} md={12} lg={12} xl={12}>
                 <Box
-                    component="form"
-                    noValidate
-                    sx={{ mt: 1 }}
-                    id="password-reset-form"
-                    onSubmit={handleSubmit}
+                    sx={{
+                        width: {
+                            lg: '30vw',
+                            xl: '50vw',
+                            md: '60vw',
+                            sm: '90vw',
+                            xs: '90vw',
+                        },
+                        height: '50vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '0px auto',
+                        marginTop: '50px',
+                    }}
                 >
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="password"
-                        name="password"
-                        label="New Password"
-                        type="password"
-                    />
-                    {server_error.password ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            height: '40vh',
+                            width: {
+                                lg: '29.5vw',
+                                xl: '45vw',
+                                md: '55vw',
+                                sm: '80vw',
+                                xs: '82vw',
+                            },
+                        }}
+                    >
+                        <Box>
+                            <LockResetIcon
+                                sx={{
+                                    fontSize: '40px',
+                                    color: '#76bc21',
+                                    marginLeft: '40px',
+                                }}
+                            />
+                            <Typography
+                                variant="h6"
+                                fontFamily={'cursive'}
+                                fontWeight={'bold'}
+                            >
+                                Reset Password
+                            </Typography>
+                        </Box>
+                        <Box
+                            component="form"
+                            noValidate
+                            sx={{
+                                mt: 1,
+                                width: {
+                                    lg: '29vw',
+                                    xl: '29vw',
+                                    md: '29vw',
+                                    sm: '50vw',
+                                    xs: '80vw',
+                                },
                             }}
+                            id="password-reset-form"
+                            onSubmit={handleSubmit}
                         >
-                            {server_error.password[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="password2"
-                        name="password2"
-                        label="Confirm New Password"
-                        type="password"
-                    />
-                    {server_error.password2 ? (
-                        <Typography
-                            style={{
-                                fontSize: 12,
-                                color: 'red',
-                                paddingLeft: 10,
-                            }}
-                        >
-                            {server_error.password2[0]}
-                        </Typography>
-                    ) : (
-                        ''
-                    )}
-                    <Box textAlign="center">
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2, px: 5 }}
-                        >
-                            Save
-                        </Button>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                size="small"
+                                id="password"
+                                name="password"
+                                label="New Password"
+                                type="password"
+                            />
+                            {server_error.password ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 12,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.password[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <TextField
+                                margin="normal"
+                                required
+                                size="small"
+                                fullWidth
+                                id="password2"
+                                name="password2"
+                                label="Confirm New Password"
+                                type="password"
+                            />
+                            {server_error.password2 ? (
+                                <Typography
+                                    style={{
+                                        fontSize: 12,
+                                        color: 'red',
+                                        paddingLeft: 10,
+                                    }}
+                                >
+                                    {server_error.password2[0]}
+                                </Typography>
+                            ) : (
+                                ''
+                            )}
+                            <Box textAlign="center">
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    sx={{
+                                        mt: 3,
+                                        mb: 2,
+                                        px: 5,
+                                        backgroundColor: '#76bc21',
+                                        ':hover': {
+                                            backgroundColor: '#76bc21',
+                                        },
+                                    }}
+                                >
+                                    Save
+                                </Button>
+                            </Box>
+                            {server_error.non_field_errors ? (
+                                <Alert severity="error">
+                                    {server_error.non_field_errors[0]}
+                                </Alert>
+                            ) : (
+                                ''
+                            )}
+                            {server_msg.msg ? (
+                                <Alert severity="success">
+                                    {server_msg.msg}
+                                </Alert>
+                            ) : (
+                                ''
+                            )}
+                        </Box>
                     </Box>
-                    {server_error.non_field_errors ? (
-                        <Alert severity="error">
-                            {server_error.non_field_errors[0]}
-                        </Alert>
-                    ) : (
-                        ''
-                    )}
-                    {server_msg.msg ? (
-                        <Alert severity="success">{server_msg.msg}</Alert>
-                    ) : (
-                        ''
-                    )}
                 </Box>
             </Grid>
         </Grid>
