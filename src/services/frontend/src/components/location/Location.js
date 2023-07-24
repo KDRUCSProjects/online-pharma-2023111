@@ -107,6 +107,8 @@ const Location = () => {
                                         background: '#76bc21',
                                         color: 'white',
                                         borderRadius: '50%',
+                                        transition: 'all 1s',
+                                        ':hover': { transform: 'scale(0.7)' },
                                     }}
                                 />
                             </IconButton>
@@ -159,7 +161,11 @@ const Location = () => {
                         <IconButton
                             aria-label="close"
                             color="inherit"
-                            sx={{ p: 0.5 }}
+                            sx={{
+                                p: 0.5,
+                                transition: 'all 1s',
+                                ':hover': { transform: 'scaleX(6)' },
+                            }}
                             onClick={handleClose}
                         >
                             <CloseIcon />

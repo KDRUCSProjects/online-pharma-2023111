@@ -171,16 +171,7 @@ const RouteList = () => {
                     path="/api/user/reset/:id/:token/"
                     element={<ResetPassword />}
                 />
-                <Route
-                    path="/change/password/"
-                    element={
-                        myData.id ? (
-                            <ChangePassword />
-                        ) : (
-                            <Navigate to={'/login/'} />
-                        )
-                    }
-                />
+                <Route path="/change/password/" element={<ChangePassword />} />
                 <Route
                     path="*"
                     element={

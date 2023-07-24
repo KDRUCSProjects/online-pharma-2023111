@@ -27,6 +27,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserInfo, unsetUserInfo } from '../features/userSlice';
 import { unSetUserToken } from '../features/authSlice';
 import { useGetLoggedUserQuery } from '../services/userAuthApi';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LockClockIcon from '@mui/icons-material/LockClock';
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -125,20 +128,62 @@ const NavBar = () => {
                                 onClose={handleUserMenuClose}
                             >
                                 <MenuItem onClick={handleUserMenuClose}>
-                                    <Link
-                                        to={'/profile/'}
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: 'black',
-                                        }}
-                                    >
-                                        Profile
+                                    <Link to={'/profile/'}>
+                                        {' '}
+                                        <Button
+                                            startIcon={
+                                                <PersonOutlineIcon
+                                                    sx={{
+                                                        color: '#76bc21',
+                                                    }}
+                                                />
+                                            }
+                                            sx={{
+                                                color: 'black',
+                                                fontSize: '10px',
+                                            }}
+                                        >
+                                            Profile
+                                        </Button>
                                     </Link>
                                 </MenuItem>
                                 <MenuItem onClick={handleMenuClose}>
-                                    <Button onClick={handleLogout}>
+                                    <Button
+                                        onClick={handleLogout}
+                                        startIcon={
+                                            <LogoutIcon
+                                                sx={{
+                                                    color: '#76bc21',
+                                                }}
+                                            />
+                                        }
+                                        sx={{
+                                            color: 'black',
+                                            fontSize: '10px',
+                                        }}
+                                    >
                                         logout
                                     </Button>
+                                </MenuItem>
+                                <MenuItem onClick={handleMenuClose}>
+                                    <Link to={'/change/password/'}>
+                                        {' '}
+                                        <Button
+                                            startIcon={
+                                                <LockClockIcon
+                                                    sx={{
+                                                        color: '#76bc21',
+                                                    }}
+                                                />
+                                            }
+                                            sx={{
+                                                color: 'black',
+                                                fontSize: '10px',
+                                            }}
+                                        >
+                                            Change Password
+                                        </Button>
+                                    </Link>
                                 </MenuItem>
                             </Menu>
                         </>

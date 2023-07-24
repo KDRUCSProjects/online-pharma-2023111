@@ -1,4 +1,4 @@
-import { Grid, TextField, Box, Typography, Paper, Button } from '@mui/material';
+import { Grid, TextField, Box, Typography, Paper, Button, CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link, useNavigate } from 'react-router-dom';
@@ -22,8 +22,7 @@ const Login = () => {
         const res = await loginUser(actualData);
 
         if (res.error) {
-            setServerError(res.error.data.error);
-            console.log(server_error);
+            setServerError(res.error.data.errors);
         }
         if (res.data) {
             storeToken(res.data.token);
@@ -74,8 +73,8 @@ const Login = () => {
                         }}
                     >
                         <Box align="center" marginBottom={0} marginTop={5}>
-                            <LockOpenIcon 
-                                  sx={{
+                            <LockOpenIcon
+                                sx={{
                                     fontSize: '40px',
                                     color: '#76bc21',
                                     marginLeft: '12px',
@@ -93,6 +92,19 @@ const Login = () => {
                             label="Email Address"
                             sx={{ borderRadius: '10px', mt: 3 }}
                         />
+                        {server_error.email ? (
+                            <Typography
+                                style={{
+                                    fontSize: 12,
+                                    color: 'red',
+                                    paddingLeft: 10,
+                                }}
+                            >
+                                {server_error.email[0]}
+                            </Typography>
+                        ) : (
+                            ''
+                        )}
                         <TextField
                             placeholder="password"
                             size="small"
@@ -101,22 +113,41 @@ const Login = () => {
                             label="Password"
                             sx={{ mt: 3 }}
                         />
-                        <Box align="center">
-                            <Button
-                                variant="outlined"
-                                type="submit"
-                                sx={{
-                                    ':hover': { backgroundColor: '#76bc21' },
-                                    backgroundColor: '#76bc21',
-                                    color: 'white',
-                                    margin: '0px auto',
-                                    mt: 3,
-                                    width: '32%',
-                                    borderRadius: '15px',
+                        {server_error.email ? (
+                            <Typography
+                                style={{
+                                    fontSize: 12,
+                                    color: 'red',
+                                    paddingLeft: 10,
                                 }}
                             >
-                                Login
-                            </Button>
+                                {server_error.email[0]}
+                            </Typography>
+                        ) : (
+                            ''
+                        )}
+                        <Box align="center">
+                            {isLoading ? (
+                                <CircularProgress />
+                            ) : (
+                                <Button
+                                    variant="outlined"
+                                    type="submit"
+                                    sx={{
+                                        ':hover': {
+                                            backgroundColor: '#76bc21',
+                                        },
+                                        backgroundColor: '#76bc21',
+                                        color: 'white',
+                                        margin: '0px auto',
+                                        mt: 3,
+                                        width: '32%',
+                                        borderRadius: '15px',
+                                    }}
+                                >
+                                    Login
+                                </Button>
+                            )}
                         </Box>
                         <Box align="center" marginTop={2}>
                             <Link
@@ -133,7 +164,7 @@ const Login = () => {
                             </Typography>
                             <Link
                                 to={'/signup/'}
-                                sx={{ ':hover': { cursor: 'pointer',}}}
+                                sx={{ ':hover': { cursor: 'pointer' } }}
                             >
                                 Sign Up
                             </Link>

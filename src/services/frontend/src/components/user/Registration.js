@@ -89,7 +89,6 @@ const Registration = () => {
                             <Typography
                                 variant="h6"
                                 fontFamily={'cursive'}
-                                fontStyle={'oblique'}
                                 fontWeight={'bold'}
                             >
                                 SignUp
