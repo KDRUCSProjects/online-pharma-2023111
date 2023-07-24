@@ -14,6 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useParams } from 'react-router-dom';
 import { getObject } from '../../Api/Api';
 import { useQuery } from '@tanstack/react-query';
+import { useCart } from 'react-use-cart';
 
 const AdDetail = () => {
     const [onchange, setonchane] = useState(false);
@@ -282,7 +283,7 @@ const AdDetail = () => {
                                         sm: '4vh',
                                         xs: '6vh',
                                     },
-                                    bgcolor: '#67bc21',
+                                    backgroundColor: '#67bc21',
                                     borderRadius: 2,
                                     color: 'white',
                                     ':hover': { bgcolor: '#67bc21' },
