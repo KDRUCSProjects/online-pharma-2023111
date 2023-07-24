@@ -1,20 +1,3 @@
-export const userNameValidator = (data) => {
-    if (data != '') {
-        if (!data.match(/[A-Z]/)) {
-            let length = data.length;
-            if (length >= 4) {
-                return true;
-            } else {
-                return 'Username must more then 4 character';
-            }
-        } else {
-            return 'Username must not has Capital letter';
-        }
-    } else {
-        return 'Username must not be empty';
-    }
-};
-
 export const firstNameValidator = (data) => {
     let name = new RegExp('[A-Z][a-z]');
     if (data != '') {
@@ -29,20 +12,6 @@ export const firstNameValidator = (data) => {
         }
     } else {
         return 'First_name must not be empty';
-    }
-};
-
-export const emailValidator = (data) => {
-    var validRegex =
-        /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/;
-    if (data != '') {
-        if (validRegex.test(data)) {
-            return true;
-        } else {
-            return 'Invalid Email';
-        }
-    } else {
-        return 'Email must not be empty';
     }
 };
 

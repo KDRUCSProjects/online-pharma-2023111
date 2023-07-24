@@ -1,4 +1,13 @@
-import { Grid, TextField, Box, Typography, Paper, Button, CircularProgress } from '@mui/material';
+import {
+    Grid,
+    TextField,
+    Box,
+    Typography,
+    Paper,
+    Button,
+    CircularProgress,
+    Alert,
+} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link, useNavigate } from 'react-router-dom';
@@ -128,7 +137,7 @@ const Login = () => {
                         )}
                         <Box align="center">
                             {isLoading ? (
-                                <CircularProgress />
+                                <CircularProgress sx={{ mt: 2 }} />
                             ) : (
                                 <Button
                                     variant="outlined"
@@ -169,6 +178,13 @@ const Login = () => {
                                 Sign Up
                             </Link>
                         </Box>
+                        {server_error.non_field_errors ? (
+                            <Alert severity="error">
+                                {server_error.non_field_errors[0]}
+                            </Alert>
+                        ) : (
+                            ''
+                        )}
                     </Box>
                 </Paper>
             </Grid>
