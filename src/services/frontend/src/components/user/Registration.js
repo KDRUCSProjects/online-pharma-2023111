@@ -10,6 +10,7 @@ import {
     Container,
     Paper,
     Grid,
+    CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -237,21 +238,25 @@ const Registration = () => {
                                 ''
                             )}
                             <Box textAlign="center">
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    sx={{
-                                        mt: 3,
-                                        mb: 2,
-                                        px: 5,
-                                        backgroundColor: '#76bc21',
-                                        ':hover': {
+                                {isLoading ? (
+                                    <CircularProgress />
+                                ) : (
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        sx={{
+                                            mt: 3,
+                                            mb: 2,
+                                            px: 5,
                                             backgroundColor: '#76bc21',
-                                        },
-                                    }}
-                                >
-                                    Register
-                                </Button>
+                                            ':hover': {
+                                                backgroundColor: '#76bc21',
+                                            },
+                                        }}
+                                    >
+                                        Register
+                                    </Button>
+                                )}
                             </Box>
                             {server_error.non_field_errors ? (
                                 <Alert severity="error">
