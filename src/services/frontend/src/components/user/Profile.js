@@ -107,6 +107,7 @@ const Profile = () => {
                     mt={4}
                 >
                     <Link
+                        to={'orders/'}
                         style={{
                             textAlign: 'center',
                             textDecoration: 'none',

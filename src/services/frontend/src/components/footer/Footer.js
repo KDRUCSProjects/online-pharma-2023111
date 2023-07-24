@@ -145,6 +145,7 @@ const Footer = () => {
                         Prescription
                     </Link>
                     <Link
+                        to={'orders/'}
                         style={{
                             marginTop: 18,
                             color: 'white',

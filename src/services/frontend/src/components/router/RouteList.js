@@ -31,6 +31,11 @@ import ResetPassword from '../user/ResetPassword';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
 import MobileCategory from '../category/MobileCategory';
+import OrderLists from '../order/OrderLists';
+import AllOrder from '../order/AllOrder';
+import CancelledOrder from '../order/CancelledOrder';
+import CompleteOrder from '../order/CompleteOrder';
+import PendingOrder from '../order/PendingOrder';
 
 const RouteList = () => {
     const myData = useSelector((state) => state.user);
@@ -120,6 +125,57 @@ const RouteList = () => {
                             element={<UsedForDetail />}
                         />
                         <Route path="dosage/:id/" element={<Dosage />} />
+                    </Route>
+                    <Route
+                        path="orders"
+                        element={
+                            myData.id ? (
+                                <OrderLists />
+                            ) : (
+                                <Navigate to={'/login/'} />
+                            )
+                        }
+                    >
+                        <Route
+                            path=""
+                            element={
+                                myData.id ? (
+                                    <AllOrder />
+                                ) : (
+                                    <Navigate to={'/login/'} />
+                                )
+                            }
+                        />
+                        <Route
+                            path="canceled/"
+                            element={
+                                myData.id ? (
+                                    <CancelledOrder />
+                                ) : (
+                                    <Navigate to={'/login/'} />
+                                )
+                            }
+                        />
+                        <Route
+                            path="complete/"
+                            element={
+                                myData.id ? (
+                                    <CompleteOrder />
+                                ) : (
+                                    <Navigate to={'/login/'} />
+                                )
+                            }
+                        />
+                        <Route
+                            path="pending/"
+                            element={
+                                myData.id ? (
+                                    <PendingOrder />
+                                ) : (
+                                    <Navigate to={'/login/'} />
+                                )
+                            }
+                        />
                     </Route>
                 </Route>
                 <Route
