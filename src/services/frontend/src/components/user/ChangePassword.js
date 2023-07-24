@@ -7,6 +7,7 @@ import {
     Typography,
     Container,
     Grid,
+    CircularProgress,
 } from '@mui/material';
 import { useState } from 'react';
 import { useChangeUserPasswordMutation } from '../services/userAuthApi';
@@ -18,7 +19,7 @@ const ChangePassword = () => {
     const navigate = useNavigate();
     const [server_error, setServerError] = useState({});
     const [server_msg, setServerMsg] = useState({});
-    const [changeUserPassword] = useChangeUserPasswordMutation();
+    const [changeUserPassword, { isLoading }] = useChangeUserPasswordMutation();
     const { access_token } = getToken();
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -151,22 +152,26 @@ const ChangePassword = () => {
                                     ''
                                 )}
                                 <Box textAlign="center">
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        sx={{
-                                            mt: 3,
-                                            mb: 2,
-                                            px: 5,
-                                            backgroundColor: '#76bc21',
-                                            ':hover': {
+                                    {isLoading ? (
+                                        <CircularProgress />
+                                    ) : (
+                                        <Button
+                                            type="submit"
+                                            variant="contained"
+                                            sx={{
+                                                mt: 3,
+                                                mb: 2,
+                                                px: 5,
                                                 backgroundColor: '#76bc21',
-                                            },
-                                        }}
-                                    >
-                                        {' '}
-                                        Update{' '}
-                                    </Button>
+                                                ':hover': {
+                                                    backgroundColor: '#76bc21',
+                                                },
+                                            }}
+                                        >
+                                            {' '}
+                                            Update{' '}
+                                        </Button>
+                                    )}
                                 </Box>
                                 {server_error.non_field_errors ? (
                                     <Alert severity="error">
