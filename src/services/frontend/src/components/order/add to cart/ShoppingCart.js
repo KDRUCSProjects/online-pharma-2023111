@@ -10,27 +10,31 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Cart from './Cart';
+import { useCartContext } from '../../features/cart context/cart_context';
+import CartItem from './CartItem';
 
 const ShoppingCart = () => {
-    const data = [
-        {
-            name: 'medicine',
-            id: 1,
-        },
-        {
-            name: 'medicine',
-            id: 2,
-        },
-        {
-            name: 'medicine',
-            id: 3,
-        },
-        {
-            name: 'medicine',
-            id: 4,
-        },
-    ];
+    const { cart, total_amount, delivery_fee } = useCartContext();
+    if (cart.length === 0) {
+        return (
+            <Typography
+                height={'400px'}
+                m={2}
+                color={'gray'}
+                sx={{
+                    fontSize: {
+                        xl: '40px',
+                        lg: '40px',
+                        md: '35px',
+                        sm: '30px',
+                        xs: '20px',
+                    },
+                }}
+            >
+                Cart is Empty
+            </Typography>
+        );
+    }
     return (
         <Container>
             <Grid container mt={3}>
@@ -38,7 +42,10 @@ const ShoppingCart = () => {
                     <Breadcrumbs aria-label="breadcrumb" sx={{ mb: 2 }}>
                         <Link
                             to={'/'}
-                            style={{ textDecoration: 'none', color: '#76bc21' }}
+                            style={{
+                                textDecoration: 'none',
+                                color: '#76bc21',
+                            }}
                         >
                             <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                             Home
@@ -122,7 +129,9 @@ const ShoppingCart = () => {
                                     },
                                     borderRadius: 2,
                                     color: 'white',
-                                    ':hover': { backgroundColor: '#76bc21' },
+                                    ':hover': {
+                                        backgroundColor: '#76bc21',
+                                    },
                                 }}
                             >
                                 CHANGE ADDRESS
@@ -214,22 +223,22 @@ const ShoppingCart = () => {
                                 sm: '100%',
                                 xs: '100%',
                             },
-                            minHeight: '400px',
+                            minHeight: '250px',
                             borderRadius: 2,
                         }}
                     >
                         <Box
                             sx={{
                                 width: '100%',
-                                minHeight: '70%',
+                                minHeight: '30%',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 mt: 1,
                             }}
                         >
-                            {data.map((item) => (
-                                <Cart key={item.id} item={item} />
-                            ))}
+                            {cart.map((item) => {
+                                return <CartItem key={item.id} {...item} />;
+                            })}
                         </Box>
                         <Box m={1}>
                             <Typography
@@ -251,6 +260,28 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
+                                    Sub total
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        fontSize: '12px',
+                                    }}
+                                >
+                                    Rs. {total_amount}
+                                </Typography>
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    flexDirection: 'row',
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        fontSize: '12px',
+                                    }}
+                                >
                                     Delivery Fee
                                 </Typography>
                                 <Typography
@@ -258,7 +289,7 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
-                                    Rs.25.00
+                                    Rs. {delivery_fee}
                                 </Typography>
                             </Box>
                             <Typography sx={{ fontSize: '8px' }}>
@@ -283,7 +314,7 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
-                                    Rs.325.00
+                                    Rs. {total_amount + delivery_fee}
                                 </Typography>
                             </Box>
                         </Box>

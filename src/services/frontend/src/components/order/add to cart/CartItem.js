@@ -3,9 +3,10 @@ import { Box, Button, Card, CardMedia, Typography } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { useCartContext } from '../../features/cart context/cart_context';
 
-const Cart = (props) => {
-    const data = props;
+const CartItem = ({ id, title, image, amount, price }) => {
+    const { removeItem, setDecrease, setIncrease } = useCartContext();
     return (
         <Card
             sx={{
@@ -33,7 +34,7 @@ const Cart = (props) => {
                 >
                     <CardMedia
                         component="img"
-                        image="http://127.0.0.1:8000/frontend/static/images/table-of-contents-cover.png"
+                        image={image}
                         alt="image"
                         sx={{
                             width: '80%',
@@ -58,7 +59,7 @@ const Cart = (props) => {
                         >
                             Drug Name
                         </Typography>
-                        <Typography marginTop={1}>{data.item.name}</Typography>
+                        <Typography marginTop={1}>{title}</Typography>
                         <Typography
                             sx={{
                                 fontSize: '12px',
@@ -66,10 +67,11 @@ const Cart = (props) => {
                                 mt: 1,
                             }}
                         >
-                            Rs. 100.00
+                            Rs. {price}
                         </Typography>
                     </Box>
                     <Button
+                        onClick={() => setDecrease(id)}
                         startIcon={
                             <RemoveIcon
                                 sx={{
@@ -79,7 +81,22 @@ const Cart = (props) => {
                                 }}
                             />
                         }
-                        endIcon={
+                        sx={{
+                            ':hover': {
+                                color: '#76bc21',
+                                cursor: 'pointer',
+                                backgroundColor: 'white',
+                            },
+                            height: '40px',
+                            borderColor: 'white',
+                            display: 'flex',
+                            mt: 6,
+                        }}
+                    />
+                    <Typography>{amount}</Typography>
+                    <Button
+                        onClick={() => setIncrease(id)}
+                        startIcon={
                             <AddIcon
                                 sx={{
                                     color: '#76bc21',
@@ -99,13 +116,12 @@ const Cart = (props) => {
                             display: 'flex',
                             mt: 6,
                         }}
-                    >
-                        <Typography sx={{ color: 'black' }}>5</Typography>
-                    </Button>
+                    />
                 </Box>
             </Box>
             <Box>
                 <Button
+                    onClick={() => removeItem(id)}
                     sx={{
                         ml: 5,
                         color: 'gray',
@@ -115,9 +131,6 @@ const Cart = (props) => {
                             backgroundColor: 'white',
                         },
                     }}
-                    onClick={() => {
-                        setOpen(false);
-                    }}
                 >
                     <HighlightOffIcon />
                 </Button>
@@ -126,4 +139,4 @@ const Cart = (props) => {
     );
 };
 
-export default Cart;
+export default CartItem;
