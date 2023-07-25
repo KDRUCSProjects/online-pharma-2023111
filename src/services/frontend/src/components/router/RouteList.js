@@ -5,7 +5,7 @@ import Home from '../layout/Home';
 import AdList from '../Ad/AdList';
 import Profile from '../user/Profile';
 import Location from '../location/Location';
-import ShoppingCart from '../order/ShoppingCart';
+import ShoppingCart from '../order/add to cart/ShoppingCart';
 import FeedbackForm from '../feedback/FeedbackForm';
 import FeedBack from '../feedback/FeedBack';
 import ComplaintForm from '../feedback/ComplaintForm';
@@ -227,7 +227,16 @@ const RouteList = () => {
                     path="/api/user/reset/:id/:token/"
                     element={<ResetPassword />}
                 />
-                <Route path="/change/password/" element={<ChangePassword />} />
+                <Route
+                    path="/change/password/"
+                    element={
+                        myData.id ? (
+                            <ChangePassword />
+                        ) : (
+                            <Navigate to="/login/" />
+                        )
+                    }
+                />
                 <Route
                     path="*"
                     element={

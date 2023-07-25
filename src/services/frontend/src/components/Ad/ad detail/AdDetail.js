@@ -14,9 +14,10 @@ import HomeIcon from '@mui/icons-material/Home';
 import { useParams } from 'react-router-dom';
 import { getObject } from '../../Api/Api';
 import { useQuery } from '@tanstack/react-query';
-import { useCart } from 'react-use-cart';
+import { useCartContext } from '../../features/cart context/cart_context';
 
 const AdDetail = () => {
+    const { addToCart } = useCartContext();
     const [onchange, setonchane] = useState(false);
     const [onchange1, setonchane1] = useState(false);
     const [onchange2, setonchane2] = useState(false);
@@ -268,6 +269,7 @@ const AdDetail = () => {
                                 </Box>
                             </Box>
                             <Button
+                                onClick={() =>  addToCart(data.id, 1, data)}
                                 sx={{
                                     width: {
                                         lg: '30%',

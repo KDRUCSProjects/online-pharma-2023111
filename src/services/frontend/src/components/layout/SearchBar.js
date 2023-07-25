@@ -11,6 +11,7 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
+    Badge,
 } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Container } from '@mui/system';
@@ -19,6 +20,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { getLocation } from '../services/LocalStorageService';
+import { useCartContext } from '../features/cart context/cart_context';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -62,6 +64,7 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = () => {
+    const { total_item } = useCartContext();
     const myLocation = getLocation();
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
@@ -233,7 +236,14 @@ const SearchBar = () => {
                             to={'/shopping/cart/'}
                             style={{ textDecoration: 'none' }}
                         >
-                            <ShoppingCartIcon sx={{ color: 'white', mt: 1 }} />
+                            <Badge
+                                badgeContent={total_item ? total_item : '0'}
+                                sx={{ color: 'black' }}
+                            >
+                                <ShoppingCartIcon
+                                    sx={{ color: 'white', mt: 1 }}
+                                />
+                            </Badge>
                         </Link>
                     </IconButton>
                 </Toolbar>
