@@ -39,6 +39,12 @@ const CartProvider = ({ children }) => {
         dispatch({ type: 'REMOVE_ITEM', payload: id });
     };
 
+    // to clear the cart
+
+    const clearCart = () => {
+        dispatch({ type: 'CLEAR_CART' });
+    };
+
     // to add data in local storage
     // get vs set
     useEffect(() => {
@@ -53,6 +59,7 @@ const CartProvider = ({ children }) => {
                 ...state,
                 addToCart,
                 removeItem,
+                clearCart,
                 setDecrease,
                 setIncrease,
             }}

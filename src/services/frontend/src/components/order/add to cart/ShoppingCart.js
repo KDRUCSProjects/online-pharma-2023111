@@ -12,9 +12,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../features/cart context/cart_context';
 import CartItem from './CartItem';
+import { getLocation } from '../../services/LocalStorageService';
 
 const ShoppingCart = () => {
-    const { cart, total_amount, delivery_fee } = useCartContext();
+    const address = getLocation().location;
+    const { cart, total_amount, delivery_fee, clearCart } = useCartContext();
     if (cart.length === 0) {
         return (
             <Typography
@@ -105,7 +107,7 @@ const ShoppingCart = () => {
                                     fontWeight: 'bold',
                                 }}
                             >
-                                jp5s+20 Kandahar, Afghanistan
+                                {address ? address : 'No address Selected'}
                             </Typography>
                         </Box>
                         <Box mt={4} mr={3.3}>
@@ -134,7 +136,17 @@ const ShoppingCart = () => {
                                     },
                                 }}
                             >
-                                CHANGE ADDRESS
+                                <Link
+                                    to={'/location/'}
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: 'white',
+                                    }}
+                                >
+                                    {address
+                                        ? 'CHANGE ADDRESS'
+                                        : 'Select Address'}
+                                </Link>
                             </Button>
                         </Box>
                     </Box>
@@ -267,7 +279,7 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
-                                    Rs. {total_amount}
+                                    af. {total_amount}
                                 </Typography>
                             </Box>
                             <Box
@@ -289,7 +301,7 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
-                                    Rs. {delivery_fee}
+                                    af. {delivery_fee}
                                 </Typography>
                             </Box>
                             <Typography sx={{ fontSize: '8px' }}>
@@ -314,7 +326,7 @@ const ShoppingCart = () => {
                                         fontSize: '12px',
                                     }}
                                 >
-                                    Rs. {total_amount + delivery_fee}
+                                    af. {total_amount + delivery_fee}
                                 </Typography>
                             </Box>
                         </Box>
@@ -342,6 +354,20 @@ const ShoppingCart = () => {
                             }}
                         >
                             CHECKOUT
+                        </Button>
+                        <Button
+                            onClick={clearCart}
+                            variant="text"
+                            sx={{
+                                backgroundColor: 'red',
+                                width: '100%',
+                                mt: { xl: 3, lg: 3, md: 2, sm: 2, xs: 2 },
+                                borderRadius: 2,
+                                color: 'white',
+                                ':hover': { backgroundColor: 'red' },
+                            }}
+                        >
+                            Clear Cart
                         </Button>
                     </Box>
                 </Grid>

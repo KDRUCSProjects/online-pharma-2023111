@@ -16,8 +16,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { unsetUserInfo } from '../features/userSlice';
 import { unSetUserToken } from '../features/authSlice';
 import { removeLocation, removeToken } from '../services/LocalStorageService';
+import { useCartContext } from '../features/cart context/cart_context';
 
 const Profile = () => {
+    const { clearCart } = useCartContext();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
@@ -33,12 +35,12 @@ const Profile = () => {
         dispatch(unSetUserToken({ access_token: null }));
         removeToken();
         removeLocation();
+        clearCart();
         navigate('/login/');
     };
 
     // Getting User Data from Redux Store
     const myData = useSelector((state) => state.user);
-    console.log(myData);
     return (
         <Container>
             <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 3 }}>

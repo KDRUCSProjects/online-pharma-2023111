@@ -30,8 +30,10 @@ import { useGetLoggedUserQuery } from '../services/userAuthApi';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LockClockIcon from '@mui/icons-material/LockClock';
+import { useCartContext } from '../features/cart context/cart_context';
 
 const NavBar = () => {
+    const { clearCart } = useCartContext();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleLogout = () => {
@@ -47,6 +49,7 @@ const NavBar = () => {
         dispatch(unSetUserToken({ access_token: null }));
         removeToken();
         removeLocation();
+        clearCart();
         navigate('/login/');
     };
     const { access_token } = getToken();
