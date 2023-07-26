@@ -1,64 +1,100 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import { Box, Card, CardContent, CardMedia, Stack } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import StyleIcon from '@mui/icons-material/Style';
 
 const AdCard = (props) => {
     const data = props.ad;
     return (
-        <Card sx={{ height: 270, marginTop: 2, marginLeft: 2 }}>
+        <Card sx={{ height: 300, marginTop: 2, marginLeft: 2, width: 250 }}>
             <CardMedia
                 component="img"
-                height="160"
+                height="120"
                 image={data.images[0].image}
                 alt="hello"
+                sx={{
+                    width: '215px',
+                    height: '180px',
+                    mt: '16px',
+                    ml: '16px',
+                    transition: 'all 1s',
+                    ':hover': { transform: 'scale(0.7)' },
+                }}
             />
             <CardContent>
                 <Stack
-                    direction="row"
+                    direction="column"
                     spacing={1}
-                    justifyContent="space-between"
+                    justifyContent="flex-start"
                     mb={1}
-                >
-                    <Box align="left">
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                fontSize: {
-                                    lg: '20px',
-                                    sm: '20px',
-                                    xs: '20px',
-                                    md: '16px',
-                                },
-                            }}
-                        >
-                            {data.title}
-                        </Typography>
-                    </Box>
-                    <Stack
-                        direction="row"
-                        justifyContent={'flex-end'}
-                        spacing={1}
-                    ></Stack>
-                </Stack>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
-                        fontSize: '14px',
-                        fontWeight: 'bold',
-                    }}
+                    height={'78px'}
                 >
                     <Typography
                         variant="h6"
-                        fontSize={16}
-                        color="#880e4f"
-                        display={'inline'}
-                        align="right"
+                        sx={{
+                            fontSize: {
+                                lg: '17px',
+                                sm: '17px',
+                                xs: '17px',
+                                md: '17px',
+                                xl: '17px',
+                            },
+                        }}
                     >
-                        {data.sell_price}
+                        {data.title.length < 22
+                            ? data.title
+                            : `${data.title.slice(0, 22)}...`}
                     </Typography>
-                </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width: '215px',
+                            height: '42px',
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                }}
+                            >
+                                <StyleIcon sx={{ color: 'lightgray' }} />
+                                <Typography
+                                    ml={1}
+                                    variant="h6"
+                                    fontSize={16}
+                                    color="#76bc21"
+                                    display={'inline'}
+                                    align="right"
+                                >
+                                    {data.sell_price}
+                                </Typography>
+                            </Box>
+                            <Box
+                                sx={{
+                                    borderLeft: '2px solid lightgray',
+                                    ml: '120px',
+                                }}
+                            >
+                                <AddShoppingCartIcon
+                                    sx={{
+                                        fontSize: '30px',
+                                        color: '#76bc21',
+                                        mt: '6px',
+                                        ml: '5px',
+                                    }}
+                                />
+                            </Box>
+                        </Box>
+                    </Box>
+                </Stack>
             </CardContent>
         </Card>
     );
