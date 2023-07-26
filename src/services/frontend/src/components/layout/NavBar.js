@@ -111,6 +111,9 @@ const NavBar = () => {
                             style={{
                                 color: '#76bc21',
                             }}
+                            onClick={() => {
+                                props.setSearchStatus(false);
+                            }}
                         >
                             Habib Pharma
                         </Link>
