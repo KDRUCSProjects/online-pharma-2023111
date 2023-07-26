@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from ...models.data.ad import Ad
-from ...models.data.order import Order
+from ...models.data.order_item import OrderItem
 from ...serializers.data.ad import AdSerializer
 from django.db.models import Count
 
@@ -9,7 +9,7 @@ from django.db.models import Count
 class TopAdsView(APIView):
     def get(self, request):
         top_ads = (
-            Order.objects.values("ad")
+            OrderItem.objects.values("ad")
             .annotate(count=Count("ad"))
             .order_by("-count")[:5]
         )
