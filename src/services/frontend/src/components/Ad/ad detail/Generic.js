@@ -50,7 +50,7 @@ const Generic = () => {
                     Generic
                 </Typography>
                 <Typography mt={1} ml={2}>
-                    {data.generics.name}
+                    {data.generics}
                 </Typography>
             </Box>
         );

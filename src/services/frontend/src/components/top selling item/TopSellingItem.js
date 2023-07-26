@@ -11,7 +11,6 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import { getObjects } from '../Api/Api';
 import CircularProgress from '@mui/material/CircularProgress';
-import axios from 'axios';
 
 const styles = {
     card: {
