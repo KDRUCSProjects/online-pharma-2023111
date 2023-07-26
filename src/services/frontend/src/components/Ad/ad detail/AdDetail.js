@@ -167,7 +167,7 @@ const AdDetail = () => {
                         <Box>
                             <Typography variant="h6">{data.title}</Typography>
                             <Typography mt={1}>
-                                Brand :<Link> {data.brand.name}</Link>
+                                Brand :<Link> {data.brand}</Link>
                             </Typography>
                         </Box>
                         <Box

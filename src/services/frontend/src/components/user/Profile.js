@@ -49,7 +49,7 @@ const Profile = () => {
                     style={{ textDecoration: 'none', color: '#76bc21' }}
                 >
                     <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    {myData.admin}
+                    Home
                 </Link>
                 <Typography
                     sx={{ display: 'flex', alignItems: 'center' }}
@@ -109,7 +109,7 @@ const Profile = () => {
                     mt={4}
                 >
                     <Link
-                        to={'orders/'}
+                        to={'/orders/'}
                         style={{
                             textAlign: 'center',
                             textDecoration: 'none',
