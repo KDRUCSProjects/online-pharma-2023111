@@ -21,3 +21,6 @@ class Prescription(DataRoot):
         blank=True,
         default="",
     )
+
+    def __str__(self):
+        return self.image.name

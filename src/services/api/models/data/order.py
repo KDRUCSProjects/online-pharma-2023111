@@ -12,22 +12,16 @@ class StatusCondition(models.IntegerChoices):
 
 class Order(DataRoot):
     address = models.CharField(max_length=200, null=False, blank=False)
-    ad = models.ForeignKey(Ad, on_delete=models.CASCADE, related_name="Ad")
     status = models.PositiveIntegerField(
         choices=StatusCondition.choices,
         default=StatusCondition.pending,
     )
-    quantity = models.PositiveIntegerField()
     delivery_instruction = models.TextField(max_length=200)
-    delivery_fee = 100
-    total_amount = models.PositiveBigIntegerField(editable=False)
+    delivery_fee = models.IntegerField(null=True, blank=True)
+    total_amount = models.PositiveBigIntegerField()
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     order_date = models.DateField(auto_now_add=True)
+    order_time = models.TimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.address
-
-    def save(self, *args, **kwargs):
-        price = self.ad.sell_price
-        self.total_amount = (price * self.quantity) + self.delivery_fee
-        super().save(*args, **kwargs)
+        return str(self.order_date) + " | " + str(self.order_time)

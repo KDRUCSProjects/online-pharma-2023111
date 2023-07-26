@@ -42,7 +42,7 @@ class UserModelAdmin(BaseUserAdmin):
             },
         ),
     )
-    search_fields = ("email",)
+    search_fields = ("email", 'phone_number')
     ordering = ("email", "id")
     filter_horizontal = ()
 

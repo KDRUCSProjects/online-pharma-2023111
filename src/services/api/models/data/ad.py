@@ -2,18 +2,16 @@ from django.db import models
 from .base import DataRoot
 from .category import Category
 from .country import Country
-from .brand import Brand
-from .generics import Generics
 
 
 class Ad(DataRoot):
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    generics = models.ForeignKey(Generics, on_delete=models.CASCADE)
-    buy_price = models.IntegerField()
+    description = models.CharField(max_length=200, null=True, blank=True)
+    brand = models.CharField(max_length=200, null=True, blank=True)
+    generics = models.CharField(max_length=200, null=True, blank=True)
     sell_price = models.IntegerField()
-    quantity = models.PositiveIntegerField(default=1)
+    max_order = models.IntegerField(default=5)
+    countInStock = models.IntegerField(null=True, blank=True, default=0)
     how_work = models.TextField()
     used_for = models.TextField()
     when_not_used = models.TextField()
@@ -26,7 +24,7 @@ class Ad(DataRoot):
     )
 
     def __str__(self):
-        return self.title
+        return self.title + " | " + self.brand + " | " + str(self.sell_price)
 
 
 class AdImage(DataRoot):

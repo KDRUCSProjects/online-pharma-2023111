@@ -1,12 +1,12 @@
 from ...models.data.order import Order
 from .base import DataRootSerializer
-from .ad import AdSerializer
 from .user import UserSerializer
+from .order_item import OrderItemSerializer
 
 
 class OrderSerializer(DataRootSerializer):
-    ad = AdSerializer()
     user = UserSerializer()
+    order_item = OrderItemSerializer(many=True)
 
     class Meta:
         model = Order
