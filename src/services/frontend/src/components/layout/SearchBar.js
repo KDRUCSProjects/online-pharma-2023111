@@ -63,16 +63,35 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const { total_item } = useCartContext();
+    const [openSearch, setOpenSearch] = useState(false);
+    const [searchParams, setSearchParams] = useState({ searchField: '' });
+    const handleSearchParamsChange = (e) => {
+        setSearchParams({
+            searchField: e.target.value,
+        });
+    };
+
+    const handleSearchForm = (e) => {
+        e.preventDefault();
+        props.setSearchSubmit(searchParams);
+        props.setSearchStatus(true);
+    };
+
     const myLocation = getLocation();
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+    console.log(openSearch);
     return (
         <AppBar position="static" sx={{ backgroundColor: '#76bc21', ml: 0 }}>
             <Container sx={{ paddingRight: 0 }}>
                 <Toolbar>
-                    <Box display="flex">
+                    <Box
+                        display="flex"
+                        component="form"
+                        onSubmit={handleSearchForm}
+                    >
                         <Search
                             sx={{
                                 background: 'white',
@@ -83,6 +102,7 @@ const SearchBar = () => {
                                 placeholder="Search Products"
                                 inputProps={{ 'aria-label': 'search' }}
                                 autoComplete="off"
+                                onChange={handleSearchParamsChange}
                             />
                             <Button
                                 type="submit"
@@ -92,6 +112,9 @@ const SearchBar = () => {
                                     borderRadius: '10px',
                                     ml: '2px',
                                     ':hover': { backgroundColor: 'white' },
+                                }}
+                                onClick={() => {
+                                    setOpenSearch(true);
                                 }}
                             >
                                 <SearchIcon
@@ -129,6 +152,9 @@ const SearchBar = () => {
                         >
                             <Link to={'/location/'}>
                                 <Button
+                                    onClick={() => {
+                                        props.setSearchStatus(false);
+                                    }}
                                     startIcon={
                                         <PlaceIcon sx={{ color: '#76bc21' }} />
                                     }
@@ -172,7 +198,7 @@ const SearchBar = () => {
                                             xl: '15px',
                                             lg: '15px',
                                             md: '10px',
-                                            sm: '10px',
+                                            sm: '20px',
                                             xl: '0px',
                                         },
                                     }}
@@ -182,6 +208,9 @@ const SearchBar = () => {
                             </Link>
                             <Link to={'/prescription/'}>
                                 <Button
+                                    onClick={() => {
+                                        props.setSearchStatus(false);
+                                    }}
                                     startIcon={
                                         <HistoryEduIcon
                                             sx={{ color: '#76bc21', ml: 1 }}
@@ -231,7 +260,12 @@ const SearchBar = () => {
                         </Box>
                     ) : null}
 
-                    <IconButton sx={{ ml: 'auto' }}>
+                    <IconButton
+                        sx={{ ml: 'auto' }}
+                        onClick={() => {
+                            props.setSearchStatus(false);
+                        }}
+                    >
                         <Link
                             to={'/shopping/cart/'}
                             style={{ textDecoration: 'none' }}
