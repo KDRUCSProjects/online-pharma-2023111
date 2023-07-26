@@ -164,6 +164,7 @@ const Login = () => {
                                 style={{
                                     display: 'block',
                                     marginBottom: '20px',
+                                    textDecoration: 'none',
                                 }}
                             >
                                 Forgot Password?
