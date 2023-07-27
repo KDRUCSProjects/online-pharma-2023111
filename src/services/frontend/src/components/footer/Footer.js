@@ -27,8 +27,14 @@ const Footer = () => {
             }}
         >
             <Grid color={'white'}>
-                <Typography variant="h3">Habib Pharma</Typography>
-                <Typography variant="h4" align="center" mt={5}>
+                <Typography variant="h4">Habib Pharma</Typography>
+                <Typography
+                    variant="h6"
+                    align="center"
+                    mt={5}
+                    mr={2}
+                    fontSize={'20px'}
+                >
                     Follow Us
                 </Typography>
                 <Box align="center">
@@ -38,7 +44,9 @@ const Footer = () => {
                 </Box>
             </Grid>
             <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 6 }}>
-                <Typography variant="h4">Categories</Typography>
+                <Typography variant="h6" fontSize={'20px'} fontWeight={'bold'}>
+                    Categories
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -114,7 +122,9 @@ const Footer = () => {
                 </Box>
             </Grid>
             <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
-                <Typography variant="h4">Navigate</Typography>
+                <Typography variant="h6" fontSize={'20px'} fontWeight={'bold'}>
+                    Navigate
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -167,7 +177,9 @@ const Footer = () => {
                 </Box>
             </Grid>
             <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
-                <Typography variant="h4">Support</Typography>
+                <Typography variant="h6" fontSize={'20px'} fontWeight={'bold'}>
+                    Support
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -235,7 +247,9 @@ const Footer = () => {
                 </Box>
             </Grid>
             <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 4 }}>
-                <Typography variant="h4">Contact Us</Typography>
+                <Typography variant="h6" fontSize={'20px'} fontWeight={'bold'}>
+                    Contact Us
+                </Typography>
                 <Box
                     sx={{
                         display: 'flex',
@@ -255,7 +269,7 @@ const Footer = () => {
                         Habib Pharma
                     </Link>
                     <Typography sx={{ mt: 1, height: '4px', fontSize: '16px' }}>
-                        Email Me
+                        Email
                     </Typography>
                     <Link
                         style={{
@@ -264,6 +278,18 @@ const Footer = () => {
                         }}
                     >
                         samiullah.arian@icloud.com
+                    </Link>
+                    <Typography sx={{ mt: 1, height: '4px', fontSize: '16px' }}>
+                        Phone
+                    </Typography>
+                    <Link
+                        style={{
+                            marginTop: 18,
+                            color: 'white',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        (+93705310309)
                     </Link>
                     <Link
                         style={{
