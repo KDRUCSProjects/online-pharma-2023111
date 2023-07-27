@@ -110,10 +110,7 @@ const RouteList = () => {
                         }
                     />
                     <Route path="/contact/" element={<Contact />} />
-                    <Route
-                        path="ad/detail/:category/:name/:id/"
-                        element={<AdDetail />}
-                    >
+                    <Route path="ad/detail/:id/" element={<AdDetail />}>
                         <Route path="" element={<WorkDetail />} />
                         <Route
                             path="description/:id/"
