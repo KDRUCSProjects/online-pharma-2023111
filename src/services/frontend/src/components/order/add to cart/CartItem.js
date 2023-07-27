@@ -10,11 +10,11 @@ const CartItem = ({ id, title, image, amount, price }) => {
     return (
         <Card
             sx={{
-                width: '95%',
+                width: '97.5%',
                 height: '100px',
                 border: '1px solid gray',
-                ml: 0.8,
-                mb: 2,
+                ml: 0.3,
+                mb: 1.5,
                 borderRadius: 2,
                 boxShadow: 'none',
                 display: 'flex',
@@ -24,7 +24,7 @@ const CartItem = ({ id, title, image, amount, price }) => {
             <Box>
                 <Box
                     sx={{
-                        width: '100%',
+                        width: '30%',
                         height: '65px',
                         m: 1,
                         borderRadius: 2,
@@ -59,7 +59,11 @@ const CartItem = ({ id, title, image, amount, price }) => {
                         >
                             Drug Name
                         </Typography>
-                        <Typography marginTop={1}>{title}</Typography>
+                        <Typography marginTop={1}>
+                            {title.length < 6
+                                ? title
+                                : `${title.slice(0, 6)}..`}
+                        </Typography>
                         <Typography
                             sx={{
                                 fontSize: '12px',
@@ -93,7 +97,14 @@ const CartItem = ({ id, title, image, amount, price }) => {
                             mt: 6,
                         }}
                     />
-                    <Typography>{amount}</Typography>
+                    <Typography
+                        sx={{
+                            pt: '55px',
+                            mr: '7px',
+                        }}
+                    >
+                        {amount}
+                    </Typography>
                     <Button
                         onClick={() => setIncrease(id)}
                         startIcon={
@@ -119,11 +130,15 @@ const CartItem = ({ id, title, image, amount, price }) => {
                     />
                 </Box>
             </Box>
-            <Box>
+            <Box
+                sx={{
+                    mr: { lg: 10, xl: 10, md: 5, sm: 10, xs: 1 },
+                    ml: { lg: 0, xl: 0, md: 0, sm: 55, xs: 6 },
+                }}
+            >
                 <Button
                     onClick={() => removeItem(id)}
                     sx={{
-                        ml: 5,
                         color: 'gray',
                         ':hover': {
                             color: '#76bc21',
@@ -132,7 +147,7 @@ const CartItem = ({ id, title, image, amount, price }) => {
                         },
                     }}
                 >
-                    <HighlightOffIcon />
+                    <HighlightOffIcon sx={{ mr: 30 }} />
                 </Button>
             </Box>
         </Card>
