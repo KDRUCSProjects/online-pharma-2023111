@@ -115,12 +115,44 @@ const NavBar = () => {
                                 props.setSearchStatus(false);
                             }}
                         >
-                            Habib Pharma
+                            <Box
+                                component="img"
+                                src="http://localhost:8000/frontend/static/images/logo/header.png"
+                                sx={{
+                                    height: {
+                                        xl: '60px',
+                                        lg: '50px',
+                                        md: '40px',
+                                        sm: '35px',
+                                        xs: '30px',
+                                    },
+                                    width: {
+                                        xl: '300px',
+                                        lg: '250px',
+                                        md: '230px',
+                                        sm: '220px',
+                                        xs: '200px',
+                                    },
+                                    paddingTop: '2px',
+                                }}
+                            />
                         </Link>
                     </Typography>
                     {user ? (
                         <>
-                            <Typography>{myData.name}</Typography>
+                            <Typography
+                                sx={{
+                                    fontSize: {
+                                        xl: '20px',
+                                        lg: '20px',
+                                        md: '15px',
+                                        sm: '10px',
+                                        xs: '8px',
+                                    },
+                                }}
+                            >
+                                {myData.name}
+                            </Typography>
                             <IconButton
                                 variant="contained"
                                 color="primary"

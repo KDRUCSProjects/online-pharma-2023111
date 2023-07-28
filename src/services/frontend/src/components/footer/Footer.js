@@ -27,20 +27,33 @@ const Footer = () => {
             }}
         >
             <Grid color={'white'}>
-                <Typography variant="h4">Habib Pharma</Typography>
-                <Typography
-                    variant="h6"
-                    align="center"
-                    mt={5}
-                    mr={2}
-                    fontSize={'20px'}
-                >
-                    Follow Us
-                </Typography>
-                <Box align="center">
-                    <FacebookIcon sx={{ color: 'white', mr: 2 }} />
-                    <TwitterIcon sx={{ color: 'white', mr: 2 }} />
-                    <InstagramIcon sx={{ color: 'white', mr: 2 }} />
+                <Box>
+                    <Link to={'/'}>
+                        <img
+                            src="http://localhost:8000/frontend/static/images/logo/footer.png"
+                            style={{
+                                height: '100px',
+                                width: '400px',
+                                paddingLeft: '50px',
+                            }}
+                        />
+                    </Link>
+                </Box>
+                <Box>
+                    <Typography
+                        variant="h6"
+                        mt={5}
+                        pl={'130px'}
+                        mr={2}
+                        fontSize={'20px'}
+                    >
+                        Follow Us
+                    </Typography>
+                    <Box sx={{ paddingLeft: '120px' }}>
+                        <FacebookIcon sx={{ color: 'white', mr: 2 }} />
+                        <TwitterIcon sx={{ color: 'white', mr: 2 }} />
+                        <InstagramIcon sx={{ color: 'white', mr: 2 }} />
+                    </Box>
                 </Box>
             </Grid>
             <Grid ml={{ lg: 0, xl: 0, md: 0, sm: 6 }}>
