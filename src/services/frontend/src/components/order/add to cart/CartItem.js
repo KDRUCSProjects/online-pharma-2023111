@@ -11,7 +11,13 @@ const CartItem = ({ id, title, image, amount, price }) => {
         <Card
             sx={{
                 width: '97.5%',
-                height: '100px',
+                height: {
+                    lg: '100px',
+                    xl: '100px',
+                    md: '100px',
+                    sm: '150px',
+                    xs: '100px',
+                },
                 border: '1px solid gray',
                 ml: 0.3,
                 mb: 1.5,
@@ -21,15 +27,12 @@ const CartItem = ({ id, title, image, amount, price }) => {
                 justifyContent: 'space-between',
             }}
         >
-            <Box>
+            <Box sx={{ width: '100%', display: 'flex' }}>
                 <Box
                     sx={{
-                        width: '30%',
-                        height: '65px',
-                        m: 1,
-                        borderRadius: 2,
-                        display: 'flex',
-                        flexDirection: 'row',
+                        width: '25%',
+                        height: '12vh',
+                        mt: 1.2,
                     }}
                 >
                     <CardMedia
@@ -38,117 +41,129 @@ const CartItem = ({ id, title, image, amount, price }) => {
                         alt="image"
                         sx={{
                             width: '80%',
-                            height: '50px',
-                            ml: 1.3,
-                            mt: 0.8,
+                            height: {
+                                lg: '50px',
+                                xl: '50px',
+                                md: '50px',
+                                sm: '90px',
+                                xs: '50px',
+                            },
+                            mt: 1.5,
                         }}
                     ></CardMedia>
+                </Box>
+                <Box
+                    sx={{
+                        width: '74%',
+                    }}
+                >
                     <Box
                         sx={{
                             width: '100%',
-                            height: '80px',
-                            ml: 2,
-                            mb: 1,
+                            height: '8vh',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <Typography marginTop={3} fontWeight={'bold'}>
+                            {title.length < 17
+                                ? title
+                                : `${title.slice(0, 17)}...`}
+                        </Typography>
+                        <Button
+                            size="small"
+                            onClick={() => removeItem(id)}
+                            sx={{
+                                color: 'gray',
+                                ':hover': {
+                                    color: '#76bc21',
+                                    cursor: 'pointer',
+                                    backgroundColor: 'white',
+                                },
+                                height: '3vh',
+                                borderRadius: '10px',
+                                justifyContent: 'flex-end',
+                                mt: '5px',
+                            }}
+                        >
+                            <HighlightOffIcon
+                                sx={{
+                                    ml: '3px',
+                                }}
+                            />
+                        </Button>
+                    </Box>
+                    <Box
+                        sx={{
+                            width: '100',
+                            height: '7vh',
+                            display: 'flex',
+                            justifyContent: 'space-between',
                         }}
                     >
                         <Typography
                             sx={{
                                 fontSize: '12px',
                                 fontWeight: 'bold',
-                            }}
-                        >
-                            Drug Name
-                        </Typography>
-                        <Typography marginTop={1}>
-                            {title.length < 6
-                                ? title
-                                : `${title.slice(0, 6)}..`}
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontSize: '12px',
-                                fontWeight: 'bold',
-                                mt: 1,
+                                mt: 2,
                             }}
                         >
                             Rs. {price}
                         </Typography>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                            }}
+                        >
+                            <Button
+                                onClick={() => setDecrease(id)}
+                                startIcon={
+                                    <RemoveIcon
+                                        sx={{
+                                            color: '#76bc21',
+                                            border: '1px solid gray',
+                                            borderRadius: 1,
+                                        }}
+                                    />
+                                }
+                                sx={{
+                                    ':hover': {
+                                        color: '#76bc21',
+                                        cursor: 'pointer',
+                                        backgroundColor: 'white',
+                                    },
+                                    height: '40px',
+                                    borderColor: 'white',
+                                    display: 'flex',
+                                }}
+                            />
+                            <Typography mt={1}>{amount}</Typography>
+                            <Button
+                                onClick={() => setIncrease(id)}
+                                startIcon={
+                                    <AddIcon
+                                        sx={{
+                                            color: '#76bc21',
+                                            border: '1px solid gray',
+                                            borderRadius: 1,
+                                        }}
+                                    />
+                                }
+                                sx={{
+                                    ':hover': {
+                                        color: '#76bc21',
+                                        cursor: 'pointer',
+                                        backgroundColor: 'white',
+                                    },
+                                    height: '40px',
+                                    borderColor: 'white',
+                                    display: 'flex',
+                                }}
+                            />
+                        </Box>
                     </Box>
-                    <Button
-                        onClick={() => setDecrease(id)}
-                        startIcon={
-                            <RemoveIcon
-                                sx={{
-                                    color: '#76bc21',
-                                    border: '1px solid gray',
-                                    borderRadius: 1,
-                                }}
-                            />
-                        }
-                        sx={{
-                            ':hover': {
-                                color: '#76bc21',
-                                cursor: 'pointer',
-                                backgroundColor: 'white',
-                            },
-                            height: '40px',
-                            borderColor: 'white',
-                            display: 'flex',
-                            mt: 6,
-                        }}
-                    />
-                    <Typography
-                        sx={{
-                            pt: '55px',
-                            mr: '7px',
-                        }}
-                    >
-                        {amount}
-                    </Typography>
-                    <Button
-                        onClick={() => setIncrease(id)}
-                        startIcon={
-                            <AddIcon
-                                sx={{
-                                    color: '#76bc21',
-                                    border: '1px solid gray',
-                                    borderRadius: 1,
-                                }}
-                            />
-                        }
-                        sx={{
-                            ':hover': {
-                                color: '#76bc21',
-                                cursor: 'pointer',
-                                backgroundColor: 'white',
-                            },
-                            height: '40px',
-                            borderColor: 'white',
-                            display: 'flex',
-                            mt: 6,
-                        }}
-                    />
                 </Box>
-            </Box>
-            <Box
-                sx={{
-                    mr: { lg: 10, xl: 10, md: 5, sm: 10, xs: 1 },
-                    ml: { lg: 0, xl: 0, md: 0, sm: 55, xs: 6 },
-                }}
-            >
-                <Button
-                    onClick={() => removeItem(id)}
-                    sx={{
-                        color: 'gray',
-                        ':hover': {
-                            color: '#76bc21',
-                            cursor: 'pointer',
-                            backgroundColor: 'white',
-                        },
-                    }}
-                >
-                    <HighlightOffIcon sx={{ mr: 30 }} />
-                </Button>
             </Box>
         </Card>
     );
