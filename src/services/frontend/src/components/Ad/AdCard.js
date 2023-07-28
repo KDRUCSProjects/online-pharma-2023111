@@ -17,7 +17,17 @@ const AdCard = (props) => {
     const { addToCart } = useCartContext();
     const data = props.ad;
     return (
-        <Card sx={{ height: 300, marginTop: 2, marginLeft: 2, width: 250 }}>
+        <Card
+            style={{
+                boxShadow: { lg: '20px', xs: '0px' },
+            }}
+            sx={{
+                height: { lg: 300, xl: 300, md: 300, sm: 300, xs: 310 },
+                marginTop: 2,
+                marginLeft: { lg: 2, xl: 2, md: 2, sm: 1, xs: 0 },
+                width: { lg: 250, xl: 250, md: 250, sm: 250, xs: 180 },
+            }}
+        >
             <Link
                 to={`/ad/detail/${data.id}/`}
                 style={{
@@ -30,10 +40,34 @@ const AdCard = (props) => {
                     image={data.images[0].image}
                     alt="hello"
                     sx={{
-                        width: '215px',
-                        height: '180px',
-                        mt: '16px',
-                        ml: '16px',
+                        width: {
+                            lg: '215px',
+                            xl: '215px',
+                            md: '215px',
+                            sm: '215px',
+                            xs: '160px',
+                        },
+                        height: {
+                            lg: '180px',
+                            xl: '180px',
+                            md: '180px',
+                            sm: '180px',
+                            xs: '155px',
+                        },
+                        mt: {
+                            lg: '16px',
+                            xl: '16px',
+                            md: '16px',
+                            sm: '15px',
+                            xs: '5px',
+                        },
+                        ml: {
+                            lg: '16px',
+                            xl: '16px',
+                            md: '16px',
+                            sm: '15px',
+                            xs: '10px',
+                        },
                         transition: 'all 1s',
                         ':hover': { transform: 'scale(0.7)' },
                     }}
@@ -47,6 +81,26 @@ const AdCard = (props) => {
                     mb={1}
                     height={'78px'}
                 >
+                    <Button
+                        onClick={() => addToCart(data.id, 1, data)}
+                        sx={{
+                            color: 'white',
+                            backgroundColor: '#76bc21',
+                            width: '40vw',
+                            height: '5vh',
+                            borderRadius: '10px',
+                            display: {
+                                lg: 'none',
+                                xl: 'none',
+                                md: 'none',
+                                sm: 'none',
+                                xs: 'block',
+                            },
+                            ':hover': { backgroundColor: '#76bc21   ' },
+                        }}
+                    >
+                        Ad to cart
+                    </Button>
                     <Typography
                         variant="h6"
                         sx={{
@@ -109,6 +163,13 @@ const AdCard = (props) => {
                                             color: '#76bc21',
                                             mt: '6px',
                                             ml: '5px',
+                                            display: {
+                                                lg: 'block',
+                                                xl: 'block',
+                                                md: 'block',
+                                                sm: 'block',
+                                                xs: 'none',
+                                            },
                                         }}
                                     />
                                 </Button>
