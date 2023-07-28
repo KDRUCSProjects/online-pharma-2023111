@@ -1,27 +1,44 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Box, Card, CardContent, CardMedia, Stack } from '@mui/material';
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardMedia,
+    Stack,
+} from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StyleIcon from '@mui/icons-material/Style';
+import { useCartContext } from '../features/cart context/cart_context';
+import { Link } from 'react-router-dom';
 
 const AdCard = (props) => {
+    const { addToCart } = useCartContext();
     const data = props.ad;
     return (
         <Card sx={{ height: 300, marginTop: 2, marginLeft: 2, width: 250 }}>
-            <CardMedia
-                component="img"
-                height="120"
-                image={data.images[0].image}
-                alt="hello"
-                sx={{
-                    width: '215px',
-                    height: '180px',
-                    mt: '16px',
-                    ml: '16px',
-                    transition: 'all 1s',
-                    ':hover': { transform: 'scale(0.7)' },
+            <Link
+                to={`/ad/detail/${data.id}/`}
+                style={{
+                    textDecoration: 'none',
                 }}
-            />
+            >
+                <CardMedia
+                    component="img"
+                    height="120"
+                    image={data.images[0].image}
+                    alt="hello"
+                    sx={{
+                        width: '215px',
+                        height: '180px',
+                        mt: '16px',
+                        ml: '16px',
+                        transition: 'all 1s',
+                        ':hover': { transform: 'scale(0.7)' },
+                    }}
+                />
+            </Link>
             <CardContent>
                 <Stack
                     direction="column"
@@ -83,14 +100,18 @@ const AdCard = (props) => {
                                     ml: '120px',
                                 }}
                             >
-                                <AddShoppingCartIcon
-                                    sx={{
-                                        fontSize: '30px',
-                                        color: '#76bc21',
-                                        mt: '6px',
-                                        ml: '5px',
-                                    }}
-                                />
+                                <Button
+                                    onClick={() => addToCart(data.id, 1, data)}
+                                >
+                                    <AddShoppingCartIcon
+                                        sx={{
+                                            fontSize: '30px',
+                                            color: '#76bc21',
+                                            mt: '6px',
+                                            ml: '5px',
+                                        }}
+                                    />
+                                </Button>
                             </Box>
                         </Box>
                     </Box>

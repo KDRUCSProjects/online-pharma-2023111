@@ -1,5 +1,6 @@
 import {
     Box,
+    Breadcrumbs,
     Button,
     Container,
     Grid,
@@ -14,7 +15,8 @@ import MyLocationIcon from '@mui/icons-material/MyLocation';
 import CloseIcon from '@mui/icons-material/Close';
 import React, { useState } from 'react';
 import { storeLocation } from '../services/LocalStorageService';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 const Location = () => {
     const [locationData, setLocationData] = useState('');
     const [message, setMessage] = useState('');
@@ -59,6 +61,33 @@ const Location = () => {
     };
     return (
         <Container>
+            <Breadcrumbs aria-label="breadcrumb" sx={{ mt: 3 }}>
+                <Link
+                    to={'/'}
+                    style={{
+                        textDecoration: 'none',
+                        color: '#76bc21',
+                    }}
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Typography
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="text.primary"
+                >
+                    Location
+                </Typography>
+            </Breadcrumbs>
+            <Typography
+                variant="h6"
+                color={'#76bc21'}
+                mt={3}
+                pl={1}
+                sx={{ borderLeft: '3px solid #76bc21' }}
+            >
+                Location
+            </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                 <Grid
                     container

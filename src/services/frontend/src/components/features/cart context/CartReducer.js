@@ -9,13 +9,15 @@ const CartReducer = (state, action) => {
         if (existingProduct) {
             let updateProduct = state.cart.map((curItem) => {
                 if (curItem.id === id) {
-                    let newAmount = curItem.amount + amount;
-                    if (newAmount >= curItem.max_order) {
-                        newAmount = curItem.max_order;
+                    let incAmount = curItem.amount + amount;
+                    if (incAmount >= curItem.countInStock) {
+                        incAmount = curItem.countInStock;
+                    } else if (incAmount >= curItem.max_order) {
+                        incAmount = curItem.max_order;
                     }
                     return {
                         ...curItem,
-                        amount: newAmount,
+                        amount: incAmount,
                     };
                 } else {
                     return curItem;
@@ -34,6 +36,7 @@ const CartReducer = (state, action) => {
                 max_order: ad.max_order,
                 image: ad.images[0].image,
                 price: ad.sell_price,
+                countInStock: ad.countInStock,
             };
             return {
                 ...state,
@@ -65,8 +68,10 @@ const CartReducer = (state, action) => {
         let updateProduct = state.cart.map((curItem) => {
             if (curItem.id === action.payload) {
                 let incAmount = curItem.amount + 1;
-                if (incAmount >= curItem.max_order) {
-                    incAmount = max_order;
+                if (incAmount >= curItem.countInStock) {
+                    incAmount = curItem.countInStock;
+                } else if (incAmount >= curItem.max_order) {
+                    incAmount = curItem.max_order;
                 }
                 return {
                     ...curItem,

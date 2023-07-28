@@ -8,4 +8,4 @@ class AdViewSit(DataRootViewSet):
     queryset = Ad.objects.all()
     serializer_class = AdSerializer
     filter_backends = [SearchFilter]
-    search_fields = ['title']
+    search_fields = ['title','generics']

@@ -26,7 +26,6 @@ const Home = () => {
                 return searchObject('ads', searchInfoData);
             }
         );
-        console.log(data);
         if (isError) {
             return <div>{error.message} Ad Not Found</div>;
         }
@@ -85,7 +84,7 @@ const Home = () => {
                                     xs={12}
                                 >
                                     <Link
-                                        to={`/ad/detail/${ad.category.name}/${ad.title}/${ad.id}/`}
+                                        to={`/ad/detail/${ad.id}/`}
                                         style={{ textDecoration: 'none' }}
                                     >
                                         <AdCard ad={ad} />
@@ -98,14 +97,14 @@ const Home = () => {
             }
         }
     } else {
-    return (
-        <Box>
-            <Slider />
-            <Category />
-            <TopSellingItem />
-            <FeaturedProducts />
-        </Box>
-    );
+        return (
+            <Box>
+                <Slider />
+                <Category />
+                <TopSellingItem />
+                <FeaturedProducts />
+            </Box>
+        );
     }
 };
 
