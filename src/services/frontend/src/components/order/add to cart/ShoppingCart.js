@@ -144,8 +144,17 @@ const ShoppingCart = () => {
                                 ShoppingCart
                             </Typography>
                         </Breadcrumbs>
+                        <Typography
+                            variant="h6"
+                            color={'#76bc21'}
+                            mt={3}
+                            pl={1}
+                            sx={{ borderLeft: '3px solid #76bc21' }}
+                        >
+                            ShoppingCart
+                        </Typography>
                     </Grid>
-                    <Grid item xl={7} lg={7} md={6} sm={12} xs={12}>
+                    <Grid item xl={7} lg={7} md={6} sm={12} xs={12} mt={2}>
                         <Box
                             sx={{
                                 height: {
