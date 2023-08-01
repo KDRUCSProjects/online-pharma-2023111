@@ -11,7 +11,7 @@ class TopAdsView(APIView):
         top_ads = (
             OrderItem.objects.values("ad")
             .annotate(count=Count("ad"))
-            .order_by("-count")[:5]
+            .order_by("-count")[:4]
         )
         # Get the product IDs from the queryset
         ad_ids = [ad["ad"] for ad in top_ads]

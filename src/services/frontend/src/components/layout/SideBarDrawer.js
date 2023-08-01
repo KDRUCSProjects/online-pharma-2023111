@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { Box, IconButton, Modal, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SideBarDrawer = () => {
+    const myData = useSelector((state) => state.user);
     const [open, setOpen] = useState(true);
     const [sideOpen, setSideOpen] = useState(false);
 
@@ -195,25 +197,29 @@ const SideBarDrawer = () => {
                             About us
                         </Link>
                     </Typography>
-                    <Typography
-                        mt={4}
-                        ml={3}
-                        mb={2}
-                        variant="h6"
-                        fontSize="15px"
-                        fontWeight="bold"
-                    >
-                        <Link
-                            style={{
-                                textDecoration: 'none',
-                                color: 'black',
-                            }}
-                            onClick={() => setSideOpen(false)}
-                            to={'/dashboard/'}
+                    {myData.admin ? (
+                        <Typography
+                            mt={4}
+                            ml={3}
+                            mb={2}
+                            variant="h6"
+                            fontSize="15px"
+                            fontWeight="bold"
                         >
-                            dashboard
-                        </Link>
-                    </Typography>
+                            <Link
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'black',
+                                }}
+                                onClick={() => setSideOpen(false)}
+                                to={'/dashboard/'}
+                            >
+                                dashboard
+                            </Link>
+                        </Typography>
+                    ) : (
+                        ''
+                    )}
                 </Box>
             </Modal>
         </Box>

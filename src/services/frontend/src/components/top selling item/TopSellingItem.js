@@ -5,20 +5,14 @@ import {
     CardContent,
     CardMedia,
     Container,
+    Grid,
     Stack,
     Typography,
 } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { getObjects } from '../Api/Api';
 import CircularProgress from '@mui/material/CircularProgress';
-
-const styles = {
-    card: {
-        minWidth: 275,
-        marginRight: 16,
-    },
-};
-
+import AdCard from '../Ad/AdCard';
 const TopSellingItem = () => {
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['top_selling'],
@@ -67,97 +61,21 @@ const TopSellingItem = () => {
                     >
                         Top Selling Items
                     </Typography>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            overflowX: 'auto',
-                            scrollBehavior: 'smooth',
-                            '::-webkit-scrollbar': {
-                                height: 0,
-                            },
-                            mt: { xl: 4, lg: 4, md: 4, sm: 3, xs: 3 },
-                        }}
-                    >
+                    <Grid container>
                         {data.map((ad) => (
-                            <Card
+                            <Grid
+                                item
                                 key={ad.id}
-                                sx={{
-                                    minWidth: {
-                                        xl: 275,
-                                        lg: 275,
-                                        md: 250,
-                                        sm: 200,
-                                        xs: 200,
-                                    },
-                                    m: 1,
-                                }}
+                                xl={3}
+                                lg={3}
+                                md={4}
+                                sm={6}
+                                xs={6}
                             >
-                                <CardMedia
-                                    component="img"
-                                    image={ad.images[0].image}
-                                    alt={ad.images[0].name}
-                                    sx={{
-                                        height: {
-                                            xl: 160,
-                                            lg: 160,
-                                            md: 140,
-                                            sm: 120,
-                                            xs: 100,
-                                        },
-                                    }}
-                                />
-                                <CardContent>
-                                    <Stack
-                                        direction="row"
-                                        spacing={1}
-                                        justifyContent="space-between"
-                                        mb={1}
-                                    >
-                                        <Box align="left">
-                                            <Typography
-                                                variant="h6"
-                                                sx={{
-                                                    fontSize: {
-                                                        xl: '15px',
-                                                        lg: '15px',
-                                                        md: '13px',
-                                                        sm: '12px',
-                                                        xs: '10px',
-                                                    },
-                                                }}
-                                            >
-                                                {ad.title}
-                                            </Typography>
-                                        </Box>
-                                        <Stack
-                                            direction="row"
-                                            justifyContent={'flex-end'}
-                                            spacing={1}
-                                        ></Stack>
-                                    </Stack>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            justifyContent: 'flex-end',
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                        }}
-                                    >
-                                        <Typography
-                                            variant="h6"
-                                            fontSize={16}
-                                            color="#880e4f"
-                                            display={'inline'}
-                                            align="right"
-                                        >
-                                            {ad.sell_price}
-                                        </Typography>
-                                    </Box>
-                                </CardContent>
-                            </Card>
+                                <AdCard key={ad.id} ad={ad} />
+                            </Grid>
                         ))}
-                    </Box>
+                    </Grid>
                 </Container>
             </Box>
         );

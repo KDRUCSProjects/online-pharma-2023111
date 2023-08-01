@@ -39,7 +39,6 @@ import PendingOrder from '../order/PendingOrder';
 
 const RouteList = () => {
     const myData = useSelector((state) => state.user);
-    const { access_token } = useSelector((state) => state.auth);
     return (
         <BrowserRouter>
             <Routes>

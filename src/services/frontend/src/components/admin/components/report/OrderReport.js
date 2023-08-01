@@ -68,7 +68,7 @@ const OrderReport = () => {
                     Send
                 </Button>
             </form>
-            {totalPrice ? <Title>Total Price: {totalPrice}</Title> : ''}
+            {totalPrice ? <Title>Total Price: {totalPrice}</Title> : totalPrice}
         </React.Fragment>
     );
 };

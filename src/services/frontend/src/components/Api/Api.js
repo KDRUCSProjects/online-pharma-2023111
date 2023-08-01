@@ -11,6 +11,12 @@ export const getObjects = async (endPoint) => {
     const response = await Api.get(`/${endPoint}/`);
     return response.data;
 };
+
+export const getObjectsByPageNumber = async (pageNumber, id) => {
+    const response = await Api.get(`/ads/?category=${id}&page=${pageNumber}`);
+    return response.data;
+};
+
 export const getObject = async (endPoint, id) => {
     const response = await Api.get(`/${endPoint}/${id}/`);
     return response.data;
