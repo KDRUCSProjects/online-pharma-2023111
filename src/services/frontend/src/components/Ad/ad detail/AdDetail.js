@@ -7,7 +7,7 @@ import {
     Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, Outlet, useOutletContext } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useOutletContext } from 'react-router-dom';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import CircularProgress from '@mui/material/CircularProgress';
 import HomeIcon from '@mui/icons-material/Home';
@@ -18,6 +18,7 @@ import { useCartContext } from '../../features/cart context/cart_context';
 import AdCard from '../AdCard';
 
 const AdDetail = () => {
+    const navigate = useNavigate();
     const { addToCart } = useCartContext();
     const [onchange, setonchane] = useState(false);
     const [onchange1, setonchane1] = useState(false);
@@ -66,8 +67,12 @@ const AdDetail = () => {
                                 <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                                 Home
                             </Link>
+
                             <Typography
-                                sx={{ display: 'flex', alignItems: 'center' }}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                }}
                                 color="text.primary"
                             >
                                 Search
@@ -146,7 +151,12 @@ const AdDetail = () => {
                             Home
                         </Link>
                         <Typography
+                            component="button"
+                            onClick={() => navigate(-1)}
                             sx={{
+                                border: 'none',
+                                backgroundColor: 'white',
+                                cursor: 'pointer',
                                 display: 'flex',
                                 alignItems: 'center',
                                 fontSize: {

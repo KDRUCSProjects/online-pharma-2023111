@@ -1,46 +1,36 @@
-import React from 'react';
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Container,
-    Stack,
-    Typography,
-} from '@mui/material';
-import { getObjects } from '../Api/Api';
+import React, { useState } from 'react';
+import { Box, Container, Grid, Pagination, Typography } from '@mui/material';
+import { getObjectsByPageNumber } from '../Api/Api';
 import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
-
-const styles = {
-    card: {
-        minWidth: 275,
-        marginRight: 16,
-    },
-};
+import AdCard from '../Ad/AdCard';
 
 const FeaturedProducts = () => {
-    const { data, isLoading, isError, isSuccess } = useQuery(['ads'], () => {
-        return getObjects('ads');
-    });
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageChange = (event, page) => {
+        setCurrentPage(page);
+    };
+    const adPageQuery = useQuery(['pages', currentPage], () =>
+        getObjectsByPageNumber(currentPage, 1)
+    );
 
-    if (isError) {
-        return <Typography variant="h5">Error </Typography>;
+    if (adPageQuery.isError) {
+        return <Typography variant="h5">{adPageQuery.error} </Typography>;
     }
-    if (isLoading) {
+    if (adPageQuery.isLoading) {
         return (
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <CircularProgress />
             </Box>
         );
     }
-    if (isSuccess) {
+    if (adPageQuery.isSuccess) {
         return (
             <Box
                 sx={{
-                    height: {
-                        xl: '430px',
-                        lg: '430px',
+                    minHeight: {
+                        xl: '450px',
+                        lg: '450px',
                         md: '400px',
                         sm: '340px',
                         xs: '340px',
@@ -64,97 +54,42 @@ const FeaturedProducts = () => {
                     >
                         Featured Products
                     </Typography>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            overflowX: 'auto',
-                            scrollBehavior: 'smooth',
-                            '::-webkit-scrollbar': {
-                                height: 0,
-                            },
-                            mt: { xl: 4, lg: 4, md: 4, sm: 3, xs: 3 },
-                        }}
-                    >
-                        {data.map((ad) => (
-                            <Card
+                    <Grid container>
+                        {adPageQuery.data['results'].map((ad) => (
+                            <Grid
+                                item
                                 key={ad.id}
-                                sx={{
-                                    minWidth: {
-                                        xl: 275,
-                                        lg: 275,
-                                        md: 250,
-                                        sm: 200,
-                                        xs: 200,
-                                    },
-                                    m: 1,
-                                }}
+                                xl={3}
+                                lg={3}
+                                md={4}
+                                sm={6}
+                                xs={6}
                             >
-                                <CardMedia
-                                    component="img"
-                                    image={ad.images[0].image}
-                                    alt={ad.images[0].name}
-                                    sx={{
-                                        height: {
-                                            xl: 160,
-                                            lg: 160,
-                                            md: 140,
-                                            sm: 120,
-                                            xs: 100,
-                                        },
-                                    }}
-                                />
-                                <CardContent>
-                                    <Stack
-                                        direction="row"
-                                        spacing={1}
-                                        justifyContent="space-between"
-                                        mb={1}
-                                    >
-                                        <Box align="left">
-                                            <Typography
-                                                variant="h6"
-                                                sx={{
-                                                    fontSize: {
-                                                        xl: '15px',
-                                                        lg: '15px',
-                                                        md: '13px',
-                                                        sm: '12px',
-                                                        xs: '10px',
-                                                    },
-                                                }}
-                                            >
-                                                {ad.title}
-                                            </Typography>
-                                        </Box>
-                                        <Stack
-                                            direction="row"
-                                            justifyContent={'flex-end'}
-                                            spacing={1}
-                                        ></Stack>
-                                    </Stack>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            flexDirection: 'row',
-                                            justifyContent: 'flex-end',
-                                            fontSize: '14px',
-                                            fontWeight: 'bold',
-                                        }}
-                                    >
-                                        <Typography
-                                            variant="h6"
-                                            fontSize={16}
-                                            color="#880e4f"
-                                            display={'inline'}
-                                            align="right"
-                                        >
-                                            {ad.sell_price}
-                                        </Typography>
-                                    </Box>
-                                </CardContent>
-                            </Card>
+                                <AdCard key={ad.id} ad={ad} />
+                            </Grid>
                         ))}
-                    </Box>
+                    </Grid>
+                    <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                mt: 5,
+                            }}
+                        >
+                            {adPageQuery.data.count ? (
+                                <Pagination
+                                    count={adPageQuery.data.total_pages}
+                                    page={currentPage}
+                                    onChange={handlePageChange}
+                                    variant="outlined"
+                                    shape="rounded"
+                                />
+                            ) : (
+                                ''
+                            )}
+                        </Box>
+                    </Grid>
                 </Container>
             </Box>
         );
