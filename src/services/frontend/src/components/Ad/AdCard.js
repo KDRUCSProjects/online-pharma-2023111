@@ -25,7 +25,7 @@ const AdCard = (props) => {
                 height: { lg: 300, xl: 300, md: 300, sm: 300, xs: 310 },
                 marginTop: 2,
                 marginLeft: { lg: 2, xl: 2, md: 2, sm: 1, xs: 0 },
-                width: { lg: 250, xl: 250, md: 250, sm: 250, xs: 180 },
+                width: { lg: 260, xl: 260, md: 250, sm: 250, xs: 180 },
             }}
         >
             <Link

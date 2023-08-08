@@ -39,8 +39,8 @@ class AdImageAdmin(admin.StackedInline):
 
 class AdAdmin(admin.ModelAdmin):
     inlines = [AdImageAdmin]
-    list_display = ("title", "brand", "generics", "sell_price", "category")
-    search_fields = ["title", "brand", "generics"]
+    list_display = ("id", "title", "brand", "generics", "sell_price", "category")
+    search_fields = ["id","title", "brand", "generics"]
     list_per_page = 16
 
     class Meta:
