@@ -277,15 +277,6 @@ const Footer = () => {
                         }}
                         align="left"
                     >
-                        <Link
-                            style={{
-                                marginTop: 18,
-                                color: 'white',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Habib Pharma
-                        </Link>
                         <Typography
                             sx={{ mt: 1, height: '4px', fontSize: '16px' }}
                         >
@@ -300,7 +291,7 @@ const Footer = () => {
                             samiullah.arian@icloud.com
                         </Link>
                         <Typography
-                            sx={{ mt: 1, height: '4px', fontSize: '16px' }}
+                            sx={{ mt: 2, height: '4px', fontSize: '16px' }}
                         >
                             Phone
                         </Typography>
@@ -313,9 +304,14 @@ const Footer = () => {
                         >
                             (+93705310309)
                         </Link>
+                        <Typography
+                            sx={{ mt: 2, height: '4px', fontSize: '16px' }}
+                        >
+                            Address
+                        </Typography>
                         <Link
                             style={{
-                                marginTop: 18,
+                                marginTop: 20,
                                 color: 'white',
                                 textDecoration: 'none',
                             }}
@@ -324,7 +320,7 @@ const Footer = () => {
                         </Link>
                         <Link
                             style={{
-                                marginTop: 18,
+                                marginTop: 5,
                                 color: 'white',
                                 textDecoration: 'none',
                             }}

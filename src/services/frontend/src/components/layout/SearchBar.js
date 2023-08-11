@@ -128,8 +128,8 @@ const SearchBar = (props) => {
                     {!isSmall ? (
                         <Box
                             ml={{ lg: 35, xl: 35, md: 2, sm: 0, xs: 0 }}
-                            mt={{ Lg: 0, xl: 3, md: 1.5, sm: 1, xs: 0 }}
-                            mr={{ Lg: 0, xl: 0, md: 0, sm: 13, xs: 0 }}
+                            mt={{ Lg: 0, xl: 1, md: 1, sm: 0, xs: 0 }}
+                            mr={{ Lg: 0, xl: 0, md: 0, sm: 25, xs: 0 }}
                             mb={{ lg: 2, xl: 2, md: 0, sm: 0, xs: 0 }}
                             sx={{
                                 width: {
@@ -141,7 +141,7 @@ const SearchBar = (props) => {
                                 },
                                 height: {
                                     xl: '5vh',
-                                    lg: '8vh',
+                                    lg: '5vh',
                                     md: '5vh',
                                     sm: '5vh',
                                     xs: '5vh',
@@ -164,19 +164,19 @@ const SearchBar = (props) => {
                                         />
                                     }
                                     sx={{
-                                        borderRadius: '10px',
+                                        borderRadius: '9px',
                                         width: {
                                             xl: '200px',
                                             lg: '200px',
                                             md: '200px',
-                                            sm: '150px',
+                                            sm: '165px',
                                             xs: '150px',
                                         },
                                         height: {
-                                            lg: '6vh',
-                                            xl: '3vh',
-                                            md: '3vh',
-                                            sm: '3vh',
+                                            lg: '5.5vh',
+                                            xl: '4vh',
+                                            md: '3.3vh',
+                                            sm: '3.5vh',
                                             xs: '0vh',
                                         },
                                         backgroundColor: 'white',
@@ -184,21 +184,27 @@ const SearchBar = (props) => {
                                         ':hover': {
                                             backgroundColor: 'white',
                                         },
-                                        mt: '8.5px',
+                                        mt: {
+                                            lg: '6px',
+                                            xl: '8.5px',
+                                            md: '8.5px',
+                                            sm: '8.5px',
+                                            xs: '0',
+                                        },
                                         ml: '70px',
                                         justifyContent: 'space-between',
                                         fontSize: {
                                             xl: '11px',
                                             lg: '11px',
-                                            md: '8px',
-                                            sm: '6px',
+                                            md: '9px',
+                                            sm: '8.5px',
                                             xl: '11px',
                                         },
                                         marginRight: {
                                             xl: '15px',
                                             lg: '15px',
                                             md: '10px',
-                                            sm: '20px',
+                                            sm: '30px',
                                             xl: '0px',
                                         },
                                     }}
@@ -217,7 +223,7 @@ const SearchBar = (props) => {
                                         />
                                     }
                                     sx={{
-                                        borderRadius: '10px',
+                                        borderRadius: '9px',
                                         width: {
                                             xl: '160px',
                                             lg: '160px',
@@ -226,10 +232,10 @@ const SearchBar = (props) => {
                                             xs: '0px',
                                         },
                                         height: {
-                                            lg: '6vh',
-                                            xl: '3vh',
-                                            md: '3vh',
-                                            sm: '3vh',
+                                            lg: '5.5vh',
+                                            xl: '4vh',
+                                            md: '3.3vh',
+                                            sm: '3.5vh',
                                             xs: '0vh',
                                         },
                                         backgroundColor: 'white',
@@ -237,12 +243,18 @@ const SearchBar = (props) => {
                                         ':hover': {
                                             backgroundColor: 'white',
                                         },
-                                        mt: '8.5px',
+                                        mt: {
+                                            lg: '6px',
+                                            xl: '8.5px',
+                                            md: '8.5px',
+                                            sm: '8.5px',
+                                            xs: '0',
+                                        },
                                         justifyContent: 'space-between',
                                         fontSize: {
                                             xl: '14px',
                                             lg: '14px',
-                                            md: '12px',
+                                            md: '10px',
                                             sm: '10px',
                                             xl: '0px',
                                         },
