@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -16,7 +16,7 @@ const OrderCart = (props) => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    height: '80px',
+                    height: '60px',
                 }}
             >
                 <Box
@@ -41,16 +41,16 @@ const OrderCart = (props) => {
                         <Box
                             sx={{
                                 border: '1px solid gray',
-                                width: '60px',
-                                height: '60px',
+                                width: '40px',
+                                height: '40px',
                                 ml: 3,
                                 backgroundColor: 'red',
                             }}
                         >
                             <ShoppingCartCheckoutIcon
                                 sx={{
-                                    width: '50px',
-                                    height: '50px',
+                                    width: '30px',
+                                    height: '30px',
                                     color: 'white',
                                     mt: 1,
                                     ml: 1,
@@ -58,19 +58,20 @@ const OrderCart = (props) => {
                             />
                         </Box>
                         <Box>
-                            <Typography variant="h6" fontWeight="bold" ml={2}>
+                            <Typography fontWeight="bold" ml={2}>
                                 Order ID {ad.id}
                             </Typography>
-                            <Typography ml={2}>
-                                {ad.order_date}.
-                            </Typography>
+                            <Typography ml={2}>{ad.order_date}.</Typography>
                         </Box>
                     </Box>
                 </Box>
                 {open ? (
                     <ExpandLessIcon
                         fontSize="large"
-                        sx={{ color: 'grey' }}
+                        sx={{
+                            color: 'grey',
+                            ':hover': { cursor: 'pointer', color: '#76bc21' },
+                        }}
                         onClick={() => {
                             setOpen(false);
                         }}
@@ -78,7 +79,10 @@ const OrderCart = (props) => {
                 ) : (
                     <ExpandMoreIcon
                         fontSize="large"
-                        sx={{ color: 'grey' }}
+                        sx={{
+                            color: 'grey',
+                            ':hover': { cursor: 'pointer', color: '#76bc21' },
+                        }}
                         onClick={() => {
                             setOpen(true);
                         }}
@@ -163,30 +167,63 @@ const OrderCart = (props) => {
                                         </Box>
                                         <Box>
                                             <Typography>
-                                                af. {item.ad.title}
+                                                af. {item.ad.sell_price}
                                             </Typography>
                                         </Box>
                                     </Box>
                                 </>
                             ))}
-
                             <Box
                                 sx={{
-                                    width: '55%',
                                     display: 'flex',
-                                    justifyContent: 'space-between',
+                                    justifyContent: 'flex-end',
                                 }}
                             >
-                                <Box>
-                                    <Typography mt={2}>Total</Typography>
-                                </Box>
-                                <Box>
-                                    <Typography mr={2} mt={2}>
-                                        af.
-                                        {ad.total_amount}
-                                    </Typography>
-                                </Box>
+                                <Typography mr={2}>Total</Typography>
+                                <Typography mr={2}>
+                                    af.
+                                    {ad.total_amount}
+                                </Typography>
                             </Box>
+                            {ad.status === 1 ? (
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                    }}
+                                >
+                                    <Button
+                                        sx={{
+                                            color: 'white',
+                                            backgroundColor: '#76bc21',
+                                            borderRadius: '10px',
+                                            width: {
+                                                lg: '120px',
+                                                xl: '100px',
+                                                md: '100px',
+                                                sm: '100px',
+                                                xs: '120px',
+                                            },
+                                            fontSize: {
+                                                sm: '12px',
+                                                lg: '12px',
+                                                xl: '12px',
+                                                xs: '18px',
+                                                md: '12px',
+                                            },
+                                            mb: '15px',
+                                            marginTop: 2,
+                                            ':hover': {
+                                                backgroundColor: '#76bc21',
+                                            },
+                                        }}
+                                    >
+                                        Cancel
+                                    </Button>
+                                </Box>
+                            ) : (
+                                ''
+                            )}
                         </Grid>
                     </Grid>
                 </Box>
