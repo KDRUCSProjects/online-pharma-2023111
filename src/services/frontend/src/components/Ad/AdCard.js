@@ -86,7 +86,7 @@ const AdCard = (props) => {
                         sx={{
                             color: 'white',
                             backgroundColor: '#76bc21',
-                            width: '40vw',
+                            width: '35vw',
                             height: '5vh',
                             borderRadius: '10px',
                             display: {
@@ -113,9 +113,9 @@ const AdCard = (props) => {
                             },
                         }}
                     >
-                        {data.title.length < 22
+                        {data.title.length < 15
                             ? data.title
-                            : `${data.title.slice(0, 22)}...`}
+                            : `${data.title.slice(0, 15)}...`}
                     </Typography>
                     <Box
                         sx={{

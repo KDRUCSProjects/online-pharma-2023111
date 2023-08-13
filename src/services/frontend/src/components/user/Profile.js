@@ -68,129 +68,185 @@ const Profile = () => {
             >
                 Profile
             </Typography>
-            <Grid container spacing={2}>
-                <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                    <Typography
-                        color="#76BC21"
-                        fontWeight="bold"
-                        fontSize="40px"
-                    >
-                        {myData.name}
-                    </Typography>
-                    <Typography
-                        color="#76BC21"
-                        fontWeight="bold"
-                        fontSize="30px"
-                    >
-                        {myData.phone}
-                    </Typography>
-                    <Typography
-                        color="#76BC21"
-                        fontWeight="bold"
-                        fontSize={{
-                            xl: '30px',
-                            lg: '25px',
-                            md: '20px',
-                            sm: '20px',
-                            xs: '20px',
+            <Grid container spacing={2} mt={3}>
+                <Grid item xl={6} lg={6} md={6} sm={6} xs={12}>
+                    <Box
+                        sx={{
+                            width: '100%',
+                            height: '70vh',
                         }}
                     >
-                        {myData.email}
-                    </Typography>
+                        <Box
+                            ml={4}
+                            sx={{
+                                borderBottom: '1px solid gray',
+                            }}
+                        >
+                            <Typography
+                                color="#76bc21"
+                                fontWeight="bold"
+                                fontSize="30px"
+                            >
+                                Name: {myData.name}
+                            </Typography>
+                            <Typography
+                                color="#76bc21"
+                                fontWeight="bold"
+                                fontSize="25px"
+                            >
+                                Phone: {myData.phone}
+                            </Typography>
+                            <Typography
+                                color="#76bc21"
+                                fontWeight="bold"
+                                fontSize={{
+                                    xl: '25px',
+                                    lg: '25px',
+                                    md: '20px',
+                                    sm: '20px',
+                                    xs: '20px',
+                                }}
+                            >
+                                Email: {myData.email}
+                            </Typography>
+                        </Box>
+                        <Box
+                            ml={3}
+                            mt={2}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                            }}
+                        >
+                            <Link
+                                to={'/orders/'}
+                                style={{
+                                    textAlign: 'center',
+                                    textDecoration: 'none',
+                                    color: 'black',
+                                }}
+                            >
+                                <Box mr={2}>
+                                    <Box
+                                        border="1px solid lightGrey"
+                                        borderRadius="20%"
+                                    >
+                                        <HistoryIcon
+                                            sx={{
+                                                fontSize: '80px',
+                                                color: '#76BC21',
+                                            }}
+                                        />
+                                    </Box>
+                                    <Typography>Order History</Typography>
+                                </Box>
+                            </Link>
+                            <Link
+                                style={{
+                                    textAlign: 'center',
+                                    textDecoration: 'none',
+                                    color: 'black',
+                                }}
+                            >
+                                <Box mr={2} sx={{ alignItems: 'center' }}>
+                                    <Box
+                                        border="1px solid lightGrey"
+                                        borderRadius="20%"
+                                    >
+                                        <LocationOnIcon
+                                            sx={{
+                                                fontSize: '80px',
+                                                color: '#76BC21',
+                                            }}
+                                        />
+                                    </Box>
+                                    <Typography sx={{ width: '30px' }} mt={1}>
+                                        Delivery Address
+                                    </Typography>
+                                </Box>
+                            </Link>
+                            <Link
+                                to={'/shopping/cart/'}
+                                style={{
+                                    textAlign: 'center',
+                                    textDecoration: 'none',
+                                    color: 'black',
+                                }}
+                            >
+                                <Box mr={2}>
+                                    <Box
+                                        border="1px solid lightGrey"
+                                        borderRadius="20%"
+                                    >
+                                        <AddShoppingCartIcon
+                                            sx={{
+                                                fontSize: '80px',
+                                                color: '#76BC21',
+                                            }}
+                                        />
+                                    </Box>
+                                    <Typography>Cart</Typography>
+                                </Box>
+                            </Link>
+                        </Box>
+                        <Box mt={3} ml={3}>
+                            <Button
+                                sx={{
+                                    xs: { marginLeft: '10px' },
+                                    color: 'white',
+                                    background: '#76BC21',
+                                    width: {
+                                        xl: '40%',
+                                        lg: '40%',
+                                        md: '30%',
+                                        sm: '30%',
+                                        xs: '100%',
+                                    },
+                                    height: '50px',
+                                    borderRadius: '10px',
+                                    ':hover': { backgroundColor: '#76bc21' },
+                                }}
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </Button>
+                        </Box>
+                    </Box>
                 </Grid>
                 <Grid
                     item
-                    sx={{ display: 'flex' }}
-                    xl={12}
-                    lg={12}
-                    md={12}
-                    sm={12}
+                    xl={6}
+                    lg={6}
+                    md={6}
+                    sm={6}
                     xs={12}
-                    mt={4}
+                    sx={{
+                        display: {
+                            xl: 'block',
+                            lg: 'block',
+                            md: 'block',
+                            sm: 'block',
+                            xs: 'none',
+                        },
+                    }}
                 >
-                    <Link
-                        to={'/orders/'}
-                        style={{
-                            textAlign: 'center',
-                            textDecoration: 'none',
-                            color: 'black',
-                        }}
-                    >
-                        <Box mr={2}>
-                            <Box
-                                border="1px solid lightGrey"
-                                borderRadius="20%"
-                            >
-                                <HistoryIcon
-                                    sx={{ fontSize: '80px', color: '#76BC21' }}
-                                />
-                            </Box>
-                            <Typography>Order History</Typography>
-                        </Box>
-                    </Link>
-                    <Link
-                        style={{
-                            textAlign: 'center',
-                            textDecoration: 'none',
-                            color: 'black',
-                        }}
-                    >
-                        <Box mr={2} sx={{ alignItems: 'center' }}>
-                            <Box
-                                border="1px solid lightGrey"
-                                borderRadius="20%"
-                            >
-                                <LocationOnIcon
-                                    sx={{ fontSize: '80px', color: '#76BC21' }}
-                                />
-                            </Box>
-                            <Typography sx={{ width: '30px' }} mt={1}>
-                                Delivery Address
-                            </Typography>
-                        </Box>
-                    </Link>
-                    <Link
-                        to={'/shopping/cart/'}
-                        style={{
-                            textAlign: 'center',
-                            textDecoration: 'none',
-                            color: 'black',
-                        }}
-                    >
-                        <Box mr={2}>
-                            <Box
-                                border="1px solid lightGrey"
-                                borderRadius="20%"
-                            >
-                                <AddShoppingCartIcon
-                                    sx={{ fontSize: '80px', color: '#76BC21' }}
-                                />
-                            </Box>
-                            <Typography>Cart</Typography>
-                        </Box>
-                    </Link>
-                </Grid>
-                <Grid item xl={3} lg={3} md={12} sm={12} xs={12} mt={4}>
-                    <Button
+                    <Box
+                        ml={3}
+                        component="img"
+                        alt="Profile"
+                        src="http://127.0.0.1:8000/frontend/static/images/slider/slide4.webp"
                         sx={{
-                            xs: { marginLeft: '10px' },
-                            color: 'white',
-                            background: '#76BC21',
-                            width: {
-                                xl: '70%',
-                                lg: '70%',
-                                md: '60%',
-                                sm: '40%',
-                                xs: '70%',
+                            width: '70%',
+                            height: {
+                                xl: '50vh',
+                                lg: '50vh',
+                                md: '30vh',
+                                sm: '30vh',
+                                xs: '0px',
                             },
-                            height: '50px',
-                            borderRadius: '10px',
-                            ':hover': { backgroundColor: '#76bc21' },
+                            border: '1px solid lightgray',
                         }}
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </Button>
+                    ></Box>
                 </Grid>
             </Grid>
         </Container>

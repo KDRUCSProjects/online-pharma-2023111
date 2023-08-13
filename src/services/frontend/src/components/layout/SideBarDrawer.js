@@ -32,7 +32,7 @@ const SideBarDrawer = () => {
                 >
                     <Box
                         sx={{
-                            width: '64%',
+                            width: '64.5%',
                             height: '10vh',
                             border: '1px solid gray',
                             bgcolor: '#76bc21',
@@ -49,7 +49,7 @@ const SideBarDrawer = () => {
                             fontSize="15px"
                             fontWeight="bold"
                         >
-                            Habib Pharma
+                            Habib Darmal
                         </Typography>
                     </Box>
                     <Typography
@@ -194,7 +194,7 @@ const SideBarDrawer = () => {
                             onClick={() => setSideOpen(false)}
                             to={'/contact/'}
                         >
-                            About us
+                            Contact us
                         </Link>
                     </Typography>
                     {myData.admin ? (
