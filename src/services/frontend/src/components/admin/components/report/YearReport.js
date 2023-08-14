@@ -6,12 +6,12 @@ import {
     Grid,
     Breadcrumbs,
     TableContainer,
-    Paper,
+    Table,
     TableHead,
+    TableRow,
     TableCell,
     TableBody,
-    Table,
-    TableRow,
+    Paper,
 } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import HomeIcon from '@mui/icons-material/Home';
@@ -20,21 +20,27 @@ import { Link } from 'react-router-dom';
 import Title from '../title/Title';
 import axios from 'axios';
 
-const OrderReport = () => {
-    const [orderDate, setOrderDate] = useState('');
-    const [totalPrice, setTotalPrice] = useState(null);
+const YearReport = () => {
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [totalSellPrice, setTotalSellPrice] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.get(
-                `http://localhost:8000/api/total-selling-price/?date=${orderDate}`
+                'http://localhost:8000/api/range-total-selling-price/',
+                {
+                    params: {
+                        start_date: startDate,
+                        end_date: endDate,
+                    },
+                }
             );
-            console.log(response);
-            if (response.data.total_price) {
-                setTotalPrice(response.data.total_price);
+            if (response.data.total_sell_price) {
+                setTotalSellPrice(response.data.total_sell_price);
             } else {
-                setTotalPrice('0');
+                setTotalSellPrice('0');
             }
         } catch (error) {
             console.error(error);
@@ -58,18 +64,28 @@ const OrderReport = () => {
                         color="text.primary"
                     >
                         <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        Daily Report
+                        Yearly Report
                     </Typography>
                 </Breadcrumbs>
             </Grid>
-            <Title>Report</Title>
+            <Title>Yearly Report</Title>
             <form onSubmit={handleSubmit}>
                 <TextField
                     type="date"
                     variant="outlined"
                     color="secondary"
-                    onChange={(e) => setOrderDate(e.target.value)}
-                    value={orderDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    value={startDate}
+                    fullWidth
+                    required
+                    sx={{ mb: 4 }}
+                />
+                <TextField
+                    type="date"
+                    variant="outlined"
+                    color="secondary"
+                    onChange={(e) => setEndDate(e.target.value)}
+                    value={endDate}
                     fullWidth
                     required
                     sx={{ mb: 4 }}
@@ -83,14 +99,15 @@ const OrderReport = () => {
                     Check
                 </Button>
             </form>
-            {totalPrice ? (
+            {totalSellPrice ? (
                 <>
                     <Title>Result</Title>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>Date</TableCell>
+                                    <TableCell>From Date</TableCell>
+                                    <TableCell>To Date</TableCell>
                                     <TableCell align="right">
                                         Total selling price
                                     </TableCell>
@@ -98,14 +115,17 @@ const OrderReport = () => {
                             </TableHead>
                             <TableBody>
                                 <TableCell component="th" scope="row">
-                                    {orderDate}
+                                    {startDate}
+                                </TableCell>
+                                <TableCell component="th" scope="row">
+                                    {endDate}
                                 </TableCell>
                                 <TableCell
                                     component="th"
                                     scope="row"
                                     align="right"
                                 >
-                                    {totalPrice}
+                                    {totalSellPrice}
                                 </TableCell>
                             </TableBody>
                         </Table>
@@ -118,4 +138,4 @@ const OrderReport = () => {
     );
 };
 
-export default OrderReport;
+export default YearReport;

@@ -47,14 +47,8 @@ const Prescription = () => {
         formData.append('image', image);
         formData.append('user_id', myData.id);
         formData.append('location', myLocation.location);
-        if (formData.image == '') {
-            setMessage('Image should not Empty');
-            setImage('');
-            setClose(true);
-        } else if (formData.location == '') {
+        if (formData.location == '') {
             setMessage('Location required');
-            setImage('');
-            setClose(true);
         } else {
             mutation.mutate(formData);
             setMessage('your prescription successfully send!');

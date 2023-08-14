@@ -3,7 +3,7 @@ from account.models import User
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from account.utils import Util
+from account.utils import send_rest_password_via_email
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -15,14 +15,20 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         fields = ["email", "name", "phone_number", "password", "password2", "tc"]
         extra_kwargs = {"password": {"write_only": True}}
 
-    # Validating Password and Confirm Password while Registration
+    # Validating Password, Confirm Password and phone number while Registration
     def validate(self, attrs):
         password = attrs.get("password")
         password2 = attrs.get("password2")
+        phone_number = attrs.get("phone_number")
         if password != password2:
             raise serializers.ValidationError(
                 "Password and Confirm Password doesn't match"
             )
+        if len(phone_number) < 10 and len(phone_number) > 10:
+            raise serializers.ValidationError("phone number should have 10 character")
+        if phone_number[0] != 0:
+            raise serializers.ValidationError("first char should start with 0")
+
         return attrs
 
     def create(self, validate_data):
@@ -40,7 +46,7 @@ class UserLoginSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "email", "name", "phone_number", "is_admin" ]
+        fields = ["id", "email", "name", "phone_number", "is_admin"]
 
 
 class UserChangePasswordSerializer(serializers.Serializer):
@@ -90,7 +96,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
                 "body": body,
                 "to_email": user.email,
             }
-            # Util.send_email(data)
+            send_rest_password_via_email(data)
             return attrs
         else:
             raise serializers.ValidationError("You are not a Registered User")

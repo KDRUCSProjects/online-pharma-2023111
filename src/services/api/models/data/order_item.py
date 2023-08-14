@@ -4,7 +4,7 @@ from .ad import Ad
 from .order import Order
 
 
-class OrderItem(DataRoot):
+class  OrderItem(DataRoot):
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE)
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name="order_item"

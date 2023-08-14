@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { mainListItems, secondaryListItems } from './listItems/listItems';
 import { Avatar } from '@mui/material';
 import Footer from './footer/Footer';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -72,81 +72,88 @@ export default function MainLayout() {
     };
 
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <AppBar position="absolute" open={open}>
-                    <Toolbar
-                        sx={{
-                            pr: '24px', // keep right padding when drawer closed
-                        }}
-                    >
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            sx={{ flexGrow: 1 }}
-                        >
-                            Control Panel
-                        </Typography>
-                        <Avatar>M</Avatar>
-                    </Toolbar>
-                </AppBar>
-                <Drawer variant="permanent" open={open}>
-                    <Toolbar
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-around',
-                            px: [1],
-                        }}
-                    >
-                        <Typography variant="h6" color="secondary">
-                            Habib Pharma
-                        </Typography>
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List component="nav">
-                        {mainListItems}
-                        <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
-                    </List>
-                </Drawer>
-                <Box
-                    component="main"
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar
+                position="absolute"
+                open={open}
+                sx={{ backgroundColor: '#76bc21' }}
+            >
+                <Toolbar
                     sx={{
-                        backgroundColor: (theme) =>
-                            theme.palette.mode === 'light'
-                                ? theme.palette.grey[150]
-                                : theme.palette.grey[900],
-                        flexGrow: 1,
-                        height: '100vh',
-                        overflow: 'auto',
+                        pr: '24px', // keep right padding when drawer closed
                     }}
                 >
-                    <Toolbar />
-                    <Container sx={{ mt: 4 }}>
-                        <Outlet />
-                        <Footer sx={{ pt: 4 }} />
-                    </Container>
-                </Box>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={toggleDrawer}
+                        sx={{
+                            marginRight: '36px',
+                            ...(open && { display: 'none' }),
+                        }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography
+                        component="h1"
+                        variant="h6"
+                        color="inherit"
+                        noWrap
+                        sx={{ flexGrow: 1 }}
+                    >
+                        Dashboard
+                    </Typography>
+                    <Avatar>M</Avatar>
+                </Toolbar>
+            </AppBar>
+            <Drawer variant="permanent" open={open}>
+                <Toolbar
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-around',
+                        px: [1],
+                    }}
+                >
+                    <Typography variant="h6" color={'black'}>
+                        <Link
+                            to={'/'}
+                            style={{ textDecoration: 'none', color: 'black' }}
+                        >
+                            Habib Pharma
+                        </Link>
+                    </Typography>
+                    <IconButton onClick={toggleDrawer}>
+                        <ChevronLeftIcon />
+                    </IconButton>
+                </Toolbar>
+                <Divider />
+                <List component="nav">
+                    {mainListItems}
+                    <Divider sx={{ my: 1 }} />
+                    {secondaryListItems}
+                </List>
+            </Drawer>
+            <Box
+                component="main"
+                sx={{
+                    backgroundColor: (theme) =>
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey[150]
+                            : theme.palette.grey[900],
+                    flexGrow: 1,
+                    height: '100vh',
+                    overflow: 'auto',
+                }}
+            >
+                <Toolbar />
+                <Container sx={{ mt: 4 }}>
+                    <Outlet />
+                    <Footer sx={{ pt: 4 }} />
+                </Container>
             </Box>
-        </ThemeProvider>
+        </Box>
     );
 }
