@@ -5,6 +5,7 @@ import {
     Breadcrumbs,
     CircularProgress,
     Grid,
+    Modal,
     Paper,
     Table,
     TableBody,
@@ -21,6 +22,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Title from '../title/Title';
 import { getObjects } from '../../../Api/Api';
 import { useQuery } from '@tanstack/react-query';
+import Bill from '../bill/Bill';
 const state = [
     { id: 1, state: 'pending' },
     { id: 2, state: 'canceled' },
@@ -28,6 +30,10 @@ const state = [
 ];
 
 const OrderList = () => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const { data, isLoading, isError, isSuccess } = useQuery(['orders'], () => {
         return getObjects('orders');
     });
@@ -127,7 +133,14 @@ const OrderList = () => {
                                                 },
                                         }}
                                     >
-                                        <TableCell component="th" scope="row">
+                                        <TableCell
+                                            component="th"
+                                            scope="row"
+                                            onClick={() => setOpen(true)}
+                                            sx={{
+                                                ':hover': { cursor: 'pointer' },
+                                            }}
+                                        >
                                             {row.id}
                                         </TableCell>
                                         <TableCell component="th" scope="row">
@@ -160,6 +173,14 @@ const OrderList = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Bill />
+                    </Modal>
                 </Grid>
             </Grid>
         );
