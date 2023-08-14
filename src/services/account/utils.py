@@ -1,14 +1,10 @@
-from django.core.mail import EmailMessage
-import os
+from django.core.mail import send_mail
+from django.conf import settings
 
 
-class Util:
-    @staticmethod
-    def send_email(data):
-        email = EmailMessage(
-            subject=data["subject"],
-            body=data["body"],
-            from_email=os.environ.get("EMAIL_FROM"),
-            to=[data["to_email"]],
-        )
-        email.send()
+def send_rest_password_via_email(data):
+    subject = data["subject"]
+    message = data["body"]
+    email_from = settings.EMAIL_HOST_USER
+    to = [data["to_email"]]
+    send_mail(subject, message, email_from, to)

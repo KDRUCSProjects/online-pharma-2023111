@@ -9,20 +9,50 @@ import {
     CircularProgress,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { useCartContext } from '../../features/cart context/cart_context';
 import CartItem from './CartItem';
 import { getLocation } from '../../services/LocalStorageService';
-import { useQuery } from '@tanstack/react-query';
-import { searchObject } from '../../Api/Api';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { addObject, searchObject } from '../../Api/Api';
 import AdCard from '../../Ad/AdCard';
 
 const ShoppingCart = () => {
+    const [searchInfo, searchInfoData] = useOutletContext();
     const address = getLocation().location;
     const { cart, total_amount, delivery_fee, clearCart } = useCartContext();
+    const [deliveryInstruction, setDeliveryInstruction] = useState('');
 
-    const [searchInfo, searchInfoData] = useOutletContext();
+    const clear = () => {
+        if (confirm('Are you sure?')) {
+            clearCart();
+        }
+    };
+    const onChange = (e) => {
+        setDeliveryInstruction(e.target.value);
+    };
+
+    const mutation = useMutation((data) => {
+        return addObject('orders', data);
+    });
+    const handleCheckout = () => {
+        const formData = new FormData();
+        formData.append('user', 1);
+        formData.append('uploaded_items', cart);
+        formData.append('address', 'afghanistan');
+        formData.append('delivery_instruction', deliveryInstruction);
+        formData.append('delivery_fee', delivery_fee);
+        formData.append('total_amount', total_amount);
+        console.log(deliveryInstruction);
+        mutation.mutate(formData);
+        if (mutation.isError) {
+            console.log('error');
+        } else if (mutation.isSuccess) {
+            console.log('success');
+        }
+    };
+
     if (searchInfo) {
         const { data, error, isError, isLoading, isSuccess } = useQuery(
             ['ad', searchInfoData],
@@ -266,6 +296,7 @@ const ShoppingCart = () => {
                                 Delivery Instruction
                             </Typography>
                             <TextField
+                                onChange={onChange}
                                 placeholder="Write Here"
                                 sx={{
                                     width: '90%',
@@ -437,6 +468,7 @@ const ShoppingCart = () => {
                             }}
                         >
                             <Button
+                                onClick={handleCheckout}
                                 variant="text"
                                 sx={{
                                     backgroundColor: '#76bc21',
@@ -450,7 +482,7 @@ const ShoppingCart = () => {
                                 CHECKOUT
                             </Button>
                             <Button
-                                onClick={clearCart}
+                                onClick={clear}
                                 variant="text"
                                 sx={{
                                     backgroundColor: 'red',

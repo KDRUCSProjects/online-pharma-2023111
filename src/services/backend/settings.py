@@ -143,10 +143,10 @@ AUTH_USER_MODEL = "account.User"
 # Email Configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASS")
 EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "project120project@gmail.com"
+EMAIL_HOST_PASSWORD = "vrnnyyjeaezfokou"
 
 STATIC_URL = "frontend/static/"
 
