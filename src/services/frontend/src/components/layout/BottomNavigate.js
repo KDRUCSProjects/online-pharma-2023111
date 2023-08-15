@@ -23,7 +23,7 @@ const BottomNavigate = () => {
             <Paper
                 elevation={5}
                 sx={{
-                    width: '100vw',
+                    width: '100%',
                     height: '80px',
                 }}
             >

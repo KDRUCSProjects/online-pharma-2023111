@@ -25,8 +25,8 @@ export const addObject = async (endPoint, modelObject) => {
     return await Api.post(`/${endPoint}/`, modelObject);
 };
 
-export const updateObject = async (endPoint, modelObject) => {
-    return await Api.patch(`/${endPoint}/${modelObject.id}/`, modelObject);
+export const updateObject = async (endPoint, modelObject, id) => {
+    return await Api.put(`/${endPoint}/${id}/`, modelObject);
 };
 
 export const deleteObject = async (endPoint, { id }) => {

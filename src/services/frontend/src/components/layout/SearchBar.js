@@ -84,7 +84,19 @@ const SearchBar = (props) => {
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
     console.log(openSearch);
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#76bc21', ml: 0 }}>
+        <AppBar
+            sx={{
+                backgroundColor: '#76bc21',
+                ml: 0,
+                position: {
+                    xl: 'sticky',
+                    lg: 'sticky',
+                    md: 'sticky',
+                    sm: 'sticky',
+                    xs: 'static',
+                },
+            }}
+        >
             <Container sx={{ paddingRight: 0 }}>
                 <Toolbar>
                     <Box
