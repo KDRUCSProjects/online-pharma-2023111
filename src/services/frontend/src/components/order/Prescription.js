@@ -34,7 +34,7 @@ const Prescription = () => {
 
     // Getting User Data from Redux Store
     const myData = useSelector((state) => state.user);
-    const myLocation = getLocation();
+    const address = getLocation().location;
     const mutation = useMutation((data) => {
         return addObject('prescriptions', data);
     });
@@ -46,9 +46,10 @@ const Prescription = () => {
         const formData = new FormData();
         formData.append('image', image);
         formData.append('user_id', myData.id);
-        formData.append('location', myLocation.location);
-        if (formData.location == '') {
+        formData.append('location', address);
+        if (!address) {
             setMessage('Location required');
+            setClose(true);
         } else {
             mutation.mutate(formData);
             setMessage('your prescription successfully send!');

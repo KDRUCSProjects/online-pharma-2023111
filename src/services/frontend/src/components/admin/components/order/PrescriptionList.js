@@ -79,7 +79,10 @@ const PrescriptionList = () => {
                                         ID
                                     </TableCell>
                                     <TableCell sx={{ fontSize: '13px' }}>
-                                        User
+                                        Email
+                                    </TableCell>
+                                    <TableCell sx={{ fontSize: '13px' }}>
+                                        Phone Number
                                     </TableCell>
                                     <TableCell
                                         align="left"
@@ -116,7 +119,10 @@ const PrescriptionList = () => {
                                             {row.id}
                                         </TableCell>
                                         <TableCell component="th" scope="row">
-                                            {row.user_id}
+                                            {row.user_id.email}
+                                        </TableCell>
+                                        <TableCell component="th" scope="row">
+                                            {row.user_id.phone_number}
                                         </TableCell>
                                         <TableCell align="left">
                                             {row.location}
