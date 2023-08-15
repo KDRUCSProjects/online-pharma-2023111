@@ -161,7 +161,7 @@ const NavBar = () => {
                                     },
                                 }}
                             >
-                                {myData.name}
+                                {!isSmall ? myData.name : ''}
                             </Typography>
                             <IconButton
                                 variant="contained"
