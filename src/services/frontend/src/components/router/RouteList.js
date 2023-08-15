@@ -37,6 +37,7 @@ import CancelledOrder from '../order/CancelledOrder';
 import CompleteOrder from '../order/CompleteOrder';
 import PendingOrder from '../order/PendingOrder';
 import YearReport from '../admin/components/report/YearReport';
+import PrescriptionDetails from '../admin/components/order/PrescriptionDetails';
 
 const RouteList = () => {
     const myData = useSelector((state) => state.user);
@@ -204,6 +205,16 @@ const RouteList = () => {
                         }
                     />
                     <Route
+                        path="prescription/details/:id/"
+                        element={
+                            myData.admin ? (
+                                <PrescriptionDetails />
+                            ) : (
+                                <Navigate to={'/'} />
+                            )
+                        }
+                    />
+                    <Route
                         path="day/report/"
                         element={
                             myData.admin ? (
@@ -213,7 +224,7 @@ const RouteList = () => {
                             )
                         }
                     />
-                     <Route
+                    <Route
                         path="year/report/"
                         element={
                             myData.admin ? (

@@ -321,39 +321,6 @@ const Prescription = () => {
                                 <Box
                                     sx={{
                                         display: 'flex',
-                                        justifyContent: 'space-evenly',
-                                    }}
-                                >
-                                    <Button
-                                        sx={{
-                                            backgroundColor: '#67bc21',
-                                            color: 'white',
-                                            borderRadius: '10px',
-                                            width: '100px',
-                                            ':hover': {
-                                                backgroundColor: '#76bc23',
-                                            },
-                                        }}
-                                    >
-                                        Change
-                                    </Button>
-                                    <Button
-                                        sx={{
-                                            backgroundColor: '#67bc21',
-                                            color: 'white',
-                                            borderRadius: '10px',
-                                            width: '100px',
-                                            ':hover': {
-                                                backgroundColor: '#76bc23',
-                                            },
-                                        }}
-                                    >
-                                        Remove
-                                    </Button>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
                                         justifyContent: 'center',
                                     }}
                                 >
