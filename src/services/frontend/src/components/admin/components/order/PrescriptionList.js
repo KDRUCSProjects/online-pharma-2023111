@@ -116,7 +116,15 @@ const PrescriptionList = () => {
                                         }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            {row.id}
+                                            <Link
+                                                to={`/dashboard/prescription/details/${row.id}/`}
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'black',
+                                                }}
+                                            >
+                                                {row.id}
+                                            </Link>
                                         </TableCell>
                                         <TableCell component="th" scope="row">
                                             {row.user_id.email}
