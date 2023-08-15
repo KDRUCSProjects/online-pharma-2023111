@@ -34,6 +34,12 @@ const OrderList = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [Order, setOrder] = useState();
+
+    const setOrderDetails = (row) => {
+        setOrder(row);
+    };
+
     const { data, isLoading, isError, isSuccess } = useQuery(['orders'], () => {
         return getObjects('orders');
     });
@@ -136,7 +142,10 @@ const OrderList = () => {
                                         <TableCell
                                             component="th"
                                             scope="row"
-                                            onClick={() => setOpen(true)}
+                                            onClick={() => {
+                                                setOpen(true);
+                                                setOrderDetails(row);
+                                            }}
                                             sx={{
                                                 ':hover': { cursor: 'pointer' },
                                             }}
@@ -179,7 +188,7 @@ const OrderList = () => {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                     >
-                        <Bill />
+                        <Bill  Order={Order}/>
                     </Modal>
                 </Grid>
             </Grid>

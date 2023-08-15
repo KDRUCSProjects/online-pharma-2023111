@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
 import {
@@ -31,8 +32,11 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LockClockIcon from '@mui/icons-material/LockClock';
 import { useCartContext } from '../features/cart context/cart_context';
+import LanguagePopover from '../LanguagePopover';
+import { t } from 'i18next';
 
 const NavBar = () => {
+    const { t: translate } = useTranslation();
     const { clearCart } = useCartContext();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -52,6 +56,7 @@ const NavBar = () => {
         clearCart();
         navigate('/login/');
     };
+
     const { access_token } = getToken();
     if (access_token) {
         const { data, isSuccess } = useGetLoggedUserQuery(access_token);
@@ -94,6 +99,10 @@ const NavBar = () => {
         setUserMenuPosition(null);
         setUserMenuOpen(false);
     };
+    t;
+    useEffect(() => {
+        document.documentElement.dir = theme.direction;
+    }, [theme.direction]);
     return (
         <Container>
             <Box sx={{ flexGrow: 1 }}>
@@ -138,6 +147,7 @@ const NavBar = () => {
                             />
                         </Link>
                     </Typography>
+                    <LanguagePopover />
                     {user ? (
                         <>
                             <Typography
@@ -309,7 +319,7 @@ const NavBar = () => {
                                                 textTransform: 'capitalize',
                                             }}
                                         >
-                                            Register
+                                            {translate('Register')}
                                         </Link>
                                     </Button>
                                 </>
