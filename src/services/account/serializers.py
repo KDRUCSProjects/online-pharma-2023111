@@ -26,8 +26,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             )
         if len(phone_number) < 10 and len(phone_number) > 10:
             raise serializers.ValidationError("phone number should have 10 character")
-        if phone_number[0] != 0:
-            raise serializers.ValidationError("first char should start with 0")
+        if phone_number[0] != '0':
+            raise serializers.ValidationError("phone number should start with0")
 
         return attrs
 

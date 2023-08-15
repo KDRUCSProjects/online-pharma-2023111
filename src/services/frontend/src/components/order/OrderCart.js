@@ -1,12 +1,48 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import {
+    Box,
+    Button,
+    Grid,
+    IconButton,
+    Snackbar,
+    Typography,
+} from '@mui/material';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { updateObject } from '../Api/Api';
+import CloseIcon from '@mui/icons-material/Close';
 
 const OrderCart = (props) => {
     const ad = props.ad;
     const [open, setOpen] = useState(false);
+    const [close, setClose] = useState(false);
+    const [message, setMessage] = useState('');
+    const { isError, mutate, isSuccess } = useMutation((orderData) =>
+        updateObject('orders', orderData, ad.id)
+    );
+    const handleClose = () => {
+        setClose(false);
+    };
+
+    const handleCancel = () => {
+        if (window.confirm('Are You sure? ')) {
+            const data = {
+                user: ad.user.id,
+                address: ad.address,
+                delivery_instruction: ad.delivery_instruction,
+                delivery_fee: ad.delivery_fee,
+                total_amount: ad.total_amount,
+                uploaded_items: [],
+                status: 2,
+            };
+            mutate(data);
+            setMessage('Your order Successfully Canceled');
+            setClose(true);
+        }
+    };
+
     return (
         <Box border={'1px solid lightGrey'} borderRadius={'10px'} mt={5}>
             <Box
@@ -65,6 +101,47 @@ const OrderCart = (props) => {
                         </Box>
                     </Box>
                 </Box>
+                {ad.status === 1 ? (
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-end',
+                        }}
+                    >
+                        <Button
+                            onClick={handleCancel}
+                            type="submit"
+                            sx={{
+                                color: 'white',
+                                backgroundColor: '#76bc21',
+                                borderRadius: '10px',
+                                width: {
+                                    lg: '120px',
+                                    xl: '100px',
+                                    md: '100px',
+                                    sm: '100px',
+                                    xs: '120px',
+                                },
+                                fontSize: {
+                                    sm: '12px',
+                                    lg: '12px',
+                                    xl: '12px',
+                                    xs: '18px',
+                                    md: '12px',
+                                },
+                                mb: '15px',
+                                marginTop: 2,
+                                ':hover': {
+                                    backgroundColor: '#76bc21',
+                                },
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                    </Box>
+                ) : (
+                    ''
+                )}
                 {open ? (
                     <ExpandLessIcon
                         fontSize="large"
@@ -185,49 +262,26 @@ const OrderCart = (props) => {
                                     {ad.total_amount}
                                 </Typography>
                             </Box>
-                            {ad.status === 1 ? (
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                    }}
-                                >
-                                    <Button
-                                        sx={{
-                                            color: 'white',
-                                            backgroundColor: '#76bc21',
-                                            borderRadius: '10px',
-                                            width: {
-                                                lg: '120px',
-                                                xl: '100px',
-                                                md: '100px',
-                                                sm: '100px',
-                                                xs: '120px',
-                                            },
-                                            fontSize: {
-                                                sm: '12px',
-                                                lg: '12px',
-                                                xl: '12px',
-                                                xs: '18px',
-                                                md: '12px',
-                                            },
-                                            mb: '15px',
-                                            marginTop: 2,
-                                            ':hover': {
-                                                backgroundColor: '#76bc21',
-                                            },
-                                        }}
-                                    >
-                                        Cancel
-                                    </Button>
-                                </Box>
-                            ) : (
-                                ''
-                            )}
                         </Grid>
                     </Grid>
                 </Box>
             ) : null}
+            <Snackbar
+                open={close}
+                message={message}
+                action={
+                    <React.Fragment>
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            sx={{ p: 0.5 }}
+                            onClick={handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </React.Fragment>
+                }
+            />
         </Box>
     );
 };
