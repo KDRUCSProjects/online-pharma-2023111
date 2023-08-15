@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CircleIcon from '@mui/icons-material/Circle';
@@ -29,10 +29,6 @@ const Slider = () => {
 
     return (
         <Grid
-            lg={12}
-            sm={12}
-            md={12}
-            xs={12}
             container
             mt={2}
             sx={{
@@ -79,11 +75,11 @@ const Slider = () => {
             </Box>
             {images.map((image, index) => {
                 return (
-                    <>
+                    <Fragment key={index}>
                         {index === current && (
-                            <>
+                            <Fragment key={index}>
                                 <Grid
-                                    key={index}
+                                    key={index + 1}
                                     component="img"
                                     sx={{
                                         width: {
@@ -103,6 +99,11 @@ const Slider = () => {
                                     src={image.Image}
                                 />
                                 <Grid
+                                    item
+                                    lg={12}
+                                    sm={12}
+                                    md={12}
+                                    xs={12}
                                     sx={{
                                         display: 'flex',
                                         position: 'relative',
@@ -113,14 +114,14 @@ const Slider = () => {
                                             xs: '18px',
                                         },
                                     }}
-                                    key={index}
+                                    key={index + 2}
                                 >
-                                    {images.map((name, index) => {
+                                    {images.map((name, i) => {
                                         return (
-                                            <Grid display={'flex'} key={index}>
+                                            <Grid display={'flex'} key={i + 10}>
                                                 <Box
                                                     sx={{ display: 'none' }}
-                                                    key={index}
+                                                    key={i + 11}
                                                 >
                                                     {image.name == name.name
                                                         ? (color = '#5d6669')
@@ -132,15 +133,15 @@ const Slider = () => {
                                                         fontSize: '10px',
                                                         ml: 0.4,
                                                     }}
-                                                    key={index}
+                                                    key={i + 13}
                                                 />
                                             </Grid>
                                         );
                                     })}
                                 </Grid>
-                            </>
+                            </Fragment>
                         )}
-                    </>
+                    </Fragment>
                 );
             })}
             <Box

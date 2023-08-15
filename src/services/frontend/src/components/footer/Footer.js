@@ -95,9 +95,9 @@ const Footer = () => {
                         }}
                         align="left"
                     >
-                        {data.map((category) =>
+                        {data.map((category,i) =>
                             category.id !== 9 ? (
-                                <Link
+                                <Link key={i}
                                     to={`ad/list/${category.name}/${category.id}/`}
                                     style={{
                                         marginTop: 18,

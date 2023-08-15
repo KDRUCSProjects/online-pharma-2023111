@@ -109,6 +109,7 @@ const Category = () => {
                         </Typography>
                     </Grid>
                     <Grid
+                        item
                         xl={12}
                         lg={12}
                         md={12}
@@ -148,15 +149,16 @@ const Category = () => {
                                 },
                             }}
                         >
-                            {data.map((ad) => (
+                            {data.map((ad, i) => (
                                 <Link
+                                    key={i}
                                     to={`ad/list/${ad.name}/${ad.id}/`}
                                     style={{
                                         textDecoration: 'none',
                                         color: 'black',
                                     }}
                                 >
-                                    <Card key={ad.id} ad={ad} />
+                                    <Card key={i} ad={ad} />
                                 </Link>
                             ))}
                         </Box>
