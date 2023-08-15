@@ -77,7 +77,7 @@ const AdList = () => {
                             Search
                         </Typography>
                         <Grid container>
-                            {data.data.map((ad) => (
+                            {data.data['results'].map((ad) => (
                                 <Grid item key={ad.id}>
                                     <Link
                                         to={`/ad/detail/${ad.id}/`}

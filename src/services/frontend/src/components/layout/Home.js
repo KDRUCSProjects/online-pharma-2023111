@@ -73,7 +73,7 @@ const Home = () => {
                             Search
                         </Typography>
                         <Grid container>
-                            {data.data.map((ad,i) => (
+                            {data.data['results'].map((ad, i) => (
                                 <Grid
                                     item
                                     key={ad.id}
@@ -84,7 +84,7 @@ const Home = () => {
                                     xs={12}
                                 >
                                     <Link
-                                    key={i}
+                                        key={i}
                                         to={`/ad/detail/${ad.id}/`}
                                         style={{ textDecoration: 'none' }}
                                     >
