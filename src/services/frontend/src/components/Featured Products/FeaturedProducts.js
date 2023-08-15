@@ -35,7 +35,7 @@ const FeaturedProducts = () => {
                         sm: '340px',
                         xs: '340px',
                     },
-                    mt: { xl: 4, lg: 4, md: 3, sm: 1, xs: 1 },
+                    mt: { xl: 4, lg: 4, md: 3, sm: 1, xs: 3 },
                 }}
             >
                 <Container>
@@ -48,7 +48,7 @@ const FeaturedProducts = () => {
                                 sm: 'black',
                                 xs: 'black',
                             },
-                            fontSize: { lg: '35px', xs: '15px' },
+                            fontSize: { lg: '35px', xs: '20px' },
                             fontWeight: { xl: 'bold', lg: 'bold', md: 'bold' },
                         }}
                     >
@@ -61,8 +61,8 @@ const FeaturedProducts = () => {
                                 key={ad.id}
                                 xl={3}
                                 lg={3}
-                                md={4}
-                                sm={6}
+                                md={3}
+                                sm={4}
                                 xs={6}
                             >
                                 <AdCard key={ad.id} ad={ad} />
