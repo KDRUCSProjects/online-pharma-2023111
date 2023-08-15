@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Container,
-    Grid,
-    Stack,
-    Typography,
-} from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { getObjects } from '../Api/Api';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -35,12 +26,12 @@ const TopSellingItem = () => {
         return (
             <Box
                 sx={{
-                    height: {
+                    minHeight: {
                         xl: '430px',
                         lg: '430px',
                         md: '400px',
                         sm: '340px',
-                        xs: '340px',
+                        xs: '550px',
                     },
                     mt: { xl: 4, lg: 4, md: 3, sm: 1, xs: 1 },
                 }}
@@ -55,7 +46,7 @@ const TopSellingItem = () => {
                                 sm: 'black',
                                 xs: 'black',
                             },
-                            fontSize: { lg: '35px', xs: '15px' },
+                            fontSize: { lg: '35px', xs: '20px' },
                             fontWeight: { xl: 'bold', lg: 'bold', md: 'bold' },
                         }}
                     >
@@ -68,8 +59,8 @@ const TopSellingItem = () => {
                                 key={ad.id}
                                 xl={3}
                                 lg={3}
-                                md={4}
-                                sm={6}
+                                md={3}
+                                sm={4}
                                 xs={6}
                             >
                                 <AdCard key={ad.id} ad={ad} />
