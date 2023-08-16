@@ -225,31 +225,38 @@ const OrderCart = (props) => {
                             sm={8}
                             xs={12}
                         >
-                            {ad.order_item.map((item) => (
-                                <>
-                                    <Box
-                                        sx={{
-                                            mt: 1,
-                                            width: '55%',
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                        }}
-                                    >
-                                        <Box>
-                                            <Typography>Drug Name</Typography>
+                            {ad.order_item.map((item) => {
+                                return (
+                                    <>
+                                        <Box
+                                            sx={{
+                                                mt: 1,
+                                                width: '55%',
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                            }}
+                                        >
+                                            <Box>
+                                                <Typography>
+                                                    Drug Name
+                                                </Typography>
+                                                <Typography>
+                                                    Quantity:
+                                                    {item.quantity}
+                                                </Typography>
+                                            </Box>
+                                            <Box ml={5}>
                                             <Typography>
-                                                Quantity:
-                                                {item.quantity}
-                                            </Typography>
+                                                    {item.ad.title}
+                                                </Typography>
+                                                <Typography>
+                                                    af. {item.ad.sell_price}
+                                                </Typography>
+                                            </Box>
                                         </Box>
-                                        <Box>
-                                            <Typography>
-                                                af. {item.ad.sell_price}
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                </>
-                            ))}
+                                    </>
+                                );
+                            })}
                             <Box
                                 sx={{
                                     display: 'flex',
