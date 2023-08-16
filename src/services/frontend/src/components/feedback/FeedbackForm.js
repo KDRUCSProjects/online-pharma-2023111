@@ -12,8 +12,10 @@ import { useMutation } from '@tanstack/react-query';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector } from 'react-redux';
 import { addObject } from '../Api/Api';
+import { useTranslation } from 'react-i18next';
 
 const FeedbackForm = () => {
+    const { t: translate } = useTranslation();
     const [message, setMessage] = useState('');
     const [open, setOpen] = useState(false);
     const [feedbackMessage, setFeedbackMessage] = useState('');
@@ -49,7 +51,7 @@ const FeedbackForm = () => {
                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} mt={4}>
                     <Box component="form">
                         <TextField
-                            placeholder="What's your feedback"
+                            placeholder={translate('Whats your feedback')}
                             multiline
                             rows="6"
                             onChange={onChange}
@@ -85,7 +87,7 @@ const FeedbackForm = () => {
                             borderRadius: '15px',
                         }}
                     >
-                        SUBMIT
+                        {translate('SUBMIT')}
                     </Button>
                 </Grid>
             </Grid>

@@ -1,20 +1,14 @@
 const UserRegister = {
-    'Already have an account?': `از قبل حساب دارید؟`,
-    login: `داخل شدن`,
-    'Get started absolutely free.' : 'کاملا رایگان شروع کنید.',
-    'Free forever. No credit card needed.' : 'بدون پرداخت برای همیشه و بدون نیاز به کارت اعتباری',
-    'By registering, I agree to Afghan Business' : 'با ثبت نام با افغان بیزنس موافقت می کنم',
-    'Terms of Service' : 'شرایط استفاده از خدمات',
-    and : 'و',
-    'Privacy Policy' : 'سیاست حفظ حریم خصوصی',
-    Register : 'ثبت نام',
-    'First Name' : 'نام',
-    'last Name' : 'تخلص',
-    'Email Address' : 'ایمیل آدرس',
-    'Phone Number' : 'شماره مبایل',
-    password : 'پاسورد',
-    UserName: 'نام کاربر',
-    
-  };
-  
-  export default UserRegister;
+    Name: 'نام',
+    'New Password': 'رمز جدید',
+    'Confirm New Password': 'تایید رمز جدید',
+    'phone Number': 'شماره تلیفون',
+    'I agree to term and condition.': 'من با شرایط موافقم',
+
+    'Email Address': 'ایمیل آدرس',
+    Password: 'پاسورد',
+    REGISTER: 'ثبت نام',
+    SignUp: 'ثبت نام',
+};
+
+export default UserRegister;

@@ -1,20 +1,14 @@
 const UserRegister = {
-    'Already have an account?': `Already have an account?`,
-    login: `Login`,
-    'Get started absolutely free.' : 'Get started absolutely free.',
-    'Free forever. No credit card needed.' : 'Free forever. No credit card needed.',
-    'By registering, I agree to Afghan Business' : 'By registering, I agree to Afghan Business',
-    'Terms of Service' : 'Terms of Service',
-    and : 'and',
-    'Privacy Policy' : 'Privacy Policy',
-    Register : 'Register',
-    'First Name' : 'First Name',
-    'last Name' : 'last Name',
-    'Email Address' : 'Email Address',
-    'Phone Number' : 'Phone Number',
-    password : 'password',
-    UserName: 'UserName',
-    
-  };
-  
-  export default UserRegister;
+    Name: 'Name',
+    'New Password': 'New password',
+    'Confirm New Password': 'Confirm New Password',
+    'phone Number': 'phone Number',
+    'I agree to term and condition.': 'I agree to term and condition.',
+
+    'Email Address': 'Email Address',
+    Password: 'Password',
+    REGISTER : 'REGISTER',
+    SignUp: 'SingUp',
+};
+
+export default UserRegister;

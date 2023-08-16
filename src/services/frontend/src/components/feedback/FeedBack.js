@@ -1,8 +1,10 @@
 import { Box, Button, Container, Grid, Radio } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, Outlet } from 'react-router-dom';
 
 const FeedBack = () => {
+    const { t: translate } = useTranslation();
     const [selectedValue, setSelectedValue] = React.useState(true);
     return (
         <Container>
@@ -46,7 +48,7 @@ const FeedBack = () => {
                                 },
                             }}
                         >
-                            Feedback Form
+                            {translate('Feedback Form')}
                         </label>
                         <Link to={'complaint/'}>
                             <Radio
@@ -79,7 +81,7 @@ const FeedBack = () => {
                                 },
                             }}
                         >
-                            Complaint Form
+                            {translate('Complaint Form')}
                         </label>
                     </Box>
                 </Grid>

@@ -10,8 +10,10 @@ import EarbudsIcon from '@mui/icons-material/Earbuds';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Category = () => {
+    const { t: translate } = useTranslation();
     const data = [
         {
             name: 'medicine',
@@ -105,7 +107,7 @@ const Category = () => {
                                 fontSize: { lg: '35px', xs: '20px' },
                             }}
                         >
-                            Categories
+                            {translate('Categories')}
                         </Typography>
                     </Grid>
                     <Grid

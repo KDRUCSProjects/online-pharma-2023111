@@ -17,7 +17,10 @@ import { useNavigate } from 'react-router-dom';
 import { useRegisterUserMutation } from '../services/userAuthApi';
 import { storeToken } from '../services/LocalStorageService';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import { useTranslation } from 'react-i18next';
+
 const Registration = () => {
+    const { t: translate } = useTranslation();
     const [server_error, setServerError] = useState({});
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
@@ -92,7 +95,7 @@ const Registration = () => {
                                 fontFamily={'cursive'}
                                 fontWeight={'bold'}
                             >
-                                SignUp
+                                {translate('SignUp')}
                             </Typography>
                         </Box>
                         <Box
@@ -120,7 +123,7 @@ const Registration = () => {
                                 fullWidth
                                 id="name"
                                 name="name"
-                                label="Name"
+                                label={translate('Name')}
                                 size="small"
                             />
                             {server_error.name ? (
@@ -142,7 +145,7 @@ const Registration = () => {
                                 fullWidth
                                 id="email"
                                 name="email"
-                                label="Email Address"
+                                label={translate('Email Address')}
                                 size="small"
                             />
                             {server_error.email ? (
@@ -164,7 +167,7 @@ const Registration = () => {
                                 fullWidth
                                 id="name"
                                 name="phone_number"
-                                label="Phone Number"
+                                label={translate('Phone Number')}
                                 size="small"
                             />
                             <TextField
@@ -173,7 +176,7 @@ const Registration = () => {
                                 fullWidth
                                 id="password"
                                 name="password"
-                                label="Password"
+                                label={translate('Password')}
                                 type="password"
                                 size="small"
                             />
@@ -196,7 +199,7 @@ const Registration = () => {
                                 fullWidth
                                 id="password2"
                                 name="password2"
-                                label="Confirm Password"
+                                label={translate('Confirm Password')}
                                 type="password"
                                 size="small"
                             />
@@ -222,7 +225,9 @@ const Registration = () => {
                                         id="tc"
                                     />
                                 }
-                                label="I agree to term and condition."
+                                label={translate(
+                                    'I agree to term and condition.'
+                                )}
                             />
                             {server_error.tc ? (
                                 <span
@@ -254,7 +259,7 @@ const Registration = () => {
                                             },
                                         }}
                                     >
-                                        Register
+                                        {translate('REGISTER')}
                                     </Button>
                                 )}
                             </Box>

@@ -4,7 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { getObjects } from '../Api/Api';
 import CircularProgress from '@mui/material/CircularProgress';
 import AdCard from '../Ad/AdCard';
+import { useTranslation } from 'react-i18next';
+
 const TopSellingItem = () => {
+    const { t: translate } = useTranslation();
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['top_selling'],
         () => {
@@ -50,7 +53,7 @@ const TopSellingItem = () => {
                             fontWeight: { xl: 'bold', lg: 'bold', md: 'bold' },
                         }}
                     >
-                        Top Selling Items
+                        {translate('Top Selling Items')}
                     </Typography>
                     <Grid container>
                         {data.map((ad) => (

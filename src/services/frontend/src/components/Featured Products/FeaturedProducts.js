@@ -4,8 +4,10 @@ import { getObjectsByPageNumber } from '../Api/Api';
 import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import AdCard from '../Ad/AdCard';
+import { useTranslation } from 'react-i18next';
 
 const FeaturedProducts = () => {
+    const { t: translate } = useTranslation();
     const [currentPage, setCurrentPage] = useState(1);
     const handlePageChange = (event, page) => {
         setCurrentPage(page);
@@ -52,7 +54,7 @@ const FeaturedProducts = () => {
                             fontWeight: { xl: 'bold', lg: 'bold', md: 'bold' },
                         }}
                     >
-                        Featured Products
+                        {translate('Featured Products')}
                     </Typography>
                     <Grid container>
                         {adPageQuery.data['results'].map((ad) => (

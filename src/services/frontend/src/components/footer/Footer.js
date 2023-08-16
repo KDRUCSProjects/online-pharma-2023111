@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getObjects } from '../Api/Api';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const { t: translate } = useTranslation();
     const myData = useSelector((state) => state.user);
     const { data, isLoading, isError, isSuccess } = useQuery(
         ['categories'],
@@ -69,7 +71,7 @@ const Footer = () => {
                             mr={2}
                             fontSize={'20px'}
                         >
-                            Follow Us
+                            {translate('Follow Us')}
                         </Typography>
                         <Box sx={{ paddingLeft: '120px' }}>
                             <FacebookIcon sx={{ color: 'white', mr: 2 }} />
@@ -84,7 +86,7 @@ const Footer = () => {
                         fontSize={'20px'}
                         fontWeight={'bold'}
                     >
-                        Categories
+                        {translate('Categories')}
                     </Typography>
                     <Box
                         sx={{
@@ -95,9 +97,10 @@ const Footer = () => {
                         }}
                         align="left"
                     >
-                        {data.map((category,i) =>
+                        {data.map((category, i) =>
                             category.id !== 9 ? (
-                                <Link key={i}
+                                <Link
+                                    key={i}
                                     to={`ad/list/${category.name}/${category.id}/`}
                                     style={{
                                         marginTop: 18,
@@ -119,7 +122,7 @@ const Footer = () => {
                         fontSize={'20px'}
                         fontWeight={'bold'}
                     >
-                        Navigate
+                        {translate('Navigate')}
                     </Typography>
                     <Box
                         sx={{
@@ -138,7 +141,7 @@ const Footer = () => {
                             }}
                             to={'/feedback/'}
                         >
-                            Feedback
+                            {translate('Feedback')}
                         </Link>
                         <Link
                             style={{
@@ -148,7 +151,7 @@ const Footer = () => {
                             }}
                             to={'/prescription/'}
                         >
-                            Prescription
+                            {translate('Prescription')}
                         </Link>
                         <Link
                             to={'orders/'}
@@ -158,7 +161,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            My Order
+                            {translate('My Order')}
                         </Link>
                         <Link
                             style={{
@@ -168,7 +171,7 @@ const Footer = () => {
                             }}
                             to={'/profile/'}
                         >
-                            User Profile
+                            {translate('User Profile')}
                         </Link>
                         {myData.admin ? (
                             <Link
@@ -179,7 +182,7 @@ const Footer = () => {
                                 }}
                                 to={'dashboard'}
                             >
-                                Dashboard
+                                {translate('Dashboard')}
                             </Link>
                         ) : (
                             ''
@@ -192,7 +195,7 @@ const Footer = () => {
                         fontSize={'20px'}
                         fontWeight={'bold'}
                     >
-                        Support
+                        {translate('Support')}
                     </Typography>
                     <Box
                         sx={{
@@ -211,7 +214,7 @@ const Footer = () => {
                             }}
                             to={'/faq/'}
                         >
-                            FAQs
+                            {translate('FAQs')}
                         </Link>
                         <Link
                             style={{
@@ -220,7 +223,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Term Of Service
+                            {translate('Term Of Service')}
                         </Link>
                         <Link
                             style={{
@@ -229,7 +232,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Shipping Policy{' '}
+                            {translate('Shipping Policy')}
                         </Link>
                         <Link
                             style={{
@@ -238,7 +241,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Return Policy{' '}
+                            {translate('Return Policy')}
                         </Link>
                         <Link
                             style={{
@@ -247,7 +250,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Refund Policy
+                            {translate('Refund Policy')}
                         </Link>
                         <Link
                             style={{
@@ -256,7 +259,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Privacy Policy
+                            {translate('Privacy Policy')}
                         </Link>
                     </Box>
                 </Grid>
@@ -266,7 +269,7 @@ const Footer = () => {
                         fontSize={'20px'}
                         fontWeight={'bold'}
                     >
-                        Contact Us
+                        {translate('Contact Us')}
                     </Typography>
                     <Box
                         sx={{
@@ -280,7 +283,7 @@ const Footer = () => {
                         <Typography
                             sx={{ mt: 1, height: '4px', fontSize: '16px' }}
                         >
-                            Email
+                            {translate('Email')}
                         </Typography>
                         <Link
                             style={{
@@ -293,7 +296,7 @@ const Footer = () => {
                         <Typography
                             sx={{ mt: 2, height: '4px', fontSize: '16px' }}
                         >
-                            Phone
+                            {translate('Phone')}
                         </Typography>
                         <Link
                             style={{
@@ -307,7 +310,7 @@ const Footer = () => {
                         <Typography
                             sx={{ mt: 2, height: '4px', fontSize: '16px' }}
                         >
-                            Address
+                            {translate('Address')}
                         </Typography>
                         <Link
                             style={{
@@ -316,7 +319,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Ayobi Health Markit
+                            {translate('Ayobi Health Markit')}
                         </Link>
                         <Link
                             style={{
@@ -325,7 +328,7 @@ const Footer = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Shop #4
+                            {translate('Shop #4')}
                         </Link>
                     </Box>
                 </Grid>

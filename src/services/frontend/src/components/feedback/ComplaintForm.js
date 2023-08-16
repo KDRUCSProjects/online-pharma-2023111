@@ -12,7 +12,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useMutation } from '@tanstack/react-query';
 import { addObject } from '../Api/Api';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 const ComplaintForm = () => {
+    const { t: translate } = useTranslation();
     const [message, setMessage] = useState('');
     const [open, setOpen] = useState(false);
     const [complaintMessage, setComplaintMessage] = useState('');
@@ -48,7 +50,7 @@ const ComplaintForm = () => {
                 <Grid item xl={12} lg={12} md={12} sm={12} xs={12} mt={4}>
                     <Box component="form">
                         <TextField
-                            placeholder="What's your complaint"
+                            placeholder={translate('Whats your complaint')}
                             multiline
                             onChange={onChange}
                             rows="6"
@@ -82,7 +84,7 @@ const ComplaintForm = () => {
                             borderRadius: '15px',
                         }}
                     >
-                        SUBMIT
+                        {translate('SUBMIT')}
                     </Button>
                 </Grid>
             </Grid>

@@ -21,6 +21,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { getLocation } from '../services/LocalStorageService';
 import { useCartContext } from '../features/cart context/cart_context';
+import { useTranslation } from 'react-i18next';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -64,6 +65,7 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchBar = (props) => {
+    const { t: translate } = useTranslation();
     const { total_item } = useCartContext();
     const [openSearch, setOpenSearch] = useState(false);
     const [searchParams, setSearchParams] = useState({ searchField: '' });
@@ -111,7 +113,7 @@ const SearchBar = (props) => {
                             }}
                         >
                             <StyledSearchInput
-                                placeholder="Search Products"
+                                placeholder={translate('Search Products')}
                                 inputProps={{ 'aria-label': 'search' }}
                                 autoComplete="off"
                                 onChange={handleSearchParamsChange}
@@ -221,7 +223,7 @@ const SearchBar = (props) => {
                                         },
                                     }}
                                 >
-                                    Select Your address
+                                    {translate('Select Your Address')}
                                 </Button>
                             </Link>
                             <Link to={'/prescription/'}>
@@ -277,7 +279,7 @@ const SearchBar = (props) => {
                                         fontSize={'14px'}
                                         mr={2}
                                     >
-                                        Prescription
+                                        {translate('Prescription')}
                                     </Typography>
                                 </Button>
                             </Link>

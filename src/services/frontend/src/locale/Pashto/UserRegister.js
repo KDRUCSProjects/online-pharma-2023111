@@ -1,20 +1,13 @@
 const UserRegister = {
-    'Already have an account?': `له مخکي نه اکونټ لری؟`,
-    login: `ننوتل`,
-    'Get started absolutely free.' : 'په بشپړ ډول وړیا پیل وکړئ.',
-    'Free forever. No credit card needed.' : 'د تل لپاره وړیا.کریډیټ کارت ته اړتیا نشته.',
-    'By registering, I agree to Afghan Business' : 'په راجستر کولو سره، زه د افغان سوداګرۍ سره موافق یم',
-    'Terms of Service' : 'د خدمت شرطونه',
-    and : 'او',
-    'Privacy Policy' : 'د پټتیا تګلاره',
-    'First Name' : 'نوم',
-    'last Name' : 'تخلص',
-    'Email Address' : 'بریښنا‌لیک',
-    'Phone Number' : 'د مبایل شمیره',
-    password : 'پاسورډ',
-    UserName: 'کارونکی نوم',
-    Register :'ثبت کول'
-    
-  };
-  
-  export default UserRegister;
+    Name: 'نوم',
+    'New Password': 'نوی رمز',
+    'Confirm New Password': 'نوی رمز تایید کول',
+    'phone Number': 'تلیفون شمیره',
+    'I agree to term and condition.': 'زه آماده یم شرایطو ته',
+
+    'Email Address': 'بریشنا لیک',
+    Password: 'رمز',
+    REGISTER: ' ثبتول',
+    SignUp: 'ثبتول',
+};
+export default UserRegister;

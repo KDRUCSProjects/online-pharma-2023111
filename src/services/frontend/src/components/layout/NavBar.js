@@ -295,10 +295,10 @@ const NavBar = () => {
                                                 color: 'white',
                                             }}
                                         >
-                                            Login
+                                            {translate('Login')}
                                         </Link>
                                     </Button>
-                                    <pre> OR </pre>
+                                    <pre> {translate('OR')} </pre>
                                     <Button
                                         variant="contained"
                                         startIcon={<HowToRegIcon />}

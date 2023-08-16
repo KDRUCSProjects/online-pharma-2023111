@@ -15,8 +15,10 @@ import { getToken, storeToken } from '../services/LocalStorageService';
 import { setUserToken } from '../features/authSlice';
 import { useLoginUserMutation } from '../services/userAuthApi';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+    const { t: translate } = useTranslation();
     const [server_error, setServerError] = useState({});
     const navigate = useNavigate();
     const [loginUser, { isLoading }] = useLoginUserMutation();
@@ -91,14 +93,14 @@ const Login = () => {
                             />
                         </Box>
                         <Typography align="center" variant="h5" pt={2}>
-                            Login
+                            {translate('Login')}
                         </Typography>
                         <TextField
                             placeholder="email@example.com"
                             size="small"
                             type="email"
                             name="email"
-                            label="Email Address"
+                            label={translate('Email Address')}
                             sx={{ borderRadius: '10px', mt: 3 }}
                         />
                         {server_error.email ? (
@@ -119,7 +121,7 @@ const Login = () => {
                             size="small"
                             type="password"
                             name="password"
-                            label="Password"
+                            label={translate('Password')}
                             sx={{ mt: 3 }}
                         />
                         {server_error.email ? (
@@ -154,7 +156,7 @@ const Login = () => {
                                         borderRadius: '15px',
                                     }}
                                 >
-                                    Login
+                                    {translate('Login')}
                                 </Button>
                             )}
                         </Box>
@@ -167,16 +169,16 @@ const Login = () => {
                                     textDecoration: 'none',
                                 }}
                             >
-                                Forgot Password?
+                                {translate('Forgot Password?')}
                             </Link>
                             <Typography display="inline">
-                                Don't have an account?
+                                {translate('Dont have an account?')}
                             </Typography>
                             <Link
                                 to={'/signup/'}
                                 sx={{ ':hover': { cursor: 'pointer' } }}
                             >
-                                Sign Up
+                                {translate('Sign Up')}
                             </Link>
                         </Box>
                         {server_error.non_field_errors ? (

@@ -14,8 +14,10 @@ import { useChangeUserPasswordMutation } from '../services/userAuthApi';
 import { getToken } from '../services/LocalStorageService';
 import KeyIcon from '@mui/icons-material/Key';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ChangePassword = () => {
+    const { t: translate } = useTranslation();
     const navigate = useNavigate();
     const [server_error, setServerError] = useState({});
     const [server_msg, setServerMsg] = useState({});
@@ -95,7 +97,7 @@ const ChangePassword = () => {
                                     fontFamily={'cursive'}
                                     fontWeight={'bold'}
                                 >
-                                    Change Password
+                                    {translate('Change Password')}
                                 </Typography>
                             </Box>
                             <Box
@@ -111,7 +113,7 @@ const ChangePassword = () => {
                                     fullWidth
                                     size="small"
                                     name="password"
-                                    label="New Password"
+                                    label={translate('New Password')}
                                     type="password"
                                     id="password"
                                 />
@@ -134,7 +136,7 @@ const ChangePassword = () => {
                                     fullWidth
                                     size="small"
                                     name="password2"
-                                    label="Confirm New Password"
+                                    label={translate('Confirm New Password')}
                                     type="password"
                                     id="password2"
                                 />
@@ -169,7 +171,7 @@ const ChangePassword = () => {
                                             }}
                                         >
                                             {' '}
-                                            Update{' '}
+                                            {translate('Update')}
                                         </Button>
                                     )}
                                 </Box>

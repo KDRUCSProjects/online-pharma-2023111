@@ -17,7 +17,10 @@ import React, { useState } from 'react';
 import { storeLocation } from '../services/LocalStorageService';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import { useTranslation } from 'react-i18next';
 const Location = () => {
+    const { t: translate } = useTranslation();
+
     const [locationData, setLocationData] = useState('');
     const [message, setMessage] = useState('');
     const [open, setOpen] = useState(false);
@@ -70,13 +73,13 @@ const Location = () => {
                     }}
                 >
                     <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    Home
+                    {translate('Home')}
                 </Link>
                 <Typography
                     sx={{ display: 'flex', alignItems: 'center' }}
                     color="text.primary"
                 >
-                    Location
+                    {translate('Location')}
                 </Typography>
             </Breadcrumbs>
             <Typography
@@ -86,7 +89,7 @@ const Location = () => {
                 pl={1}
                 sx={{ borderLeft: '3px solid #76bc21' }}
             >
-                Location
+                {translate('Location')}
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
                 <Grid
@@ -105,12 +108,14 @@ const Location = () => {
                             flexDirection: 'column',
                         }}
                     >
-                        <Typography variant="h5">Find Your Address</Typography>
+                        <Typography variant="h5">
+                            {translate('Find Your Address')}
+                        </Typography>
                         <TextField
                             sx={{ mt: 2 }}
                             type="search"
                             size="small"
-                            placeholder="Search Here"
+                            placeholder={translate('Search Here')}
                             InputProps={{
                                 style: {
                                     borderRadius: '10px',
@@ -142,7 +147,9 @@ const Location = () => {
                                 />
                             </IconButton>
                             <Typography pt={2}>
-                                Click here for your current location
+                                {translate(
+                                    'Click here for your current location'
+                                )}
                             </Typography>
                         </Box>
                     </Grid>
@@ -158,12 +165,14 @@ const Location = () => {
                             flexDirection: 'column',
                         }}
                     >
-                        <Typography variant="h5">Enter address</Typography>
+                        <Typography variant="h5">
+                            {translate('Enter address')}
+                        </Typography>
                         <TextField
                             onChange={handleChange}
                             sx={{ mt: 2 }}
                             size="small"
-                            placeholder="Floor, House, Office No "
+                            placeholder={translate('Floor, House, Office No')}
                             InputProps={{
                                 style: {
                                     borderRadius: '10px',
@@ -177,7 +186,7 @@ const Location = () => {
                             size="large"
                             sx={{ mt: 2 }}
                         >
-                            Save Address
+                            {translate('Save Address')}
                         </Button>
                     </Grid>
                 </Grid>
