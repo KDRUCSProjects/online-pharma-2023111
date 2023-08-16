@@ -124,7 +124,7 @@ const Bill = ({ Order }) => {
                             justifyContent: 'space-between',
                         }}
                     >
-                        <Typography>Bill To</Typography>
+                        <Typography>Bill Number {Order.id}</Typography>
                         <Typography>Date:{Order.order_date}</Typography>
                     </Box>
                     <Box mt={2}>

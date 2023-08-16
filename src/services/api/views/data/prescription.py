@@ -5,8 +5,8 @@ from .base import DataRootViewSet
 
 
 class PrescriptionViewSet(DataRootViewSet):
-    queryset = Prescription.objects.all()
-    
+    queryset = Prescription.objects.all().order_by("-id")
+
     def get_serializer_class(self):
         if self.action == "create" or self.action == "update":
             return PrescriptionSerializer

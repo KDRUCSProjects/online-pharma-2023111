@@ -11,7 +11,6 @@ class Ad(DataRoot):
     generics = models.CharField(max_length=200, null=True, blank=True)
     sell_price = models.IntegerField()
     max_order = models.IntegerField(default=5)
-    countInStock = models.IntegerField(null=True, blank=True, default=0)
     how_work = models.TextField()
     used_for = models.TextField()
     when_not_used = models.TextField()
