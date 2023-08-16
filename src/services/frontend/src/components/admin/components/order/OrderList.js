@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
     Box,
     Breadcrumbs,
+    Button,
     CircularProgress,
     Grid,
     Modal,
@@ -20,8 +21,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import GrainIcon from '@mui/icons-material/Grain';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Title from '../title/Title';
-import { getObjects } from '../../../Api/Api';
-import { useQuery } from '@tanstack/react-query';
+import { getObjects, updateObject } from '../../../Api/Api';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import Bill from '../bill/Bill';
 const state = [
     { id: 1, state: 'pending' },
@@ -33,13 +34,29 @@ const OrderList = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const [message, setMessage] = useState('');
     const [Order, setOrder] = useState();
 
     const setOrderDetails = (row) => {
         setOrder(row);
     };
 
+    const { mutate } = useMutation((orderData) =>
+        updateObject('orders', orderData, 48)
+    );
+    const handleComplete = (ad) => {
+        const data = {
+            user: ad.user.id,
+            address: ad.address,
+            delivery_instruction: ad.delivery_instruction,
+            delivery_fee: ad.delivery_fee,
+            total_amount: ad.total_amount,
+            uploaded_items: [],
+            status: 3,
+        };
+        mutate(data);
+        setMessage('Your order Successfully Canceled');
+    };
     const { data, isLoading, isError, isSuccess } = useQuery(['orders'], () => {
         return getObjects('orders');
     });
@@ -126,6 +143,12 @@ const OrderList = () => {
                                     >
                                         Status
                                     </TableCell>
+                                    {/* <TableCell
+                                        align="center"
+                                        sx={{ fontSize: '13px' }}
+                                    >
+                                        Complete Order
+                                    </TableCell> */}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -177,6 +200,29 @@ const OrderList = () => {
                                                 ? state[1].state
                                                 : state[2].state}
                                         </TableCell>
+                                        {/* <TableCell align="center">
+                                            {row.status == 1 ? (
+                                                <Button
+                                                    onClick={() =>
+                                                        handleComplete(row)
+                                                    }
+                                                    sx={{
+                                                        backgroundColor:
+                                                            '#76bc21',
+                                                        color: 'white',
+                                                        ':hover': {
+                                                            backgroundColor:
+                                                                '#76bc21',
+                                                            color: 'white',
+                                                        },
+                                                    }}
+                                                >
+                                                    complete
+                                                </Button>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </TableCell> */}
                                     </TableRow>
                                 ))}
                             </TableBody>
@@ -188,7 +234,7 @@ const OrderList = () => {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                     >
-                        <Bill  Order={Order}/>
+                        <Bill Order={Order} />
                     </Modal>
                 </Grid>
             </Grid>

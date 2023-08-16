@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 class OrderViewSit(DataRootViewSet):
-    queryset = Order.objects.all()
+    queryset = Order.objects.all().order_by("status")
 
     def get_serializer_class(self):
         if self.action == "create" or self.action == "update":
