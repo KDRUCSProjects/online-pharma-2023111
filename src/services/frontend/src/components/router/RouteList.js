@@ -38,6 +38,7 @@ import CompleteOrder from '../order/CompleteOrder';
 import PendingOrder from '../order/PendingOrder';
 import YearReport from '../admin/components/report/YearReport';
 import PrescriptionDetails from '../admin/components/order/PrescriptionDetails';
+import FilterOrder from '../admin/components/filter order/FilterOrder';
 
 const RouteList = () => {
     const myData = useSelector((state) => state.user);
@@ -209,6 +210,16 @@ const RouteList = () => {
                         element={
                             myData.admin ? (
                                 <PrescriptionDetails />
+                            ) : (
+                                <Navigate to={'/'} />
+                            )
+                        }
+                    />
+                    <Route
+                        path="filter/order/:id/"
+                        element={
+                            myData.admin ? (
+                                <FilterOrder />
                             ) : (
                                 <Navigate to={'/'} />
                             )

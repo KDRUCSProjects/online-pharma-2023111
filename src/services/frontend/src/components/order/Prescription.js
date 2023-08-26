@@ -282,7 +282,7 @@ const Prescription = () => {
                                             id="file"
                                             type="file"
                                             name="file"
-                                            accept="image/*"
+                                            accept="image"
                                             onChange={handleImage}
                                         />
                                         <Typography sx={{ fontWeight: '500' }}>

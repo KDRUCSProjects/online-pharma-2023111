@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const [userCount, setUserCount] = useState(0);
@@ -64,108 +65,148 @@ const Dashboard = () => {
                 </Paper>
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
-                <Paper
-                    sx={{
-                        p: 2,
-                        height: '200px',
-                        borderRadius: '15px',
-                    }}
+                <Link
+                    to={'/dashboard/order/list/'}
+                    style={{ color: 'black', textDecoration: 'none' }}
                 >
-                    <Box
+                    <Paper
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
+                            p: 2,
+                            height: '200px',
+                            borderRadius: '15px',
                         }}
                     >
-                        <Typography fontWeight="bold" variant="h6">
-                            Total Orders
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Typography fontWeight="bold" variant="h6">
+                                Total Orders
+                            </Typography>
+                            <PersonIcon
+                                sx={{ color: '#76bc21', fontSize: '40px' }}
+                            />
+                        </Box>
+                        <Typography
+                            pt={8}
+                            pl={2}
+                            variant="h4"
+                            fontWeight="bold"
+                        >
+                            {orderCount}
                         </Typography>
-                        <PersonIcon
-                            sx={{ color: '#76bc21', fontSize: '40px' }}
-                        />
-                    </Box>
-                    <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
-                        {orderCount}
-                    </Typography>
-                </Paper>
+                    </Paper>
+                </Link>
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
-                <Paper
-                    sx={{
-                        p: 2,
-                        height: '200px',
-                        borderRadius: '15px',
-                    }}
+                <Link
+                    to={'/dashboard/filter/order/1/'}
+                    style={{ color: 'black', textDecoration: 'none' }}
                 >
-                    <Box
+                    <Paper
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
+                            p: 2,
+                            height: '200px',
+                            borderRadius: '15px',
                         }}
                     >
-                        <Typography fontWeight="bold" variant="h6">
-                            Total Pending Orders
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Typography fontWeight="bold" variant="h6">
+                                Total Pending Orders
+                            </Typography>
+                            <PersonIcon
+                                sx={{ color: '#76bc21', fontSize: '40px' }}
+                            />
+                        </Box>
+                        <Typography
+                            pt={8}
+                            pl={2}
+                            variant="h4"
+                            fontWeight="bold"
+                        >
+                            {pendingOrderCount}
                         </Typography>
-                        <PersonIcon
-                            sx={{ color: '#76bc21', fontSize: '40px' }}
-                        />
-                    </Box>
-                    <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
-                        {pendingOrderCount}
-                    </Typography>
-                </Paper>
+                    </Paper>
+                </Link>
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
-                <Paper
-                    sx={{
-                        p: 2,
-                        height: '200px',
-                        borderRadius: '15px',
-                    }}
+                <Link
+                    to={'/dashboard/filter/order/3/'}
+                    style={{ color: 'black', textDecoration: 'none' }}
                 >
-                    <Box
+                    <Paper
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
+                            p: 2,
+                            height: '200px',
+                            borderRadius: '15px',
                         }}
                     >
-                        <Typography fontWeight="bold" variant="h6">
-                            Total Completed Orders
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Typography fontWeight="bold" variant="h6">
+                                Total Completed Orders
+                            </Typography>
+                            <PersonIcon
+                                sx={{ color: '#76bc21', fontSize: '40px' }}
+                            />
+                        </Box>
+                        <Typography
+                            pt={8}
+                            pl={2}
+                            variant="h4"
+                            fontWeight="bold"
+                        >
+                            {completeOrderCount}
                         </Typography>
-                        <PersonIcon
-                            sx={{ color: '#76bc21', fontSize: '40px' }}
-                        />
-                    </Box>
-                    <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
-                        {completeOrderCount}
-                    </Typography>
-                </Paper>
+                    </Paper>
+                </Link>
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={3} xl={3}>
-                <Paper
-                    sx={{
-                        p: 2,
-                        height: '200px',
-                        borderRadius: '15px',
-                    }}
+                <Link
+                    to={'/dashboard/filter/order/2/'}
+                    style={{ color: 'black', textDecoration: 'none' }}
                 >
-                    <Box
+                    <Paper
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
+                            p: 2,
+                            height: '200px',
+                            borderRadius: '15px',
                         }}
                     >
-                        <Typography fontWeight="bold" variant="h6">
-                            Total Canceled Orders
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                            }}
+                        >
+                            <Typography fontWeight="bold" variant="h6">
+                                Total Canceled Orders
+                            </Typography>
+                            <PersonIcon
+                                sx={{ color: '#76bc21', fontSize: '40px' }}
+                            />
+                        </Box>
+                        <Typography
+                            pt={8}
+                            pl={2}
+                            variant="h4"
+                            fontWeight="bold"
+                        >
+                            {cancelOrderCount}
                         </Typography>
-                        <PersonIcon
-                            sx={{ color: '#76bc21', fontSize: '40px' }}
-                        />
-                    </Box>
-                    <Typography pt={8} pl={2} variant="h4" fontWeight="bold">
-                        {cancelOrderCount}
-                    </Typography>
-                </Paper>
+                    </Paper>
+                </Link>
             </Grid>
         </Grid>
     );

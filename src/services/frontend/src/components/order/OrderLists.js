@@ -8,8 +8,6 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import CompleteOrder from './CompleteOrder';
-import AllOrder from './AllOrder';
 import HomeIcon from '@mui/icons-material/Home';
 
 const OrderLists = () => {
@@ -49,6 +47,7 @@ const OrderLists = () => {
                         sx={{
                             display: 'flex',
                             justifyContent: 'flex-start',
+                            minHeight: '50px'
                         }}
                     >
                         <Link to={''}>

@@ -60,7 +60,7 @@ class OrderAdmin(admin.ModelAdmin, ExportCsvMixin):
         "user",
     )
     list_filter = (
-        "id",
+        "status",
         "order_date",
     )
     search_fields = ("id", "address", "user_email")

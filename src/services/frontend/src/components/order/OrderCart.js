@@ -26,7 +26,7 @@ const OrderCart = (props) => {
         setClose(false);
     };
 
-    const handleCancel = () => {
+    const handleComplete = () => {
         if (window.confirm('Are You sure? ')) {
             const data = {
                 user: ad.user.id,
@@ -35,10 +35,10 @@ const OrderCart = (props) => {
                 delivery_fee: ad.delivery_fee,
                 total_amount: ad.total_amount,
                 uploaded_items: [],
-                status: 2,
+                status: 3,
             };
             mutate(data);
-            setMessage('Your order Successfully Canceled');
+            setMessage('Your order Successfully Complete');
             setClose(true);
         }
     };
@@ -109,7 +109,7 @@ const OrderCart = (props) => {
                         }}
                     >
                         <Button
-                            onClick={handleCancel}
+                            onClick={handleComplete}
                             type="submit"
                             sx={{
                                 color: 'white',
@@ -136,7 +136,7 @@ const OrderCart = (props) => {
                                 },
                             }}
                         >
-                            Cancel
+                            Complete
                         </Button>
                     </Box>
                 ) : (
